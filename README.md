@@ -1,12 +1,12 @@
 # Hermes Agent Skills Collection
 
-A comprehensive collection of AI agent skills curated from top GitHub repositories. This repository contains 450+ skills organized by source, ready for use with Hermes Agent, Claude Code, and other AI coding assistants.
+A comprehensive collection of AI agent skills curated from top GitHub repositories. This repository contains 500+ skills organized by source, ready for use with Hermes Agent, Claude Code, and other AI coding assistants.
 
 ## 📊 Statistics
 
-- **Total Skills:** 450+
-- **Sources:** 14 repositories
-- **Categories:** 20+
+- **Total Skills:** 500+
+- **Sources:** 19 repositories
+- **Categories:** 25+
 - **Last Updated:** 2026-07-11
 
 ## 📁 Repository Structure
@@ -26,8 +26,56 @@ skills/
 ├── mixedbread/         # 3 skills - Search, RAG, parsing with Mixedbread
 ├── skillseekers/       # 26 skills - Universal doc-to-skill converter
 ├── voltagent/          # 1 skill - Awesome agent skills curation
-└── peterfei/           # 12 skills - AI agent team roles
+├── peterfei/           # 12 skills - AI agent team roles
+├── muratcankoylan/     # 16 skills - Context engineering, memory systems
+├── memodb/             # 3 skills - Acontext memory layer templates
+├── thedotmack/         # 21 skills - Claude-mem persistent memory
+├── resend/             # 5 skills - Email API, templates, best practices
+├── airtable/           # 8 skills - Airtable operations, filters, marketing
+└── agentskills/        # 1 skill - Agent Skills specification reference
 ```
+
+## ⚡ Quick Download
+
+### Option 1: Just Skills (this repo)
+```bash
+git clone https://github.com/h8ntome/hermes-skills-collection.git
+```
+
+### Option 2: Full Hermes Agent + All Skills (Complete Installation)
+```bash
+# One-command full installation
+curl -fsSL https://raw.githubusercontent.com/h8ntome/hermes-skills-collection/main/scripts/install-hermes-full.sh | bash
+```
+
+Or manual steps:
+```bash
+# 1. Install Hermes Agent (if not already installed)
+pip install hermes-agent
+
+# 2. Clone this skills collection
+git clone https://github.com/h8ntome/hermes-skills-collection.git
+
+# 3. Configure Hermes to use these skills
+cat >> ~/.hermes/config.yaml << 'EOF'
+skills:
+  external_dirs:
+    - /path/to/hermes-skills-collection/skills
+EOF
+
+# 4. Start Hermes with all skills
+hermes chat
+```
+
+### Option 3: Docker (Full Stack)
+```bash
+docker run -d \
+  -v /path/to/hermes-skills-collection/skills:/opt/hermes/skills \
+  -p 8080:8080 \
+  h8ntome/hermes-agent:full-skills
+```
+
+## 🚀 Quick Start
 
 ## 🚀 Quick Start
 
@@ -67,15 +115,22 @@ skill_view('garrytan/review')
 - **OpenAI** (39): Codex, Figma, Notion, Playwright, deployment, security
 - **Mixedbread** (3): Search, RAG, parsing with Mixedbread
 - **Skill Seekers** (26): Universal doc-to-skill converter for 21+ platforms
+- **MuraCankoylan** (16): Context engineering, memory systems, evaluation
+- **Memodb/Acontext** (3): Memory layer templates for production agents
+- **TheDotMack** (21): Claude-mem persistent memory, session management
+- **Thedotmack** (21): Persistent memory across sessions
 
 ### Engineering Workflows
 - **Addy Osmani** (16): Code review, debugging, spec-driven, TDD, shipping
 - **Rlespinasse** (8): Diataxis, draw.io, conventional commits, PR logs
 - **Peter Fei** (12): Fullstack, frontend, backend, QA, DevOps, product roles
+- **Resend** (5): Email API, React Email, best practices, inbox management
+- **Airtable** (8): Operations, filters, marketing ops, activity logging
 
 ### Design & Documentation
 - **Nicobailon** (1): Visual explainer/slide generation
 - **Makenotion** (1): Notion CLI integration
+- **AgentSkills** (1): Agent Skills specification reference
 
 ## 🔧 Skill Format
 
