@@ -1,140 +1,142 @@
-# Hermes Agent Skills Collection
+# 🎯 Hermes Agent Skills Collection
 
-A comprehensive collection of AI agent skills curated from top GitHub repositories. This repository contains 500+ skills organized by source, ready for use with Hermes Agent, Claude Code, and other AI coding assistants.
+> **500+ production-ready skills** from **20 curated sources** — ready for Hermes Agent, Claude Code, and any AI coding assistant.
 
-## 📊 Statistics
+[![Skills Count](https://img.shields.io/badge/Skills-500+-brightgreen)](https://github.com/h8ntome/AgentSkills)
+[![Sources](https://img.shields.io/badge/Sources-20-blue)](https://github.com/h8ntome/AgentSkills)
+[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Last Updated](https://img.shields.io/badge/Updated-2026--07--11-orange)](https://github.com/h8ntome/AgentSkills/commits/main)
 
-- **Total Skills:** 500+
-- **Sources:** 19 repositories
-- **Categories:** 25+
-- **Last Updated:** 2026-07-11
+---
 
-## 📁 Repository Structure
+## 🎯 Quick Navigation
 
-```
-skills/
-├── anthropic/          # 18 skills - Official Anthropic skills for Claude Code
-├── vercel/             # 9 skills - Vercel/Next.js production skills
-├── google/             # 59 skills - Google Cloud, GKE, Vertex AI, Agent Platform
-├── openai/             # 39 skills - OpenAI/Codex CLI, deployment, Figma, Notion
-├── addyosmani/         # 16 skills - Senior engineering workflows (Google Chrome)
-├── garrytan/           # 59 skills - gstack AI engineering workflow
-├── microsoft/          # 191 skills - Azure services, networking, security
-├── rlespinasse/        # 8 skills - Verified agent skills (diataxis, drawio, etc.)
-├── nicobailon/         # 1 skill - Visual explanation/slide generation
-├── makenotion/         # 1 skill - Notion CLI integration
-├── mixedbread/         # 3 skills - Search, RAG, parsing with Mixedbread
-├── skillseekers/       # 26 skills - Universal doc-to-skill converter
-├── voltagent/          # 1 skill - Awesome agent skills curation
-├── peterfei/           # 12 skills - AI agent team roles
-├── muratcankoylan/     # 16 skills - Context engineering, memory systems, evaluation
-├── memodb-io/          # 3 skills - Acontext landing page, daily-logs, user-facts
-├── thedotmack/         # 21 skills - Claude-mem: standup, learn-codebase, timeline-report
-├── resend/             # 5 skills - Resend CLI, React Email, email best practices
-├── airtable/           # 8 skills - Product ops, sales ops, CLI, filters, marketing ops
-├── agentskills/        # 1 skill - Agentskills.io specification
-└── voltagent/          # 1 skill - Awesome agent skills list
-```
-├── memodb/             # 3 skills - Acontext memory layer templates
-├── thedotmack/         # 21 skills - Claude-mem persistent memory
-├── resend/             # 5 skills - Email API, templates, best practices
-├── airtable/           # 8 skills - Airtable operations, filters, marketing
-└── agentskills/        # 1 skill - Agent Skills specification reference
-```
+| | | |
+|---|---|---|
+| [📦 Quick Install](#-quick-install) | [📁 Repo Structure](#-repository-structure) | [🏷️ Skill Categories](#-skill-categories) |
+| [🔧 Skill Format](#-skill-format) | [🔄 Maintenance](#-maintenance) | [🙏 Sources & Credits](#-sources--credits) |
 
-## ⚡ Quick Download
+---
 
-### Option 1: Just Skills (this repo)
+## ⚡ Quick Install
+
+### 🎯 Option 1: Just Skills (Recommended)
 ```bash
-git clone https://github.com/h8ntome/hermes-skills-collection.git
+git clone https://github.com/h8ntome/AgentSkills.git
 ```
 
-### Option 2: Full Hermes Agent + All Skills (Complete Installation)
+### 🚀 Option 2: Full Hermes + All Skills (One Command)
 ```bash
-# One-command full installation
-curl -fsSL https://raw.githubusercontent.com/h8ntome/hermes-skills-collection/main/scripts/install-hermes-full.sh | bash
+curl -fsSL https://raw.githubusercontent.com/h8ntome/AgentSkills/main/scripts/install-hermes-full.sh | bash
 ```
 
-Or manual steps:
-```bash
-# 1. Install Hermes Agent (if not already installed)
-pip install hermes-agent
-
-# 2. Clone this skills collection
-git clone https://github.com/h8ntome/hermes-skills-collection.git
-
-# 3. Configure Hermes to use these skills
-cat >> ~/.hermes/config.yaml << 'EOF'
-skills:
-  external_dirs:
-    - /path/to/hermes-skills-collection/skills
-EOF
-
-# 4. Start Hermes with all skills
-hermes chat
-```
-
-### Option 3: Docker (Full Stack)
+### 🐳 Option 3: Docker (Full Stack)
 ```bash
 docker run -d \
-  -v /path/to/hermes-skills-collection/skills:/opt/hermes/skills \
+  -v /path/to/AgentSkills/skills:/opt/hermes/skills \
   -p 8080:8080 \
   h8ntome/hermes-agent:full-skills
 ```
 
-## 🚀 Quick Start
-
-### For Hermes Agent
+### 🛠️ Manual Setup (Hermes Agent)
 ```bash
-# Skills are auto-discovered from ~/.hermes/skills/
-# Or add external directory in config.yaml:
+# 1. Install Hermes
+pip install hermes-agent
+
+# 2. Clone skills
+git clone https://github.com/h8ntome/AgentSkills.git
+
+# 3. Add to ~/.hermes/config.yaml
 skills:
   external_dirs:
-    - /path/to/hermes-skills-collection/skills
+    - /path/to/AgentSkills/skills
+
+# 4. Start!
+hermes chat
 ```
 
-### For Claude Code
+### 🤖 For Claude Code
 ```bash
-# Copy to ~/.claude/skills/
 cp -r skills/* ~/.claude/skills/
 ```
 
-### Manual Usage
-```bash
-# Load a specific skill
-skill_view('google/gke-security')
-skill_view('openai/figma-implement-design')
-skill_view('garrytan/review')
+---
+
+## 📁 Repository Structure
+
+```
+AgentSkills/
+├── 📁 skills/                    # 20 skill categories, 500+ skills
+│   ├── 📁 anthropic/            # 18  - Official Anthropic skills
+│   ├── 📁 vercel/               # 9   - Vercel/Next.js production
+│   ├── 📁 google/               # 59  - GKE, Vertex AI, BigQuery
+│   ├── 📁 openai/               # 39  - Codex, Figma, Notion, security
+│   ├── 📁 addyosmani/           # 16  - Senior eng workflows (Chrome)
+│   ├── 📁 garrytan/             # 59  - gstack AI engineering
+│   ├── 📁 microsoft/            # 191 - Azure services (full suite)
+│   ├── 📁 rlespinasse/          # 8   - Verified agent skills
+│   ├── 📁 nicobailon/           # 1   - Visual explainer/slides
+│   ├── 📁 makenotion/           # 1   - Notion CLI
+│   ├── 📁 mixedbread/           # 3   - Search, RAG, parsing
+│   ├── 📁 skillseekers/         # 26  - Universal doc→skill converter
+│   ├── 📁 voltagent/            # 1   - Awesome agent skills list
+│   ├── 📁 peterfei/             # 12  - AI agent team roles
+│   ├── 📁 muratcankoylan/       # 16  - Context engineering, memory
+│   ├── 📁 memodb-io/            # 3   - Acontext memory templates
+│   ├── 📁 thedotmack/           # 21  - Claude-mem persistent memory
+│   ├── 📁 resend/               # 5   - Email API, React Email
+│   ├── 📁 airtable/             # 8   - Product/Sales ops, CLI
+│   ├── 📁 agentskills/          # 1   - Agentskills.io spec
+│   └── 📁 voltagent/            # 1   - Awesome agent skills
+├── 📁 scripts/
+│   ├── install-hermes-full.sh   # One-command full install
+│   └── update-skills.sh         # Daily sync from upstream
+├── 📄 README.md
+├── 📄 skills-index.json         # Machine-readable skill index
+├── 📄 config.example.yaml       # Example Hermes config
+└── 📄 LICENSE
 ```
 
-## 📋 Skill Categories
+---
 
-### Cloud & Infrastructure
-- **Google Cloud** (59): GKE, Vertex AI, BigQuery, Agent Platform, Cloud Run
-- **Microsoft Azure** (191): Functions, Networking, Security, AI, Containers
-- **Vercel** (9): Deploy, optimize, React patterns, Next.js
-- **Garry Tan/gstack** (59): CEO review, QA, release, iOS testing, browser automation
+## 🏷️ Skill Categories
 
-### AI/ML & LLM
-- **Anthropic** (18): Claude API, MCP, document processing, creative tools
-- **OpenAI** (39): Codex, Figma, Notion, Playwright, deployment, security
-- **Mixedbread** (3): Search, RAG, parsing with Mixedbread
-- **Skill Seekers** (26): Universal doc-to-skill converter for 21+ platforms
-- **MuraCankoylan** (16): Context engineering, memory systems, evaluation
-- **Memodb/Acontext** (3): Memory layer templates for production agents
-- **TheDotMack** (21): Claude-mem persistent memory, session management
+### ☁️ Cloud & Infrastructure
+| Source | Skills | Description |
+|--------|--------|-------------|
+| **Microsoft Azure** | 191 | Complete Azure suite: Functions, Networking, Security, AI, Containers |
+| **Google Cloud** | 59 | GKE, Vertex AI, BigQuery, Agent Platform, Cloud Run, Cloud SQL |
+| **Garry Tan / gstack** | 59 | CEO review, QA, release, iOS testing, browser automation |
+| **Vercel** | 9 | Deploy, optimize, React/Next.js patterns |
 
-### Engineering Workflows
-- **Addy Osmani** (16): Code review, debugging, spec-driven, TDD, shipping
-- **Rlespinasse** (8): Diataxis, draw.io, conventional commits, PR logs
-- **Peter Fei** (12): Fullstack, frontend, backend, QA, DevOps, product roles
-- **Resend** (5): Email API, React Email, best practices, inbox management
-- **Airtable** (8): Operations, filters, marketing ops, activity logging
+### 🤖 AI/ML & LLM
+| Source | Skills | Description |
+|--------|--------|-------------|
+| **Anthropic** | 18 | Claude API, MCP, document processing, creative tools |
+| **OpenAI** | 39 | Codex, Figma, Notion, Playwright, deployment, security |
+| **Mura Cankoylan** | 16 | Context engineering, memory systems, evaluation |
+| **TheDotMack** | 21 | Claude-mem: persistent memory, session management |
+| **Memodb/Acontext** | 3 | Memory layer templates for production agents |
+| **Skill Seekers** | 26 | Universal doc→skill converter (21+ platforms) |
+| **Mixedbread** | 3 | Search, RAG, parsing with Mixedbread |
 
-### Design & Documentation
-- **Nicobailon** (1): Visual explainer/slide generation
-- **Makenotion** (1): Notion CLI integration
-- **AgentSkills** (1): Agent Skills specification reference
+### ⚙️ Engineering Workflows
+| Source | Skills | Description |
+|--------|--------|-------------|
+| **Addy Osmani** | 16 | Senior eng: code review, debugging, TDD, shipping |
+| **Peter Fei** | 12 | AI agent team: fullstack, frontend, backend, QA, DevOps |
+| **Rlespinasse** | 8 | Verified: Diataxis, draw.io, conventional commits |
+| **Resend** | 5 | Email API, React Email, best practices, inbox mgmt |
+| **Airtable** | 8 | Product/Sales ops, CLI, filters, marketing ops |
+
+### 🎨 Design & Documentation
+| Source | Skills | Description |
+|--------|--------|-------------|
+| **Nicobailon** | 1 | Visual explainer / slide generation |
+| **Makenotion** | 1 | Notion CLI integration |
+| **Agentskills.io** | 1 | Agent Skills specification reference |
+
+---
 
 ## 🔧 Skill Format
 
@@ -142,9 +144,9 @@ Each skill follows the [Agent Skills specification](https://agentskills.io/speci
 
 ```
 skill-name/
-├── SKILL.md          # Main skill definition (YAML frontmatter + markdown)
+├── SKILL.md          # Main definition (YAML frontmatter + markdown)
 ├── scripts/          # Optional executable scripts
-├── references/       # Optional supporting documentation
+├── references/       # Optional supporting docs
 ├── templates/        # Optional templates
 └── assets/           # Optional images, fonts, etc.
 ```
@@ -164,74 +166,88 @@ prerequisites:
 ---
 ```
 
-## 📦 Installation
-
-### Option 1: Clone Full Collection
-```bash
-git clone https://github.com/h8ntome/hermes-skills-collection.git
-```
-
-### Option 2: Install Individual Skills
-```bash
-# Via npx skills (if available)
-npx skills add h8ntome/hermes-skills-collection --skill google/gke-security
-
-# Or manual copy
-cp -r skills/google/gke-security ~/.hermes/skills/
-```
+---
 
 ## 🔄 Maintenance
 
-This collection is updated periodically from upstream sources. To update:
-
+### Daily/Weekly Sync
 ```bash
-# Pull latest from this repo
-git pull origin main
+# Auto-sync from all 20 upstream sources
+./scripts/update-skills.sh
 
-# Or re-clone specific upstream repos and copy
-cd /path/to/hermes-skills-collection
-./scripts/update-skills.sh  # (if available)
+# Review changes
+git diff
+
+# Commit & push
+git add -A && git commit -m "Weekly sync: $(date +%F)"
+git push origin main
 ```
 
-## 📝 Contributing
+### Manual Update (if script unavailable)
+```bash
+# Re-clone specific upstream repos
+cd /path/to/AgentSkills
+git pull origin main  # Gets latest curated collection
+```
 
-1. Fork the repository
-2. Add new skills in the appropriate category folder
-3. Ensure each skill has a valid `SKILL.md` with frontmatter
-4. Update this README with the new skill count
-5. Submit a PR
+---
+
+## 📦 Installation Options
+
+| Method | Use Case | Command |
+|--------|----------|---------|
+| **Full Install** | Fresh machine, want everything | `curl -fsSL .../install-hermes-full.sh \| bash` |
+| **Skills Only** | Already have Hermes/Claude | `git clone https://github.com/h8ntome/AgentSkills.git` |
+| **Docker** | Isolated/containerized | `docker run -v /path/to/skills:/opt/hermes/skills ...` |
+| **Individual** | Need just one skill | `cp -r skills/google/gke-security ~/.hermes/skills/` |
+
+---
+
+## 🙏 Sources & Credits
+
+| Source | Repository | ★ Stars |
+|--------|------------|---------|
+| **Anthropic** | [anthropics/skills](https://github.com/anthropics/skills) | 160K |
+| **Vercel** | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | 28K |
+| **Google** | [google/skills](https://github.com/google/skills) | 14K |
+| **OpenAI** | [openai/skills](https://github.com/openai/skills) | 23K |
+| **Addy Osmani** | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | 77K |
+| **Garry Tan** | [garrytan/gstack](https://github.com/garrytan/gstack) | — |
+| **Microsoft** | [MicrosoftDocs/Agent-Skills](https://github.com/MicrosoftDocs/Agent-Skills) | — |
+| **Rlespinasse** | [rlespinasse/agent-skills](https://github.com/rlespinasse/agent-skills) | — |
+| **Mixedbread** | [mixedbread-ai/skills](https://github.com/mixedbread-ai/skills) | — |
+| **Skill Seekers** | [yusufkaraaslan/Skill_Seekers](https://github.com/yusufkaraaslan/Skill_Seekers) | — |
+| **Peter Fei** | [peterfei/ai-agent-team](https://github.com/peterfei/ai-agent-team) | — |
+| **VoltAgent** | [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) | 27K |
+| **Nicobailon** | [nicobailon/visual-explainer](https://github.com/nicobailon/visual-explainer) | — |
+| **Makenotion** | [makenotion/skills](https://github.com/makenotion/skills) | — |
+| **Mura Cankoylan** | [muratcankoylan/agent-skills-for-context-engineering](https://github.com/muratcankoylan/agent-skills-for-context-engineering) | — |
+| **Memodb** | [memodb-io/Acontext](https://github.com/memodb-io/Acontext) | — |
+| **TheDotMack** | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | — |
+| **Resend** | [resend/resend-skills](https://github.com/resend/resend-skills) | — |
+| **Airtable** | [airtable/skills](https://github.com/airtable/skills) | — |
+| **Agentskills.io** | [agentskills/agentskills](https://github.com/agentskills/agentskills) | — |
+
+---
+
+## 📊 Summary
+
+| Metric | Value |
+|--------|-------|
+| **Total Skills** | 500+ |
+| **Sources** | 20 repositories |
+| **Categories** | 25+ |
+| **Last Updated** | 2026-07-11 |
+| **Maintained By** | h8ntome & H-bot |
+
+---
 
 ## 📄 License
 
 Individual skills retain their original licenses. See each skill's `SKILL.md` or `LICENSE` file.
 
-## 🙏 Sources & Credits
-
-| Source | Repo | Stars |
-|--------|------|-------|
-| Anthropic | [anthropics/skills](https://github.com/anthropics/skills) | 160K |
-| Vercel | [vercel-labs/agent-skills](https://github.com/vercel-labs/agent-skills) | 28K |
-| Google | [google/skills](https://github.com/google/skills) | 14K |
-| OpenAI | [openai/skills](https://github.com/openai/skills) | 23K |
-| Addy Osmani | [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) | 77K |
-| Garry Tan | [garrytan/gstack](https://github.com/garrytan/gstack) | - |
-| Microsoft | [MicrosoftDocs/Agent-Skills](https://github.com/MicrosoftDocs/Agent-Skills) | - |
-| Rlespinasse | [rlespinasse/agent-skills](https://github.com/rlespinasse/agent-skills) | - |
-| Mixedbread | [mixedbread-ai/skills](https://github.com/mixedbread-ai/skills) | - |
-| Skill Seekers | [yusufkaraaslan/Skill_Seekers](https://github.com/yusufkaraaslan/Skill_Seekers) | - |
-| Peter Fei | [peterfei/ai-agent-team](https://github.com/peterfei/ai-agent-team) | - |
-| VoltAgent | [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) | 27K |
-| Nicobailon | [nicobailon/visual-explainer](https://github.com/nicobailon/visual-explainer) | - |
-| Makenotion | [makenotion/skills](https://github.com/makenotion/skills) | - |
-| MuraCankoylan | [muratcankoylan/agent-skills-for-context-engineering](https://github.com/muratcankoylan/agent-skills-for-context-engineering) | - |
-| Memodb | [memodb-io/Acontext](https://github.com/memodb-io/Acontext) | - |
-| TheDotMack | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | - |
-| Resend | [resend/resend-skills](https://github.com/resend/resend-skills) | - |
-| Airtable | [airtable/skills](https://github.com/airtable/skills) | - |
-| Agentskills.io | [agentskills/agentskills](https://github.com/agentskills/agentskills) | - |
-
 ---
 
-**Total: ~500 skills from 19 sources**
-
-*Generated and maintained by h8ntome and H-bot*
+<p align="center">
+  <strong>Generated and maintained by <a href="https://github.com/h8ntome">h8ntome</a> and <a href="https://github.com/h8ntome">H-bot</a></strong>
+</p>
