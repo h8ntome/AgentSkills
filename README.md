@@ -27,7 +27,14 @@ skills/
 ├── skillseekers/       # 26 skills - Universal doc-to-skill converter
 ├── voltagent/          # 1 skill - Awesome agent skills curation
 ├── peterfei/           # 12 skills - AI agent team roles
-├── muratcankoylan/     # 16 skills - Context engineering, memory systems
+├── muratcankoylan/     # 16 skills - Context engineering, memory systems, evaluation
+├── memodb-io/          # 3 skills - Acontext landing page, daily-logs, user-facts
+├── thedotmack/         # 21 skills - Claude-mem: standup, learn-codebase, timeline-report
+├── resend/             # 5 skills - Resend CLI, React Email, email best practices
+├── airtable/           # 8 skills - Product ops, sales ops, CLI, filters, marketing ops
+├── agentskills/        # 1 skill - Agentskills.io specification
+└── voltagent/          # 1 skill - Awesome agent skills list
+```
 ├── memodb/             # 3 skills - Acontext memory layer templates
 ├── thedotmack/         # 21 skills - Claude-mem persistent memory
 ├── resend/             # 5 skills - Email API, templates, best practices
@@ -77,8 +84,6 @@ docker run -d \
 
 ## 🚀 Quick Start
 
-## 🚀 Quick Start
-
 ### For Hermes Agent
 ```bash
 # Skills are auto-discovered from ~/.hermes/skills/
@@ -118,7 +123,6 @@ skill_view('garrytan/review')
 - **MuraCankoylan** (16): Context engineering, memory systems, evaluation
 - **Memodb/Acontext** (3): Memory layer templates for production agents
 - **TheDotMack** (21): Claude-mem persistent memory, session management
-- **Thedotmack** (21): Persistent memory across sessions
 
 ### Engineering Workflows
 - **Addy Osmani** (16): Code review, debugging, spec-driven, TDD, shipping
@@ -219,9 +223,15 @@ Individual skills retain their original licenses. See each skill's `SKILL.md` or
 | VoltAgent | [VoltAgent/awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) | 27K |
 | Nicobailon | [nicobailon/visual-explainer](https://github.com/nicobailon/visual-explainer) | - |
 | Makenotion | [makenotion/skills](https://github.com/makenotion/skills) | - |
+| MuraCankoylan | [muratcankoylan/agent-skills-for-context-engineering](https://github.com/muratcankoylan/agent-skills-for-context-engineering) | - |
+| Memodb | [memodb-io/Acontext](https://github.com/memodb-io/Acontext) | - |
+| TheDotMack | [thedotmack/claude-mem](https://github.com/thedotmack/claude-mem) | - |
+| Resend | [resend/resend-skills](https://github.com/resend/resend-skills) | - |
+| Airtable | [airtable/skills](https://github.com/airtable/skills) | - |
+| Agentskills.io | [agentskills/agentskills](https://github.com/agentskills/agentskills) | - |
 
 ---
 
-**Total: ~450 skills from 14 sources**
+**Total: ~500 skills from 19 sources**
 
 *Generated and maintained by Hermes Agent*
