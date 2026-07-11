@@ -1,0 +1,1262 @@
+{
+  "version": 1,
+  "generated_at": "2026-07-11",
+  "total_skills": 450,
+  "total_sources": 14,
+  "skills": [
+    {
+      "name": "claude-api",
+      "source": "anthropic",
+      "path": "anthropic/claude-api",
+      "description": "Complete Claude API/SDK reference - models, pricing, streaming, tools, MCP, agents, caching"
+    },
+    {
+      "name": "mcp-builder",
+      "source": "anthropic",
+      "path": "anthropic/mcp-builder",
+      "description": "Guide for creating high-quality MCP servers in Python (FastMCP) or TypeScript"
+    },
+    {
+      "name": "skill-creator",
+      "source": "anthropic",
+      "path": "anthropic/skill-creator",
+      "description": "Create new skills, modify and improve existing skills, measure skill performance"
+    },
+    {
+      "name": "doc-coauthoring",
+      "source": "anthropic",
+      "path": "anthropic/doc-coauthoring",
+      "description": "Structured workflow for co-authoring documentation"
+    },
+    {
+      "name": "docx",
+      "source": "anthropic",
+      "path": "anthropic/docx",
+      "description": "Create, read, edit Word documents (.docx)"
+    },
+    {
+      "name": "pdf",
+      "source": "anthropic",
+      "path": "anthropic/pdf",
+      "description": "PDF operations - read, extract text/tables, merge, split"
+    },
+    {
+      "name": "pptx",
+      "source": "anthropic",
+      "path": "anthropic/pptx",
+      "description": "PowerPoint operations - create, edit, manipulate .pptx files"
+    },
+    {
+      "name": "xlsx",
+      "source": "anthropic",
+      "path": "anthropic/xlsx",
+      "description": "Spreadsheet operations - read, write, manipulate .xlsx files"
+    },
+    {
+      "name": "slack-gif-creator",
+      "source": "anthropic",
+      "path": "anthropic/slack-gif-creator",
+      "description": "Create animated GIFs optimized for Slack"
+    },
+    {
+      "name": "theme-factory",
+      "source": "anthropic",
+      "path": "anthropic/theme-factory",
+      "description": "Toolkit for styling artifacts with themes"
+    },
+    {
+      "name": "web-artifacts-builder",
+      "source": "anthropic",
+      "path": "anthropic/web-artifacts-builder",
+      "description": "Multi-component HTML artifacts using modern frontend patterns"
+    },
+    {
+      "name": "webapp-testing",
+      "source": "anthropic",
+      "path": "anthropic/webapp-testing",
+      "description": "Playwright toolkit for testing local web applications"
+    },
+    {
+      "name": "algorithmic-art",
+      "source": "anthropic",
+      "path": "anthropic/algorithmic-art",
+      "description": "p5.js algorithmic art with seeded randomness"
+    },
+    {
+      "name": "brand-guidelines",
+      "source": "anthropic",
+      "path": "anthropic/brand-guidelines",
+      "description": "Apply Anthropic brand colors and typography"
+    },
+    {
+      "name": "canvas-design",
+      "source": "anthropic",
+      "path": "anthropic/canvas-design",
+      "description": "Visual art in PNG/PDF using design philosophy"
+    },
+    {
+      "name": "frontend-design",
+      "source": "anthropic",
+      "path": "anthropic/frontend-design",
+      "description": "Guidance for distinctive, intentional visual design"
+    },
+    {
+      "name": "internal-comms",
+      "source": "anthropic",
+      "path": "anthropic/internal-comms",
+      "description": "Resources for writing internal communications"
+    },
+    {
+      "name": "deploy-to-vercel",
+      "source": "vercel",
+      "path": "vercel/deploy-to-vercel",
+      "description": "Deploy applications and websites to Vercel via CLI"
+    },
+    {
+      "name": "vercel-optimize",
+      "source": "vercel",
+      "path": "vercel/vercel-optimize",
+      "description": "Cost/performance optimization for Vercel deployments (Next.js, SvelteKit, Nuxt)"
+    },
+    {
+      "name": "vercel-cli-with-tokens",
+      "source": "vercel",
+      "path": "vercel/vercel-cli-with-tokens",
+      "description": "Vercel CLI with token-based authentication"
+    },
+    {
+      "name": "react-best-practices",
+      "source": "vercel",
+      "path": "vercel/react-best-practices",
+      "description": "React/Next.js performance optimization guidelines from Vercel Engineering"
+    },
+    {
+      "name": "react-native-skills",
+      "source": "vercel",
+      "path": "vercel/react-native-skills",
+      "description": "React Native/Expo best practices for performant mobile apps"
+    },
+    {
+      "name": "react-view-transitions",
+      "source": "vercel",
+      "path": "vercel/react-view-transitions",
+      "description": "Native-feeling animations using React View Transition API"
+    },
+    {
+      "name": "web-design-guidelines",
+      "source": "vercel",
+      "path": "vercel/web-design-guidelines",
+      "description": "UI/UX/accessibility compliance review for web interfaces"
+    },
+    {
+      "name": "writing-guidelines",
+      "source": "vercel",
+      "path": "vercel/writing-guidelines",
+      "description": "Docs/prose style compliance review"
+    },
+    {
+      "name": "composition-patterns",
+      "source": "vercel",
+      "path": "vercel/composition-patterns",
+      "description": "React composition patterns that scale"
+    },
+    {
+      "name": "gemini-api",
+      "source": "google",
+      "path": "google/gemini-api",
+      "description": "Enterprise Gemini usage on Vertex AI / Agent Platform"
+    },
+    {
+      "name": "gemini-agents-api",
+      "source": "google",
+      "path": "google/gemini-agents-api",
+      "description": "Manage custom Agent resources on Gemini Enterprise Agent Platform"
+    },
+    {
+      "name": "gemini-interactions-api",
+      "source": "google",
+      "path": "google/gemini-interactions-api",
+      "description": "Gemini Interactions API on Agent Platform"
+    },
+    {
+      "name": "bigquery-basics",
+      "source": "google",
+      "path": "google/bigquery-basics",
+      "description": "Manage datasets, tables, jobs, run SQL in BigQuery"
+    },
+    {
+      "name": "bigquery-ai-ml",
+      "source": "google",
+      "path": "google/bigquery-ai-ml",
+      "description": "BigQuery AI/ML integration"
+    },
+    {
+      "name": "bigquery-bigframes",
+      "source": "google",
+      "path": "google/bigquery-bigframes",
+      "description": "BigQuery BigFrames for pandas-like ML"
+    },
+    {
+      "name": "bigtable-basics",
+      "source": "google",
+      "path": "google/bigtable-basics",
+      "description": "Bigtable cluster/instance management"
+    },
+    {
+      "name": "cloud-run-basics",
+      "source": "google",
+      "path": "google/cloud-run-basics",
+      "description": "Cloud Run services, jobs, worker pools"
+    },
+    {
+      "name": "cloud-sql-basics",
+      "source": "google",
+      "path": "google/cloud-sql-basics",
+      "description": "Cloud SQL instance management"
+    },
+    {
+      "name": "alloydb-basics",
+      "source": "google",
+      "path": "google/alloydb-basics",
+      "description": "AlloyDB for PostgreSQL clusters, instances, backups, MCP"
+    },
+    {
+      "name": "gke-basics",
+      "source": "google",
+      "path": "google/gke-basics",
+      "description": "Core GKE cluster discovery and routing hub"
+    },
+    {
+      "name": "gke-security",
+      "source": "google",
+      "path": "google/gke-security",
+      "description": "GKE hardening - Workload Identity, Secrets, Network Policies"
+    },
+    {
+      "name": "gke-cost",
+      "source": "google",
+      "path": "google/gke-cost",
+      "description": "GKE cost optimization, rightsizing, Spot VMs, CUDs"
+    },
+    {
+      "name": "gke-observability",
+      "source": "google",
+      "path": "google/gke-observability",
+      "description": "GKE observability - Logging, Monitoring, Prometheus"
+    },
+    {
+      "name": "gke-reliability",
+      "source": "google",
+      "path": "google/gke-reliability",
+      "description": "GKE reliability - PDBs, health probes, topology spread"
+    },
+    {
+      "name": "gke-networking",
+      "source": "google",
+      "path": "google/gke-networking",
+      "description": "GKE networking configuration"
+    },
+    {
+      "name": "gke-scaling",
+      "source": "google",
+      "path": "google/gke-scaling",
+      "description": "GKE autoscaling and cluster sizing"
+    },
+    {
+      "name": "gke-upgrades",
+      "source": "google",
+      "path": "google/gke-upgrades",
+      "description": "GKE cluster upgrade management"
+    },
+    {
+      "name": "gcloud",
+      "source": "google",
+      "path": "google/gcloud",
+      "description": "Safe gcloud CLI usage with validation and guardrails"
+    },
+    {
+      "name": "agent-platform-deploy",
+      "source": "google",
+      "path": "google/agent-platform-deploy",
+      "description": "Deploy open models/custom weights to Agent Platform endpoints"
+    },
+    {
+      "name": "agent-platform-rag-engine-management",
+      "source": "google",
+      "path": "google/agent-platform-rag-engine-management",
+      "description": "Manage Agent Platform RAG Engine Corpora"
+    },
+    {
+      "name": "agent-platform-skill-registry",
+      "source": "google",
+      "path": "google/agent-platform-skill-registry",
+      "description": "Interact with Agent Platform Skill Registry"
+    },
+    {
+      "name": "google-cloud-recipe-onboarding",
+      "source": "google",
+      "path": "google/google-cloud-recipe-onboarding",
+      "description": "First steps on Google Cloud - account, billing, projects"
+    },
+    {
+      "name": "google-cloud-recipe-foundation-builder",
+      "source": "google",
+      "path": "google/google-cloud-recipe-foundation-builder",
+      "description": "Deploy landing zone foundation for GCP Organization"
+    },
+    {
+      "name": "google-cloud-waf-security",
+      "source": "google",
+      "path": "google/google-cloud-waf-security",
+      "description": "Security guidance per Well-Architected Framework"
+    },
+    {
+      "name": "google-cloud-waf-cost-optimization",
+      "source": "google",
+      "path": "google/google-cloud-waf-cost-optimization",
+      "description": "Cost optimization per Well-Architected Framework"
+    },
+    {
+      "name": "google-cloud-waf-performance-optimization",
+      "source": "google",
+      "path": "google/google-cloud-waf-performance-optimization",
+      "description": "Performance optimization per Well-Architected Framework"
+    },
+    {
+      "name": "google-cloud-waf-reliability",
+      "source": "google",
+      "path": "google/google-cloud-waf-reliability",
+      "description": "Reliability guidance per Well-Architected Framework"
+    },
+    {
+      "name": "iam-recommendations-fetcher",
+      "source": "google",
+      "path": "google/iam-recommendations-fetcher",
+      "description": "Fetch IAM recommendations"
+    },
+    {
+      "name": "workload-manager-basics",
+      "source": "google",
+      "path": "google/workload-manager-basics",
+      "description": "Workload Manager for SAP/Oracle workloads"
+    },
+    {
+      "name": "vercel-deploy",
+      "source": "openai",
+      "path": "openai/vercel-deploy",
+      "description": "Deploy apps to Vercel via CLI"
+    },
+    {
+      "name": "netlify-deploy",
+      "source": "openai",
+      "path": "openai/netlify-deploy",
+      "description": "Deploy web projects to Netlify via CLI"
+    },
+    {
+      "name": "render-deploy",
+      "source": "openai",
+      "path": "openai/render-deploy",
+      "description": "Deploy to Render with render.yaml Blueprints"
+    },
+    {
+      "name": "cloudflare-deploy",
+      "source": "openai",
+      "path": "openai/cloudflare-deploy",
+      "description": "Deploy to Cloudflare Workers/Pages"
+    },
+    {
+      "name": "migrate-to-codex",
+      "source": "openai",
+      "path": "openai/migrate-to-codex",
+      "description": "Migrate instructions/skills/MCP to Codex"
+    },
+    {
+      "name": "cli-creator",
+      "source": "openai",
+      "path": "openai/cli-creator",
+      "description": "Build composable CLI from API docs/OpenAPI/SDK"
+    },
+    {
+      "name": "figma",
+      "source": "openai",
+      "path": "openai/figma",
+      "description": "MANDATORY prerequisite - invoke before use_figma tool calls"
+    },
+    {
+      "name": "figma-use",
+      "source": "openai",
+      "path": "openai/figma-use",
+      "description": "Fetch design context, screenshots, variables from Figma"
+    },
+    {
+      "name": "figma-implement-design",
+      "source": "openai",
+      "path": "openai/figma-implement-design",
+      "description": "Translate Figma designs to production code (1:1 fidelity)"
+    },
+    {
+      "name": "figma-code-connect-components",
+      "source": "openai",
+      "path": "openai/figma-code-connect-components",
+      "description": "Map Figma components to code via Code Connect"
+    },
+    {
+      "name": "figma-create-design-system-rules",
+      "source": "openai",
+      "path": "openai/figma-create-design-system-rules",
+      "description": "Generate design system rules from codebase"
+    },
+    {
+      "name": "figma-create-new-file",
+      "source": "openai",
+      "path": "openai/figma-create-new-file",
+      "description": "Create blank Figma/FigJam file"
+    },
+    {
+      "name": "figma-generate-design",
+      "source": "openai",
+      "path": "openai/figma-generate-design",
+      "description": "Translate app pages/views to Figma designs"
+    },
+    {
+      "name": "figma-generate-library",
+      "source": "openai",
+      "path": "openai/figma-generate-library",
+      "description": "Build/update design system in Figma from code"
+    },
+    {
+      "name": "notion-knowledge-capture",
+      "source": "openai",
+      "path": "openai/notion-knowledge-capture",
+      "description": "Turn chats/notes into structured Notion wiki entries"
+    },
+    {
+      "name": "notion-meeting-intelligence",
+      "source": "openai",
+      "path": "openai/notion-meeting-intelligence",
+      "description": "Extract decisions/action items from meetings to Notion"
+    },
+    {
+      "name": "notion-research-documentation",
+      "source": "openai",
+      "path": "openai/notion-research-documentation",
+      "description": "Research to structured Notion documentation"
+    },
+    {
+      "name": "notion-spec-to-implementation",
+      "source": "openai",
+      "path": "openai/notion-spec-to-implementation",
+      "description": "Specs to implementation plans in Notion"
+    },
+    {
+      "name": "playwright",
+      "source": "openai",
+      "path": "openai/playwright",
+      "description": "Real browser automation - nav, forms, snapshots, screenshots"
+    },
+    {
+      "name": "playwright-interactive",
+      "source": "openai",
+      "path": "openai/playwright-interactive",
+      "description": "Persistent browser/Electron via js_repl for UI debugging"
+    },
+    {
+      "name": "security-best-practices",
+      "source": "openai",
+      "path": "openai/security-best-practices",
+      "description": "Language/framework-specific security reviews"
+    },
+    {
+      "name": "security-ownership-map",
+      "source": "openai",
+      "path": "openai/security-ownership-map",
+      "description": "Git analysis for security ownership topology, bus factor"
+    },
+    {
+      "name": "security-threat-model",
+      "source": "openai",
+      "path": "openai/security-threat-model",
+      "description": "Repo-grounded threat modeling - boundaries, assets, abuse paths"
+    },
+    {
+      "name": "sentry",
+      "source": "openai",
+      "path": "openai/sentry",
+      "description": "Inspect/summarize Sentry issues and production errors"
+    },
+    {
+      "name": "speech",
+      "source": "openai",
+      "path": "openai/speech",
+      "description": "Text-to-speech narration, voiceovers, accessibility"
+    },
+    {
+      "name": "transcribe",
+      "source": "openai",
+      "path": "openai/transcribe",
+      "description": "Audio to text with diarization and speaker hints"
+    },
+    {
+      "name": "screenshot",
+      "source": "openai",
+      "path": "openai/screenshot",
+      "description": "Desktop/app/window screenshots"
+    },
+    {
+      "name": "jupyter-notebook",
+      "source": "openai",
+      "path": "openai/jupyter-notebook",
+      "description": "Create/scaffold/edit .ipynb notebooks"
+    },
+    {
+      "name": "gh-address-comments",
+      "source": "openai",
+      "path": "openai/gh-address-comments",
+      "description": "Address GitHub PR review comments via gh CLI"
+    },
+    {
+      "name": "gh-fix-ci",
+      "source": "openai",
+      "path": "openai/gh-fix-ci",
+      "description": "Debug/fix failing GitHub Actions via gh"
+    },
+    {
+      "name": "linear",
+      "source": "openai",
+      "path": "openai/linear",
+      "description": "Manage Linear issues, projects, team workflows"
+    },
+    {
+      "name": "define-goal",
+      "source": "openai",
+      "path": "openai/define-goal",
+      "description": "Help define concrete, measurable goals"
+    },
+    {
+      "name": "yeet",
+      "source": "openai",
+      "path": "openai/yeet",
+      "description": "Stage, commit, push, open PR in one flow"
+    },
+    {
+      "name": "openai-docs",
+      "source": "openai",
+      "path": "openai/openai-docs",
+      "description": "How to build with OpenAI products/APIs/Codex"
+    },
+    {
+      "name": "pdf",
+      "source": "openai",
+      "path": "openai/pdf",
+      "description": "Read/create/review PDFs with visual fidelity"
+    },
+    {
+      "name": "aspnet-core",
+      "source": "openai",
+      "path": "openai/aspnet-core",
+      "description": "ASP.NET Core web apps with official guidance"
+    },
+    {
+      "name": "winui-app",
+      "source": "openai",
+      "path": "openai/winui-app",
+      "description": "WinUI 3 / Windows App SDK desktop apps (C#)"
+    },
+    {
+      "name": "hatch-pet",
+      "source": "openai",
+      "path": "openai/hatch-pet",
+      "description": "Create/validate/package Codex-compatible animated pets"
+    },
+    {
+      "name": "code-review-and-quality",
+      "source": "addyosmani",
+      "path": "addyosmani/code-review-and-quality",
+      "description": "Comprehensive code review: architecture, performance, security, maintainability"
+    },
+    {
+      "name": "debugging-and-error-recovery",
+      "source": "addyosmani",
+      "path": "addyosmani/debugging-and-error-recovery",
+      "description": "Systematic debugging: reproduction, root cause, verification, prevention"
+    },
+    {
+      "name": "spec-driven-development",
+      "source": "addyosmani",
+      "path": "addyosmani/spec-driven-development",
+      "description": "Spec-first development: requirements -> design -> implementation -> validation"
+    },
+    {
+      "name": "planning-and-task-breakdown",
+      "source": "addyosmani",
+      "path": "addyosmani/planning-and-task-breakdown",
+      "description": "Break complex work into manageable, trackable tasks with clear dependencies"
+    },
+    {
+      "name": "test-driven-development",
+      "source": "addyosmani",
+      "path": "addyosmani/test-driven-development",
+      "description": "Red-Green-Refactor cycle with unit/integration/e2e testing"
+    },
+    {
+      "name": "incremental-implementation",
+      "source": "addyosmani",
+      "path": "addyosmani/incremental-implementation",
+      "description": "Ship small, verifiable increments; avoid big-bang integration"
+    },
+    {
+      "name": "code-simplification",
+      "source": "addyosmani",
+      "path": "addyosmani/code-simplification",
+      "description": "Reduce complexity: remove dead code, flatten conditionals, extract functions"
+    },
+    {
+      "name": "api-and-interface-design",
+      "source": "addyosmani",
+      "path": "addyosmani/api-and-interface-design",
+      "description": "Design clean, consistent, evolvable APIs and interfaces"
+    },
+    {
+      "name": "frontend-ui-engineering",
+      "source": "addyosmani",
+      "path": "addyosmani/frontend-ui-engineering",
+      "description": "Build accessible, performant, maintainable frontend systems"
+    },
+    {
+      "name": "security-and-hardening",
+      "source": "addyosmani",
+      "path": "addyosmani/security-and-hardening",
+      "description": "Security reviews: auth, input validation, secrets, supply chain, OWASP"
+    },
+    {
+      "name": "performance-optimization",
+      "source": "addyosmani",
+      "path": "addyosmani/performance-optimization",
+      "description": "Profile, measure, optimize: bundle size, runtime, memory, network"
+    },
+    {
+      "name": "shipping-and-launch",
+      "source": "addyosmani",
+      "path": "addyosmani/shipping-and-launch",
+      "description": "Launch checklists: feature flags, rollout, monitoring, rollback plans"
+    },
+    {
+      "name": "observability-and-instrumentation",
+      "source": "addyosmani",
+      "path": "addyosmani/observability-and-instrumentation",
+      "description": "Logging, metrics, tracing, alerting - actionable observability"
+    },
+    {
+      "name": "source-driven-development",
+      "source": "addyosmani",
+      "path": "addyosmani/source-driven-development",
+      "description": "Let source code drive docs, tests, config - single source of truth"
+    },
+    {
+      "name": "using-agent-skills",
+      "source": "addyosmani",
+      "path": "addyosmani/using-agent-skills",
+      "description": "How to effectively use and compose agent skills in workflows"
+    },
+    {
+      "name": "interview-me",
+      "source": "addyosmani",
+      "path": "addyosmani/interview-me",
+      "description": "Structured interview mode to clarify requirements before implementing"
+    },
+    {
+      "name": "review",
+      "source": "garrytan",
+      "path": "garrytan/review",
+      "description": "Pre-landing PR review. Finds bugs that pass CI but break in prod."
+    },
+    {
+      "name": "codex",
+      "source": "garrytan",
+      "path": "garrytan/codex",
+      "description": "Second opinion via OpenAI Codex. Review, challenge, or consult modes."
+    },
+    {
+      "name": "investigate",
+      "source": "garrytan",
+      "path": "garrytan/investigate",
+      "description": "Systematic root-cause debugging. No fixes without investigation."
+    },
+    {
+      "name": "design-review",
+      "source": "garrytan",
+      "path": "garrytan/design-review",
+      "description": "Live-site visual audit + fix loop with atomic commits."
+    },
+    {
+      "name": "design-shotgun",
+      "source": "garrytan",
+      "path": "garrytan/design-shotgun",
+      "description": "Generate multiple AI design variants, comparison board, iterate."
+    },
+    {
+      "name": "design-html",
+      "source": "garrytan",
+      "path": "garrytan/design-html",
+      "description": "Generate production-quality Pretext-native HTML/CSS."
+    },
+    {
+      "name": "devex-review",
+      "source": "garrytan",
+      "path": "garrytan/devex-review",
+      "description": "Live developer experience audit (TTHW measured against real flow)."
+    },
+    {
+      "name": "qa",
+      "source": "garrytan",
+      "path": "garrytan/qa",
+      "description": "Open real browser, find bugs, fix them, re-verify."
+    },
+    {
+      "name": "qa-only",
+      "source": "garrytan",
+      "path": "garrytan/qa-only",
+      "description": "Same methodology as /qa but report only — no code changes."
+    },
+    {
+      "name": "scrape",
+      "source": "garrytan",
+      "path": "garrytan/scrape",
+      "description": "Pull data from web page. First call prototypes; codified call runs in ~200ms."
+    },
+    {
+      "name": "skillify",
+      "source": "garrytan",
+      "path": "garrytan/skillify",
+      "description": "Codify most recent successful /scrape flow into permanent browser-skill."
+    },
+    {
+      "name": "ship",
+      "source": "garrytan",
+      "path": "garrytan/ship",
+      "description": "Run tests, review, push, open PR. Workspace-aware version queue."
+    },
+    {
+      "name": "land-and-deploy",
+      "source": "garrytan",
+      "path": "garrytan/land-and-deploy",
+      "description": "Merge PR, wait for CI and deploy, verify production health."
+    },
+    {
+      "name": "canary",
+      "source": "garrytan",
+      "path": "garrytan/canary",
+      "description": "Post-deploy monitoring loop using the browse daemon."
+    },
+    {
+      "name": "landing-report",
+      "source": "garrytan",
+      "path": "garrytan/landing-report",
+      "description": "Read-only dashboard for the workspace-aware ship queue."
+    },
+    {
+      "name": "document-release",
+      "source": "garrytan",
+      "path": "garrytan/document-release",
+      "description": "Update all docs to match what you just shipped."
+    },
+    {
+      "name": "document-generate",
+      "source": "garrytan",
+      "path": "garrytan/document-generate",
+      "description": "Generate Diataxis docs (tutorial/how-to/reference/explanation) from code."
+    },
+    {
+      "name": "setup-deploy",
+      "source": "garrytan",
+      "path": "garrytan/setup-deploy",
+      "description": "One-time deploy config detection (Fly.io, Render, Vercel, etc.)."
+    },
+    {
+      "name": "gstack-upgrade",
+      "source": "garrytan",
+      "path": "garrytan/gstack-upgrade",
+      "description": "Update gstack to latest version."
+    },
+    {
+      "name": "context-save",
+      "source": "garrytan",
+      "path": "garrytan/context-save",
+      "description": "Save working context (git state, decisions, remaining work)."
+    },
+    {
+      "name": "context-restore",
+      "source": "garrytan",
+      "path": "garrytan/context-restore",
+      "description": "Resume from saved context, even across Conductor workspaces."
+    },
+    {
+      "name": "learn",
+      "source": "garrytan",
+      "path": "garrytan/learn",
+      "description": "Manage what gstack learned across sessions."
+    },
+    {
+      "name": "retro",
+      "source": "garrytan",
+      "path": "garrytan/retro",
+      "description": "Weekly retro with per-person breakdowns and shipping streaks."
+    },
+    {
+      "name": "health",
+      "source": "garrytan",
+      "path": "garrytan/health",
+      "description": "Code quality dashboard (type checker, linter, tests, dead code)."
+    },
+    {
+      "name": "benchmark",
+      "source": "garrytan",
+      "path": "garrytan/benchmark",
+      "description": "Performance regression detection (page load, Core Web Vitals)."
+    },
+    {
+      "name": "benchmark-models",
+      "source": "garrytan",
+      "path": "garrytan/benchmark-models",
+      "description": "Cross-model benchmark for skills (Claude, GPT, Gemini side-by-side)."
+    },
+    {
+      "name": "cso",
+      "source": "garrytan",
+      "path": "garrytan/cso",
+      "description": "OWASP Top 10 + STRIDE security audit."
+    },
+    {
+      "name": "setup-gbrain",
+      "source": "garrytan",
+      "path": "garrytan/setup-gbrain",
+      "description": "Set up gbrain for cross-machine session memory sync."
+    },
+    {
+      "name": "sync-gbrain",
+      "source": "garrytan",
+      "path": "garrytan/sync-gbrain",
+      "description": "Keep gbrain current with this repo's code; refresh agent search guidance."
+    },
+    {
+      "name": "browse",
+      "source": "garrytan",
+      "path": "garrytan/browse",
+      "description": "Headless browser — real Chromium, real clicks, ~100ms/command."
+    },
+    {
+      "name": "open-gstack-browser",
+      "source": "garrytan",
+      "path": "garrytan/open-gstack-browser",
+      "description": "Launch visible GStack Browser with sidebar + stealth."
+    },
+    {
+      "name": "setup-browser-cookies",
+      "source": "garrytan",
+      "path": "garrytan/setup-browser-cookies",
+      "description": "Import cookies from real browser for authenticated testing."
+    },
+    {
+      "name": "pair-agent",
+      "source": "garrytan",
+      "path": "garrytan/pair-agent",
+      "description": "Pair remote AI agent (OpenClaw, Codex, etc.) with your browser."
+    },
+    {
+      "name": "office-hours",
+      "source": "garrytan",
+      "path": "garrytan/office-hours",
+      "description": "Start here. Reframes your product idea before you write code."
+    },
+    {
+      "name": "plan-ceo-review",
+      "source": "garrytan",
+      "path": "garrytan/plan-ceo-review",
+      "description": "CEO-level review: find the 10-star product in the request."
+    },
+    {
+      "name": "plan-eng-review",
+      "source": "garrytan",
+      "path": "garrytan/plan-eng-review",
+      "description": "Lock architecture, data flow, edge cases, and tests."
+    },
+    {
+      "name": "plan-design-review",
+      "source": "garrytan",
+      "path": "garrytan/plan-design-review",
+      "description": "Rate each design dimension 0-10, explain what a 10 looks like."
+    },
+    {
+      "name": "plan-devex-review",
+      "source": "garrytan",
+      "path": "garrytan/plan-devex-review",
+      "description": "DX-mode review: TTHW, magical moments, friction points, persona traces."
+    },
+    {
+      "name": "plan-tune",
+      "source": "garrytan",
+      "path": "garrytan/plan-tune",
+      "description": "Self-tune AskUserQuestion sensitivity per question."
+    },
+    {
+      "name": "autoplan",
+      "source": "garrytan",
+      "path": "garrytan/autoplan",
+      "description": "One command runs CEO -> design -> eng -> DX review."
+    },
+    {
+      "name": "design-consultation",
+      "source": "garrytan",
+      "path": "garrytan/design-consultation",
+      "description": "Build a complete design system from scratch."
+    },
+    {
+      "name": "spec",
+      "source": "garrytan",
+      "path": "garrytan/spec",
+      "description": "Turn vague intent into precise, executable spec in five phases."
+    },
+    {
+      "name": "careful",
+      "source": "garrytan",
+      "path": "garrytan/careful",
+      "description": "Warn before destructive commands (rm -rf, DROP TABLE, force-push)."
+    },
+    {
+      "name": "freeze",
+      "source": "garrytan",
+      "path": "garrytan/freeze",
+      "description": "Lock edits to one directory. Hard block, not just a warning."
+    },
+    {
+      "name": "guard",
+      "source": "garrytan",
+      "path": "garrytan/guard",
+      "description": "Activate both careful + freeze at once."
+    },
+    {
+      "name": "unfreeze",
+      "source": "garrytan",
+      "path": "garrytan/unfreeze",
+      "description": "Remove directory edit restrictions."
+    },
+    {
+      "name": "make-pdf",
+      "source": "garrytan",
+      "path": "garrytan/make-pdf",
+      "description": "Turn any markdown file into a publication-quality PDF."
+    },
+    {
+      "name": "diagram",
+      "source": "garrytan",
+      "path": "garrytan/diagram",
+      "description": "English in, diagram out: mermaid + editable .excalidraw + SVG/PNG, offline."
+    },
+    {
+      "name": "azure-hpc-cache",
+      "source": "microsoft",
+      "path": "microsoft/azure-hpc-cache",
+      "description": "Azure HPC Cache skill"
+    },
+    {
+      "name": "azure-data-box-family",
+      "source": "microsoft",
+      "path": "microsoft/azure-data-box-family",
+      "description": "Azure Data Box family skill"
+    },
+    {
+      "name": "azure-metrics-advisor",
+      "source": "microsoft",
+      "path": "microsoft/azure-metrics-advisor",
+      "description": "Azure Metrics Advisor skill"
+    },
+    {
+      "name": "azure-spring-apps",
+      "source": "microsoft",
+      "path": "microsoft/azure-spring-apps",
+      "description": "Azure Spring Apps skill"
+    },
+    {
+      "name": "azure-notification-hubs",
+      "source": "microsoft",
+      "path": "microsoft/azure-notification-hubs",
+      "description": "Azure Notification Hubs skill"
+    },
+    {
+      "name": "azure-api-management",
+      "source": "microsoft",
+      "path": "microsoft/azure-api-management",
+      "description": "Azure API Management skill"
+    },
+    {
+      "name": "azure-operator-service-manager",
+      "source": "microsoft",
+      "path": "microsoft/azure-operator-service-manager",
+      "description": "Azure Operator Service Manager skill"
+    },
+    {
+      "name": "azure-cloud-adoption-framework",
+      "source": "microsoft",
+      "path": "microsoft/azure-cloud-adoption-framework",
+      "description": "Azure Cloud Adoption Framework skill"
+    },
+    {
+      "name": "azure-functions",
+      "source": "microsoft",
+      "path": "microsoft/azure-functions",
+      "description": "Azure Functions skill"
+    },
+    {
+      "name": "azure-defender-for-cloud",
+      "source": "microsoft",
+      "path": "microsoft/azure-defender-for-cloud",
+      "description": "Azure Defender for Cloud skill"
+    },
+    {
+      "name": "azure-bot-service",
+      "source": "microsoft",
+      "path": "microsoft/azure-bot-service",
+      "description": "Azure Bot Service skill"
+    },
+    {
+      "name": "azure-batch",
+      "source": "microsoft",
+      "path": "microsoft/azure-batch",
+      "description": "Azure Batch skill"
+    },
+    {
+      "name": "azure-app-testing",
+      "source": "microsoft",
+      "path": "microsoft/azure-app-testing",
+      "description": "Azure App Testing skill"
+    },
+    {
+      "name": "azure-cloud-hsm",
+      "source": "microsoft",
+      "path": "microsoft/azure-cloud-hsm",
+      "description": "Azure Cloud HSM skill"
+    },
+    {
+      "name": "azure-advisor",
+      "source": "microsoft",
+      "path": "microsoft/azure-advisor",
+      "description": "Azure Advisor skill"
+    },
+    {
+      "name": "azure-automation",
+      "source": "microsoft",
+      "path": "microsoft/azure-automation",
+      "description": "Azure Automation skill"
+    },
+    {
+      "name": "azure-reliability",
+      "source": "microsoft",
+      "path": "microsoft/azure-reliability",
+      "description": "Azure Reliability skill"
+    },
+    {
+      "name": "azure-firewall",
+      "source": "microsoft",
+      "path": "microsoft/azure-firewall",
+      "description": "Azure Firewall skill"
+    },
+    {
+      "name": "azure-networking",
+      "source": "microsoft",
+      "path": "microsoft/azure-networking",
+      "description": "Azure Networking skill"
+    },
+    {
+      "name": "azure-quotas",
+      "source": "microsoft",
+      "path": "microsoft/azure-quotas",
+      "description": "Azure Quotas skill"
+    },
+    {
+      "name": "azure-microsoft-discovery",
+      "source": "microsoft",
+      "path": "microsoft/azure-microsoft-discovery",
+      "description": "Azure Microsoft Discovery skill"
+    },
+    {
+      "name": "azure-database-postgresql",
+      "source": "microsoft",
+      "path": "microsoft/azure-database-postgresql",
+      "description": "Azure Database for PostgreSQL skill"
+    },
+    {
+      "name": "azure-container-storage",
+      "source": "microsoft",
+      "path": "microsoft/azure-container-storage",
+      "description": "Azure Container Storage skill"
+    },
+    {
+      "name": "azure-container-registry",
+      "source": "microsoft",
+      "path": "microsoft/azure-container-registry",
+      "description": "Azure Container Registry skill"
+    },
+    {
+      "name": "verify-pr-logs",
+      "source": "rlespinasse",
+      "path": "rlespinasse/verify-pr-logs",
+      "description": "Verify PR logs"
+    },
+    {
+      "name": "conventional-commit",
+      "source": "rlespinasse",
+      "path": "rlespinasse/conventional-commit",
+      "description": "Conventional commit formatting"
+    },
+    {
+      "name": "french-language",
+      "source": "rlespinasse",
+      "path": "rlespinasse/french-language",
+      "description": "French language support"
+    },
+    {
+      "name": "pin-github-actions",
+      "source": "rlespinasse",
+      "path": "rlespinasse/pin-github-actions",
+      "description": "Pin GitHub Actions versions"
+    },
+    {
+      "name": "diataxis",
+      "source": "rlespinasse",
+      "path": "rlespinasse/diataxis",
+      "description": "Diataxis documentation framework"
+    },
+    {
+      "name": "local-branches-status",
+      "source": "rlespinasse",
+      "path": "rlespinasse/local-branches-status",
+      "description": "Local branches status"
+    },
+    {
+      "name": "drawio-export-tools",
+      "source": "rlespinasse",
+      "path": "rlespinasse/drawio-export-tools",
+      "description": "Draw.io export tools"
+    },
+    {
+      "name": "verify-readme-features",
+      "source": "rlespinasse",
+      "path": "rlespinasse/verify-readme-features",
+      "description": "Verify README features"
+    },
+    {
+      "name": "visual-explainer",
+      "source": "nicobailon",
+      "path": "nicobailon/visual-explainer",
+      "description": "Visual explanation/slide generation plugin with generate-visual-plan, generate-slides, diff-review, fact-check, plan-review, generate-web-diagram, project-recap commands"
+    },
+    {
+      "name": "notion-cli",
+      "source": "makenotion",
+      "path": "makenotion/notion-cli",
+      "description": "Notion CLI integration"
+    },
+    {
+      "name": "mixedbread-parsing",
+      "source": "mixedbread",
+      "path": "mixedbread/mixedbread-parsing",
+      "description": "Parsing API & OCR for document processing"
+    },
+    {
+      "name": "mxbai-cli",
+      "source": "mixedbread",
+      "path": "mixedbread/mxbai-cli",
+      "description": "CLI tool usage for Mixedbread"
+    },
+    {
+      "name": "mixedbread-search",
+      "source": "mixedbread",
+      "path": "mixedbread/mixedbread-search",
+      "description": "Stores API & SDKs for vector search"
+    },
+    {
+      "name": "skill-seekers",
+      "source": "skillseekers",
+      "path": "skillseekers/skill-seekers",
+      "description": "Universal doc-to-skill converter for 21+ platforms (Claude, Gemini, OpenAI, LangChain, LlamaIndex, vector DBs)"
+    },
+    {
+      "name": "skill-builder",
+      "source": "skillseekers",
+      "path": "skillseekers/skill-builder",
+      "description": "Skill builder for Claude plugin"
+    },
+    {
+      "name": "fullstack-engineer",
+      "source": "peterfei",
+      "path": "peterfei/fullstack-engineer",
+      "description": "Fullstack engineer role"
+    },
+    {
+      "name": "changelog-generator",
+      "source": "peterfei",
+      "path": "peterfei/changelog-generator",
+      "description": "Changelog generator"
+    },
+    {
+      "name": "product-manager",
+      "source": "peterfei",
+      "path": "peterfei/product-manager",
+      "description": "Product manager role"
+    },
+    {
+      "name": "frontend-dev",
+      "source": "peterfei",
+      "path": "peterfei/frontend-dev",
+      "description": "Frontend developer role"
+    },
+    {
+      "name": "qa-engineer",
+      "source": "peterfei",
+      "path": "peterfei/qa-engineer",
+      "description": "QA engineer role"
+    },
+    {
+      "name": "devops-engineer",
+      "source": "peterfei",
+      "path": "peterfei/devops-engineer",
+      "description": "DevOps engineer role"
+    },
+    {
+      "name": "backend-dev",
+      "source": "peterfei",
+      "path": "peterfei/backend-dev",
+      "description": "Backend developer role"
+    },
+    {
+      "name": "softcopyright",
+      "source": "peterfei",
+      "path": "peterfei/softcopyright",
+      "description": "Softcopyright skill"
+    },
+    {
+      "name": "thread-manager",
+      "source": "peterfei",
+      "path": "peterfei/thread-manager",
+      "description": "Thread manager skill"
+    },
+    {
+      "name": "drawnote",
+      "source": "peterfei",
+      "path": "peterfei/drawnote",
+      "description": "Drawnote skill"
+    },
+    {
+      "name": "tech-leader",
+      "source": "peterfei",
+      "path": "peterfei/tech-leader",
+      "description": "Tech leader role"
+    },
+    {
+      "name": "tidymydesktop",
+      "source": "peterfei",
+      "path": "peterfei/tidymydesktop",
+      "description": "Tidy my desktop skill"
+    }
+  ]
+}
