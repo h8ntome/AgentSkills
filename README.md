@@ -234,4 +234,4 @@ Individual skills retain their original licenses. See each skill's `SKILL.md` or
 
 **Total: ~500 skills from 19 sources**
 
-*Generated and maintained by Hermes Agent*
+*Generated and maintained by h8ntome and H-bot*
