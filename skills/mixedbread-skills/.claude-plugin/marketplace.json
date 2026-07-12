@@ -1,0 +1,31 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "mixedbread-skills",
+  "owner": {
+    "name": "Mixedbread"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Agent skills for search, RAG, and document parsing with Mixedbread."
+  },
+  "plugins": [
+    {
+      "name": "mxbai-cli",
+      "description": "Manage stores, upload files, search, and sync documents using the mxbai CLI tool.",
+      "source": "./skills/mxbai-cli",
+      "skills": ["./"]
+    },
+    {
+      "name": "mixedbread-search",
+      "description": "Build and query managed search indexes (Stores) using the Mixedbread Python and TypeScript SDKs.",
+      "source": "./skills/mixedbread-search",
+      "skills": ["./"]
+    },
+    {
+      "name": "mixedbread-parsing",
+      "description": "Parse documents, extract structured content, and run OCR using the Mixedbread Parsing API.",
+      "source": "./skills/mixedbread-parsing",
+      "skills": ["./"]
+    }
+  ]
+}
