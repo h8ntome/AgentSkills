@@ -1,47 +1,74 @@
 #!/bin/bash
 # install-hermes-full.sh
 # One-command full installation of Hermes Agent + all skills
+# Installs Hermes Agent, wires up the skills collection, then launches
+# the Hermes setup wizard directly so you land straight in setup.
 
 set -e
 
 echo "🚀 Installing Hermes Agent + Complete Skills Collection..."
 
-# Check for Python
-if ! command -v python3 &> /dev/null; then
-    echo "❌ Python 3 is required but not installed."
-    exit 1
+# ---------------------------------------------------------------------------
+# 1. Locate or install Hermes Agent
+# ---------------------------------------------------------------------------
+HERMES_BIN=""
+
+# Prefer an existing container/local install at /opt/hermes
+if [ -x "/opt/hermes/.venv/bin/hermes" ]; then
+    HERMES_BIN="/opt/hermes/.venv/bin/hermes"
+    echo "✅ Found existing Hermes at /opt/hermes"
+elif command -v hermes &> /dev/null; then
+    HERMES_BIN="$(command -v hermes)"
+    echo "✅ Found hermes on PATH: $HERMES_BIN"
+else
+    echo "📦 Hermes not found — installing hermes-agent..."
+    if ! command -v python3 &> /dev/null; then
+        echo "❌ Python 3 is required but not installed."
+        exit 1
+    fi
+    # Prefer uv, fall back to pip
+    if command -v uv &> /dev/null; then
+        uv pip install --system --upgrade hermes-agent
+    elif command -v pip3 &> /dev/null; then
+        pip3 install --upgrade hermes-agent
+    elif python3 -m pip --version &> /dev/null; then
+        python3 -m pip install --upgrade hermes-agent
+    else
+        echo "❌ Neither uv nor pip found. Install one and re-run."
+        exit 1
+    fi
+    HERMES_BIN="$(command -v hermes)"
+    # Bootstrap non-Python deps (node, browser, ripgrep, ffmpeg)
+    "$HERMES_BIN" postinstall || true
 fi
 
-# Check for pip
-if ! command -v pip3 &> /dev/null; then
-    echo "❌ pip3 is required but not installed."
-    exit 1
-fi
-
-# Install Hermes Agent
-echo "📦 Installing Hermes Agent..."
-pip3 install --upgrade hermes-agent
-
-# Clone skills collection
+# ---------------------------------------------------------------------------
+# 2. Clone / update the skills collection
+# ---------------------------------------------------------------------------
 SKILLS_DIR="$HOME/hermes-skills-collection"
-echo "📥 Cloning skills collection to $SKILLS_DIR..."
-if [ -d "$SKILLS_DIR" ]; then
+echo "📥 Setting up skills collection at $SKILLS_DIR..."
+if [ -d "$SKILLS_DIR/.git" ]; then
     echo "📂 Directory exists, pulling latest..."
     cd "$SKILLS_DIR" && git pull origin main
 else
-    git clone https://github.com/h8ntome/hermes-skills-collection.git "$SKILLS_DIR"
+    git clone https://github.com/h8ntome/AgentSkills.git "$SKILLS_DIR"
 fi
 
-# Configure Hermes
+# ---------------------------------------------------------------------------
+# 3. Wire skills into the Hermes config
+# ---------------------------------------------------------------------------
 CONFIG_FILE="$HOME/.hermes/config.yaml"
-echo "⚙️ Configuring Hermes Agent..."
+echo "⚙️  Configuring Hermes Agent..."
 mkdir -p "$(dirname "$CONFIG_FILE")"
 
 if [ -f "$CONFIG_FILE" ]; then
-    # Check if external_dirs already configured
     if grep -q "external_dirs:" "$CONFIG_FILE"; then
-        echo "⚠️ external_dirs already configured in $CONFIG_FILE"
-        echo "   Please manually add: $SKILLS_DIR/skills"
+        if ! grep -q "$SKILLS_DIR/skills" "$CONFIG_FILE"; then
+            echo "⚠️  external_dirs exists — add this line manually under it:"
+            echo "      - $SKILLS_DIR/skills"
+        else
+            echo "✅ Skills directory already in config"
+        fi
     else
         cat >> "$CONFIG_FILE" << EOF
 
@@ -61,19 +88,15 @@ EOF
 fi
 
 echo ""
-echo "✅ Installation complete!"
+echo "✅ Hermes Agent + skills installed."
+echo "  - Hermes binary : $HERMES_BIN"
+echo "  - Skills        : $SKILLS_DIR/skills"
+echo "  - Config        : $CONFIG_FILE"
 echo ""
-echo "📋 Summary:"
-echo "  - Hermes Agent: installed via pip"
-echo "  - Skills collection: $SKILLS_DIR"
-echo "  - Config updated: $CONFIG_FILE"
+
+# ---------------------------------------------------------------------------
+# 4. Launch the Hermes setup wizard directly
+# ---------------------------------------------------------------------------
+echo "🧭 Launching Hermes setup wizard..."
 echo ""
-echo "🚀 To start Hermes with all skills:"
-echo "  hermes chat"
-echo ""
-echo "📚 To verify skills loaded:"
-echo "  hermes chat --preload-skills \"anthropic/claude-api,google/gke-security,openai/figma-implement-design\""
-echo ""
-echo "🔄 To update skills later:"
-echo "  cd $SKILLS_DIR && git pull"
-echo "  hermes chat  # skills auto-reload on start"
+exec "$HERMES_BIN" setup
