@@ -44,6 +44,7 @@ Retrieve a sent email by ID.
 {
   "object": "email",
   "id": "<uuid>",
+  "message_id": "<111-222-333@email.example.com>",
   "from": "you@domain.com",
   "to": ["user@example.com"],
   "subject": "Hello",
@@ -65,7 +66,7 @@ List sent emails.
 | `--after <cursor>` | string | — | Forward pagination cursor |
 | `--before <cursor>` | string | — | Backward pagination cursor |
 
-**Output:** `{"object":"list","data":[...],"has_more":bool}`
+**Output:** `{"object":"list","data":[{"id":"...","message_id":"<111-222-333@email.example.com>",...}],"has_more":bool}`
 
 ---
 
@@ -84,14 +85,16 @@ Send up to 100 emails in a single request.
 ```json
 [
   {"from":"a@domain.com","to":["b@example.com"],"subject":"Hi","text":"Body"},
-  {"from":"a@domain.com","to":["c@example.com"],"subject":"Hi","html":"<b>Body</b>"}
+  {"from":"a@domain.com","to":["c@example.com"],"subject":"Hi","html":"<b>Body</b>","scheduled_at":"in 1 hour","tags":[{"name":"campaign","value":"welcome"}]}
 ]
 ```
+
+Per-email `scheduled_at` (ISO 8601 or natural language) and `tags` are supported.
 
 **Output (success):** `[{"id":"..."},{"id":"..."}]`
 **Output (permissive with errors):** `{"data":[{"id":"..."}],"errors":[{"index":1,"message":"..."}]}`
 
-**Constraints:** Max 100 emails. Attachments and `scheduled_at` not supported per-email.
+**Constraints:** Max 100 emails. Attachments not supported per-email.
 
 ---
 

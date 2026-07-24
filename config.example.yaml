@@ -199,4 +199,4 @@ busy_input_mode: queue
 
 skills:
   external_dirs:
-    - /opt/data/.hermes/skills
+    - /path/to/AgentSkills/skills

@@ -1,9 +1,9 @@
 ---
 name: azure-architecture
-description: Expert guidance for designing Azure solutions using Azure Architecture. Covers reference architectures, solution ideas, design patterns, technology choices, architecture styles, best practices, anti-patterns, example workloads, and migration guides. Use when designing AKS, SAP, IoT, Fabric, hybrid data/AI platforms, or AWS/GCP/on‑prem migrations to Azure, and other Azure Architecture related development tasks.
+description: Expert guidance for designing Azure solutions using Azure Architecture. Covers reference architectures, solution ideas, design patterns, technology choices, architecture styles, best practices, anti-patterns, example workloads, and migration guides. Use when designing AKS, data/AI, SAP, or hybrid workloads, choosing Azure services, or fixing performance anti-patterns, and other Azure Architecture related development tasks.
 compatibility: Requires network access. Uses mcp_microsoftdocs:microsoft_docs_fetch or fetch_webpage to retrieve documentation.
 metadata:
-  generated_at: "2026-07-05"
+  generated_at: "2026-07-19"
   generator: "docs2skills/1.0.0"
 ---
 # Azure Architecture Skill
@@ -24,15 +24,15 @@ This skill requires **network access** to fetch documentation content:
 
 | Category | Lines | Description |
 |----------|-------|-------------|
-| Reference Architectures | L37-L90 | End-to-end Azure solution blueprints: mission-critical, secure, and hybrid architectures for AKS, data platforms, networking, SAP, VMs, MLOps, and enterprise integration. |
-| Solution Ideas | L91-L125 | End-to-end solution patterns for AI, analytics, IoT, security, mainframe migration, and data platforms on Azure, including reference architectures and implementation guidance. |
+| Reference Architectures | L37-L90 | End-to-end Azure solution blueprints: mission-critical, secure, and hybrid architectures for AKS, data platforms, SAP, networking, DR, MLOps, and enterprise app deployments. |
+| Solution Ideas | L91-L125 | End-to-end solution patterns for AI, data, analytics, IoT, security, and mainframe/SAP migration on Azure, showing how to design, integrate, and operate complete architectures. |
 | Design Patterns | L126-L174 | Patterns for resilient, scalable, and secure Azure app architectures: messaging, transactions, caching, routing, identity, global distribution, legacy migration, and workload isolation. |
 | Technology Choices | L175-L209 | Guides for choosing the right Azure/Fabric services (AI/ML, data, analytics, storage, compute, networking, messaging, containers, vector/search) for specific workloads and architectures. |
 | Architecture Styles | L210-L221 | Guidance on choosing and designing Azure app architectures (big compute, big data, event-driven, microservices, N-tier, web-queue-worker) with patterns, components, and best practices. |
-| Best Practices | L222-L280 | Best-practice patterns for Azure apps: secure APIs/RAG/IoT/SAP, DR and scaling, AKS ops, networking/DNS/Private Link, monitoring, caching/CDN, data partitioning, and Event Hubs + Functions. |
-| Anti-patterns | L281-L295 | Diagnosing and fixing common Azure performance and scalability anti-patterns (busy DB/front end, chatty I/O, no caching, noisy neighbors, retry storms, sync I/O, monolithic persistence). |
-| Example Workloads | L296-L375 | End-to-end Azure workload blueprints: data/analytics, AI, security, networking, hybrid, mainframe, SAP, IoT, AKS, Fabric, and app modernization reference architectures and implementation guides. |
-| Migration Guides | L376-L405 | Guides for migrating from AWS/GCP/on-prem (incl. Oracle, Kafka, EKS) to Azure, mapping services, architectures, identity, networking, security, and cost/ops differences. |
+| Best Practices | L222-L279 | Best-practice patterns for Azure apps: secure APIs/RAG/IoT/SAP, MLOps and model lifecycle, scaling, caching/CDN, DR, networking/DNS/Private Link, AKS ops, Event Hubs + Functions, and monitoring. |
+| Anti-patterns | L280-L294 | Diagnosing and fixing common Azure performance and scalability anti-patterns (busy DB/front end, chatty I/O, no caching, noisy neighbors, retry storms, sync I/O, monolithic persistence). |
+| Example Workloads | L295-L376 | End-to-end reference architectures and implementation guides for real-world Azure workloads (data/AI, apps, hybrid, mainframe, networking, security, and Fabric) with patterns, services, and deployment details. |
+| Migration Guides | L377-L406 | Guides for migrating from AWS/GCP/on-prem (incl. Oracle, Kafka, EKS) to Azure, mapping services, architectures, identity, networking, security, and cost/ops differences. |
 
 ### Reference Architectures
 | Topic | URL |
@@ -66,9 +66,9 @@ This skill requires **network access** to fetch documentation content:
 | Choose application platform for mission-critical workloads | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-app-platform |
 | Design data platforms for mission-critical Azure solutions | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform |
 | Implement deployment and testing for mission-critical workloads | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-deploy-test |
-| Model and monitor health for mission-critical Azure apps | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-health-modeling |
+| Implement health modeling for mission-critical Azure workloads | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-health-modeling |
 | Design mission-critical architectures on Azure AKS | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro |
-| Architect networking for mission-critical Azure workloads | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-networking |
+| Design networking for mission-critical AKS workloads | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-networking |
 | Operate and maintain mission-critical workloads on Azure | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-operations |
 | Apply security controls to mission-critical Azure workloads | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-security |
 | Deploy a multiregion AKS baseline architecture | https://learn.microsoft.com/en-us/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster |
@@ -92,7 +92,7 @@ This skill requires **network access** to fetch documentation content:
 | Topic | URL |
 |-------|-----|
 | Generate AI-assisted documents from enterprise data | https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/generate-documents-from-your-data |
-| Add image classification to apps using Azure AI services | https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/intelligent-apps-image-processing |
+| Design image classification apps using Azure services | https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/intelligent-apps-image-processing |
 | Scale many-models machine learning on Azure | https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/many-models-machine-learning-azure-machine-learning |
 | Process multimodal content with Azure AI services | https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/multi-modal-content-processing |
 | Design multi-agent workflow automation on Azure | https://learn.microsoft.com/en-us/azure/architecture/ai-ml/idea/multiple-agent-workflow-automation |
@@ -270,11 +270,10 @@ This skill requires **network access** to fetch documentation content:
 | Troubleshoot networking issues in AKS clusters | https://learn.microsoft.com/en-us/azure/architecture/operator-guides/aks/troubleshoot-network-aks |
 | Architect Event Hubs integrations with Azure Functions | https://learn.microsoft.com/en-us/azure/architecture/serverless/event-hubs-functions/event-hubs-functions |
 | Monitor Event Hubs and Azure Functions with Application Insights | https://learn.microsoft.com/en-us/azure/architecture/serverless/event-hubs-functions/observability |
-| Optimize performance and scale for Event Hubs Functions | https://learn.microsoft.com/en-us/azure/architecture/serverless/event-hubs-functions/performance-scale |
+| Optimize Event Hubs-triggered Azure Functions performance | https://learn.microsoft.com/en-us/azure/architecture/serverless/event-hubs-functions/performance-scale |
 | Design resilient Event Hubs-triggered Azure Functions | https://learn.microsoft.com/en-us/azure/architecture/serverless/event-hubs-functions/resilient-design |
-| Secure Event Hubs integrations with Azure Functions | https://learn.microsoft.com/en-us/azure/architecture/serverless/event-hubs-functions/security |
+| Secure Azure Functions integrated with Event Hubs | https://learn.microsoft.com/en-us/azure/architecture/serverless/event-hubs-functions/security |
 | Protect APIs with Application Gateway and API Management | https://learn.microsoft.com/en-us/azure/architecture/web-apps/api-management/architectures/protect-apis |
-| Design multi-region Azure App Service for disaster recovery | https://learn.microsoft.com/en-us/azure/architecture/web-apps/guides/multi-region-app-service/multi-region-app-service |
 | Securely access App Service apps from on-premises networks | https://learn.microsoft.com/en-us/azure/architecture/web-apps/guides/networking/access-multitenant-web-app-from-on-premises |
 | Secure SPA authorization using Azure API Management | https://learn.microsoft.com/en-us/azure/architecture/web-apps/guides/security/secure-single-page-application-authorization |
 
@@ -329,7 +328,7 @@ This skill requires **network access** to fetch documentation content:
 | Run Oracle Database on Azure with NetApp Files | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/file-storage/oracle-azure-netapp-files |
 | Run SQL Server on Azure VMs with Azure NetApp Files | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/file-storage/sql-server-azure-netapp-files |
 | Implement computer forensics chain of custody on Azure | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/forensics/ |
-| Implement Zero Trust network for web apps with Azure Firewall | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall |
+| Implement Zero Trust web apps with Azure Firewall and Application Gateway | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/gateway/application-gateway-before-azure-firewall |
 | Secure virtual networks with Azure Firewall and Application Gateway | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/gateway/firewall-application-gateway |
 | Operate AKS clusters using GitOps with Flux and Argo CD | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/gitops-aks/gitops-blueprint-aks |
 | Implement a baseline AKS architecture on Azure Local | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/hybrid/aks-baseline |
@@ -352,6 +351,7 @@ This skill requires **network access** to fetch documentation content:
 | Modernize IBM mainframe and midrange data to Azure | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/mainframe/modernize-mainframe-data-to-azure |
 | Process high-volume batch transactions with AKS and Service Bus | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/mainframe/process-batch-transactions |
 | Reengineer mainframe batch applications on Azure | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/mainframe/reengineer-mainframe-batch-apps-azure |
+| Modernize Adabas & Natural mainframes to Azure AKS | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/mainframe/refactor-adabas-aks |
 | Rehost Software AG Adabas and Natural mainframe workloads on Azure | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/mainframe/rehost-adabas-software-ag |
 | Rehost IMS databases and data communications on Azure | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/mainframe/rehost-ims-raincode-imsql |
 | Implement Siemens Teamcenter PLM baseline on Azure | https://learn.microsoft.com/en-us/azure/architecture/example-scenario/manufacturing/teamcenter-baseline |
@@ -371,6 +371,7 @@ This skill requires **network access** to fetch documentation content:
 | Design massive-scale Azure Virtual WAN with multi-hub | https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/massive-scale-azure-architecture |
 | Virtual WAN design for mixed security and performance needs | https://learn.microsoft.com/en-us/azure/architecture/networking/architecture/performance-security-optimized-vwan |
 | Single-region Private Link and DNS design in Virtual WAN | https://learn.microsoft.com/en-us/azure/architecture/networking/guide/private-link-virtual-wan-dns-single-region-workload |
+| Implement ransomware-resilient backups with Azure Backup | https://learn.microsoft.com/en-us/azure/architecture/security/ransomware-resilient-backup-architecture/ |
 | Design Windows 365 Azure network connections for Cloud PCs | https://learn.microsoft.com/en-us/azure/architecture/virtual-desktop/windows-365-azure-network-connection |
 
 ### Migration Guides

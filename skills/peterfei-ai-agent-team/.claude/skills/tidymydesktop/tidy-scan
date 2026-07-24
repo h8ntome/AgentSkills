@@ -1,6 +1,0 @@
-#!/bin/bash
-# TidyMyDesktop - 扫描命令
-
-SKILL_DIR="$HOME/.claude/skills/tidymydesktop"
-
-"$SKILL_DIR/scripts/run.sh" "$SKILL_DIR/scripts/scan.js" "$@"

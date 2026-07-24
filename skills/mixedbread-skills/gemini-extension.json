@@ -1,9 +1,0 @@
-{
-  "name": "mixedbread-skills",
-  "description": "Agent skills for search, RAG, and document parsing with Mixedbread.",
-  "mcp_servers": [
-    {
-      "uri": "https://www.mcp.mixedbread.com/api/mcp"
-    }
-  ]
-}

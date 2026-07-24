@@ -1,5 +1,0 @@
-# Default owners for the entire repository
-* @memodb-io/core-dev
-
-# CI/CD workflows and configurations require review
-.github/ @memodb-io/core-dev

@@ -1,9 +1,9 @@
 ---
 name: azure-policy
-description: Expert knowledge for Azure Policy development including troubleshooting, best practices, decision making, security, configuration, integrations & coding patterns, and deployment. Use when authoring Machine Config, deploying via ARM/Bicep/Terraform, mapping compliance controls, or querying Policy with Resource Graph, and other Azure Policy related development tasks. Not for Azure Blueprints (use azure-blueprints), Azure Resource Manager (use azure-resource-manager), Azure Role-based access control (use azure-rbac), Azure Security (use azure-security).
+description: Expert knowledge for Azure Policy development including troubleshooting, best practices, decision making, security, configuration, integrations & coding patterns, and deployment. Use when authoring Machine Configuration packages, deploying via ARM/Bicep/Terraform, mapping to CIS/NIST/ISO, querying compliance with Resource Graph, or migrating from DSC/Automanage, and other Azure Policy related development tasks. Not for Azure Blueprints (use azure-blueprints), Azure Resource Manager (use azure-resource-manager), Azure Role-based access control (use azure-rbac), Azure Security (use azure-security).
 compatibility: Requires network access. Uses mcp_microsoftdocs:microsoft_docs_fetch or fetch_webpage to retrieve documentation.
 metadata:
-  generated_at: "2026-07-05"
+  generated_at: "2026-07-19"
   generator: "docs2skills/1.0.0"
 ---
 # Azure Policy Skill
@@ -27,10 +27,10 @@ This skill requires **network access** to fetch documentation content:
 | Troubleshooting | L35-L41 | Diagnosing and fixing Azure Policy non-compliance, common policy evaluation/deployment errors, and Machine Configuration deployment and remediation issues. |
 | Best Practices | L42-L57 | Designing effective Azure Policy definitions: effects, logical/value operators, arrays, tags, initiatives, parameters, and testing/behavior of Machine/Guest Configuration. |
 | Decision Making | L58-L64 | Guidance for planning migrations from Azure Automation DSC, DSC extension, and Automanage Best Practices to Azure Policy/Machine Configuration, including mapping features and migration steps. |
-| Security | L65-L119 | Using Azure Policy for security baselines, guest configuration, exemptions, and mapping/implementing controls for standards and regulations (CIS, NIST, ISO, PCI, HIPAA, FedRAMP, SOC 2, etc.). |
-| Configuration | L120-L134 | Authoring, assigning, storing, and securing Machine Configuration (guest configuration) packages and policies, plus prerequisites, networking, remediation, and compliance result analysis. |
-| Integrations & Coding Patterns | L135-L140 | Using Azure Resource Graph to query Azure Policy compliance data and guest configuration state across resources for reporting, auditing, and large-scale policy analysis |
-| Deployment | L141-L150 | How to deploy and assign Machine Configuration packages via ARM/Bicep/Terraform/REST, publish packages to storage, and use safe deployment practices with Azure Policy. |
+| Security | L65-L128 | Security and compliance policies: configuring machine/guest security baselines, mapping Azure Policy to global/regional standards (CIS, NIST, ISO, PCI, FedRAMP, etc.), exemptions, and MFA enforcement. |
+| Configuration | L129-L146 | Authoring, assigning, storing, and securing Machine Configuration/guest configuration packages, plus prerequisites, networking, and viewing compliance via Azure Policy and built-in definitions. |
+| Integrations & Coding Patterns | L147-L152 | Using Azure Resource Graph to query Azure Policy compliance data and guest configuration state across resources for reporting, auditing, and large-scale policy analysis |
+| Deployment | L153-L162 | How to deploy and assign Machine Configuration packages via ARM/Bicep/Terraform/REST, publish packages to storage, and use safe deployment practices with Azure Policy. |
 
 ### Troubleshooting
 | Topic | URL |
@@ -72,13 +72,19 @@ This skill requires **network access** to fetch documentation content:
 | Define and use Azure Policy exemption structure | https://learn.microsoft.com/en-us/azure/governance/policy/concepts/exemption-structure |
 | Map Azure Policy to Australian ISM PROTECTED controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/australia-ism |
 | Use Azure Policy for Microsoft cloud security benchmark | https://learn.microsoft.com/en-us/azure/governance/policy/samples/azure-security-benchmark |
-| Use Azure built-in policy initiatives for compliance | https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-initiatives |
-| Browse Azure built-in policy definitions by category | https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies |
 | Use Azure Policy for Canada Federal PBMM compliance | https://learn.microsoft.com/en-us/azure/governance/policy/samples/canada-federal-pbmm |
 | Map CIS Azure 1.1.0 controls to Azure Policy | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-azure-1-1-0 |
 | Align Azure Policy with CIS Azure Benchmark 1.3.0 | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-azure-1-3-0 |
 | Align Azure Policy with CIS Azure Benchmark 1.4.0 | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-azure-1-4-0 |
 | Align Azure Policy with CIS Azure Benchmark 2.0.0 | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-azure-2-0-0 |
+| Configure CIS benchmarks for AlmaLinux in Azure | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/alma-ado |
+| Configure CIS benchmarks for AKS-optimized Azure Linux | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/azure-linux-ado |
+| Configure CIS benchmarks for Debian Linux in Azure | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/debian-ado |
+| Configure CIS benchmarks for Oracle Linux in Azure | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/oracle-ado |
+| Configure CIS benchmarks for RHEL in Azure | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/rhel-ado |
+| Configure CIS benchmarks for Rocky Linux in Azure | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/rocky-ado |
+| Configure CIS benchmarks for SUSE Linux in Azure | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/suse-ado |
+| Configure CIS benchmarks for Ubuntu in Azure | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cis-linux/ubuntu-ado |
 | Map Azure Policy to CMMC Level 3 controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/cmmc-l3 |
 | Map Azure Policy to FedRAMP High controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/fedramp-high |
 | Map Azure Policy to FedRAMP Moderate controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/fedramp-moderate |
@@ -94,9 +100,11 @@ This skill requires **network access** to fetch documentation content:
 | Align NIST SP 800-53 Rev. 4 with Azure Policy (Gov) | https://learn.microsoft.com/en-us/azure/governance/policy/samples/gov-nist-sp-800-53-r4 |
 | Align NIST SP 800-53 Rev. 5 with Azure Policy (Gov) | https://learn.microsoft.com/en-us/azure/governance/policy/samples/gov-nist-sp-800-53-r5 |
 | Implement SOC 2 controls using Azure Policy (Gov) | https://learn.microsoft.com/en-us/azure/governance/policy/samples/gov-soc-2 |
+| Apply CIS Linux security baseline via Azure Policy | https://learn.microsoft.com/en-us/azure/governance/policy/samples/guest-configuration-baseline-cis-linux |
 | Apply Docker security baseline via guest configuration | https://learn.microsoft.com/en-us/azure/governance/policy/samples/guest-configuration-baseline-docker |
 | Apply Linux security baseline via guest configuration | https://learn.microsoft.com/en-us/azure/governance/policy/samples/guest-configuration-baseline-linux |
 | Apply Windows Server security baseline via guest configuration | https://learn.microsoft.com/en-us/azure/governance/policy/samples/guest-configuration-baseline-windows |
+| Implement Azure Security Baseline for Windows Server 2025 | https://learn.microsoft.com/en-us/azure/governance/policy/samples/guest-configuration-baseline-windows-server-2025 |
 | Map Azure Policy to HIPAA HITRUST controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/hipaa-hitrust |
 | Use Azure Policy for IRS 1075 (2016) compliance | https://learn.microsoft.com/en-us/azure/governance/policy/samples/irs-1075-sept2016 |
 | Map Azure Policy to ISO 27001:2013 controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/iso-27001 |
@@ -116,6 +124,7 @@ This skill requires **network access** to fetch documentation content:
 | Map Azure Policy to SWIFT CSP-CSCF 2021 controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/swift-csp-cscf-2021 |
 | Map Azure Policy to SWIFT CSP-CSCF v2022 controls | https://learn.microsoft.com/en-us/azure/governance/policy/samples/swift-csp-cscf-2022 |
 | Map UK OFFICIAL and UK NHS controls to Azure Policy | https://learn.microsoft.com/en-us/azure/governance/policy/samples/ukofficial-uknhs |
+| Enforce Azure MFA using Azure Policy assignments | https://learn.microsoft.com/en-us/azure/governance/policy/tutorials/mfa-enforcement |
 
 ### Configuration
 | Topic | URL |
@@ -130,7 +139,10 @@ This skill requires **network access** to fetch documentation content:
 | View and analyze Machine Configuration compliance results | https://learn.microsoft.com/en-us/azure/governance/machine-configuration/how-to/view-compliance |
 | Configure prerequisites for Azure Machine Configuration | https://learn.microsoft.com/en-us/azure/governance/machine-configuration/overview/02-setup-prerequisites |
 | Configure network and endpoints for Machine Configuration | https://learn.microsoft.com/en-us/azure/governance/machine-configuration/overview/03-network-requirements |
+| Configure Azure Policy with requestContext().identity | https://learn.microsoft.com/en-us/azure/governance/policy/how-to/using-request-context-identity |
+| Reference built-in Azure Policy initiatives for governance | https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-initiatives |
 | Use built-in guest configuration packages in Azure Policy | https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-packages |
+| Reference built-in Azure Policy definitions for governance | https://learn.microsoft.com/en-us/azure/governance/policy/samples/built-in-policies |
 
 ### Integrations & Coding Patterns
 | Topic | URL |

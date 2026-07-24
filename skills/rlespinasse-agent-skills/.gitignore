@@ -1,8 +1,0 @@
-__pycache__/
-*.pyc
-*.pyo
-
-# promptfoo eval artifacts (auto-generated)
-promptfooconfig.yaml
-promptfoo-tests.json
-.promptfoo/
