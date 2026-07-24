@@ -29,7 +29,7 @@ if [ -d "$SKILLS_DIR" ]; then
     echo "📂 Directory exists, pulling latest..."
     cd "$SKILLS_DIR" && git pull origin main
 else
-    git clone https://github.com/h8ntome/hermes-skills-collection.git "$SKILLS_DIR"
+    git clone https://github.com/h8ntome/AgentSkills.git "$SKILLS_DIR"
 fi
 
 # Configure Hermes

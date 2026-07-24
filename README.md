@@ -238,7 +238,7 @@ git pull origin main  # Gets latest curated collection
 | **Sources** | 20 repositories |
 | **Categories** | 25+ |
 | **Last Updated** | 2026-07-11 |
-| **Maintained By** | h8ntome & H-bot |
+| **Maintained By** | Open Source Community |
 
 ---
 
@@ -249,5 +249,5 @@ Individual skills retain their original licenses. See each skill's `SKILL.md` or
 ---
 
 <p align="center">
-  <strong>Generated and maintained by <a href="https://github.com/h8ntome">h8ntome</a> and <a href="https://github.com/h8ntome">H-bot</a></strong>
+  <strong>Generated and maintained by the open-source community</strong>
 </p>
