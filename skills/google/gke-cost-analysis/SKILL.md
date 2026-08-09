@@ -1,5 +1,7 @@
 ---
 name: gke-cost-analysis
+metadata:
+  category: CloudObservabilityAndMonitoring
 description: >-
   Answer natural language questions and perform analysis on GKE cluster and
   workload costs using BigQuery billing exports, cost allocation data, and live

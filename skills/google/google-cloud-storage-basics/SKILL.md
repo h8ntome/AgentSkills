@@ -1,7 +1,5 @@
 ---
 name: google-cloud-storage-basics
-metadata:
-  category: Storage
 description: >-
   Stores, retrieves, and manages data as objects in Cloud Storage (Google
   Cloud Storage, or GCS) buckets. Use when you need to interact with Cloud
@@ -16,6 +14,18 @@ description: >-
   XML APIs, client libraries, Terraform, and Cloud Storage MCP servers. Don't
   use for block storage (Persistent Disk), data warehousing/analytics
   (BigQuery), or databases (Cloud SQL, Spanner, Bigtable, Firestore).
+license: Apache-2.0
+metadata:
+    version: v1
+    publisher: google
+    tags:
+      - gcs
+      - storage
+      - cloud-storage
+      - buckets
+      - objects
+    category: Storage
+    support_tier: primary
 ---
 
 # Google Cloud Storage Basics
@@ -46,10 +56,11 @@ version; it carries no user data.
     Do not use `gcloud config set` for this: it would persist beyond the current
     task and mislabel unrelated usage.
 
--   On direct HTTP calls to the Cloud Storage APIs (for example with `curl`),
-    set this exact User-Agent header, verbatim — the collection pipeline parses
-    the `gcs-skills/<version>` and `skill:<name>` tokens, so any rewording
-    breaks attribution:
+-   On direct HTTP calls to the Cloud Storage APIs (for example with `curl`) or
+    HTTP requests to the Cloud Storage MCP server
+    (`https://storage.googleapis.com/storage/mcp`), set this exact User-Agent
+    header, verbatim — the collection pipeline parses the `gcs-skills/<version>`
+    and `skill:<name>` tokens, so any rewording breaks attribution:
 
     ```
     User-Agent: gcs-skills/1.0 (skill:google-cloud-storage-basics)
@@ -176,6 +187,3 @@ to `gcloud storage` and the JSON API when no MCP server is available.
 -   [GCSFuse](references/gcsfuse.md): Installing Cloud Storage FUSE, mounting
     buckets, file operations, POSIX semantics and limitations (locking, writes,
     renames, consistency), and caching.
-
-*If you need product information not found in these references, use the
-Developer Knowledge MCP server `search_documents` tool.*

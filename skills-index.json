@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-07-24",
-  "total_skills": 437,
+  "generated_at": "2026-08-10",
+  "total_skills": 453,
   "total_sources": 18,
   "skills": [
     {
@@ -308,13 +308,13 @@
       "name": "agent-platform-alert-configuration",
       "source": "google",
       "path": "google/agent-platform-alert-configuration",
-      "description": "Configures best-practice alerting policies for Google Cloud Vertex AI / Agent Platform agents on Agent Runtime. Use when analyzing, writing, or deploying alerting policies to monitor agent latency, error rates, and quality metrics (response quality, tool use, hallucination). Also use when provisioning online monitors for quality evaluation, or analyzing live metrics traffic footprints. NOTE: This skill currently only works for the Agent Runtime. Don't use for configuring general GCP alert policies or non-agent GCP alerting policies."
+      "description": "Configures best-practice alerting policies for AI agents using OpenTelemetry (OTel) metrics. Use when analyzing, writing, or deploying alerting policies to monitor agent latency, error rates, token usage, and quality metrics. NOTE: Reliability, Cost, Safety, and Security alerts use generic OTel metrics and work across runtimes (e.g., Cloud Run, Vertex AI). Quality alerts rely on Vertex AI Online Monitors and are strictly bound to Vertex AI deployments."
     },
     {
       "name": "agent-platform-deploy",
       "source": "google",
       "path": "google/agent-platform-deploy",
-      "description": "Deploy open models or custom weights from Model Garden to Agent Platform endpoints, check deployment status, verify serving endpoints, or clean up resources by undeploying models and deleting endpoints. Use when asked to deploy models on Agent Platform, list available Model Garden models, check if a model is deployable, query deployment cost, troubleshoot deployment errors (like quota limits), or undeploy/clean up endpoints. Also use when copying and deploying a 1P Tuned Model. Don't use for public Vertex AI deployments (use the `vertex-deploy` skill) or for running model evaluations (use the `agent-platform-eval` skill)."
+      "description": "Deploy open models or custom weights from Model Garden to Agent Platform endpoints, check the status of an in-progress deployment operation, or clean up resources by undeploying models and deleting endpoints. Use when asked to actively deploy a model, list the Model Garden CATALOG of available models, check if a specific model is deployable (`gcloud ai model-garden models list-deployment-config`), query deployment cost, troubleshoot deployment errors (like quota limits), or undeploy/clean up endpoints. Also use when copying and deploying a 1P Tuned Model. Don't use for pure listing/discovery questions of the form \"is X deployed?\", \"list my endpoints\", or \"which regions have models running?\" — for those use `agent-platform-endpoint-management`. Don't use for public Vertex AI deployments (use the `vertex-deploy` skill) or for running model evaluations (use the `agent-platform-eval-flywheel` skill)."
     },
     {
       "name": "agent-platform-endpoint-management",
@@ -365,6 +365,12 @@
       "description": "Interact with the Gemini Enterprise Agent Platform Skill Registry to create and search for available skills. Use this skill to enable agents to register functionality or discover new capabilities."
     },
     {
+      "name": "agent-platform-troubleshooting",
+      "source": "google",
+      "path": "google/agent-platform-troubleshooting",
+      "description": "Troubleshoots Google Cloud Gemini Enterprise Agent Platform issues (Agent Gateway, Registry, Identity, Policies, Model Armor, Identity-Aware Proxy (IAP)). Use when agent requests fail with 403 (especially unauthorized egress), Agent Runtime queries return 500, or gateway/IAP logs show permission errors. Don't use for general Google Cloud Identity and Access Management (IAM) debugging or networking issues unrelated to the Agent Platform stack."
+    },
+    {
       "name": "agent-platform-tuning",
       "source": "google",
       "path": "google/agent-platform-tuning",
@@ -380,13 +386,13 @@
       "name": "alloydb-basics",
       "source": "google",
       "path": "google/alloydb-basics",
-      "description": "Manages clusters, instances, and backups for AlloyDB for PostgreSQL, and integrates with AlloyDB model context protocol (MCP) tools for automated database operations."
+      "description": "Manages clusters, instances, and backups for AlloyDB for PostgreSQL, and integrates with AlloyDB Model Context Protocol (MCP) tools for automated database operations. Use when creating, configuring, or administering AlloyDB databases. Do NOT use for general PostgreSQL instances (e.g. Cloud SQL) or other GCP databases."
     },
     {
       "name": "bigquery-ai-ml",
       "source": "google",
       "path": "google/bigquery-ai-ml",
-      "description": "Leverages BigQuery's built-in machine learning and GenAI capabilities for advanced data analytics. Use when you need to write SQL queries that perform time-series forecasting, detect outliers, find key drivers, or leverage generative AI capabilities in BigQuery."
+      "description": "Leverages BigQuery's built-in machine learning and GenAI capabilities for advanced data analytics. Use when you need to write SQL queries that perform time-series forecasting, predict values, detect outliers or anomalies, find key drivers, perform semantic search or vector search, classify text, calculate similarity, summarize content, translate language, evaluate models, filter by semantic conditions, or leverage generative AI capabilities in BigQuery. Do not use for general BigQuery dataset, table, or job management requests."
     },
     {
       "name": "bigquery-basics",
@@ -407,10 +413,28 @@
       "description": "Assists in provisioning instances/tables, designing performant schemas, and querying data in Bigtable. Use when designing Bigtable row keys, configuring column families, writing SQL queries or client library code (Java, Go, Python) for Bigtable, or diagnosing performance/hotspotting issues. Also use when provisioning Bigtable clusters using gcloud or cbt CLIs. Don't use for generic Cloud SQL administration."
     },
     {
+      "name": "cloud-logging-configuration-basics",
+      "source": "google",
+      "path": "google/cloud-logging-configuration-basics",
+      "description": "Configure single-project Google Cloud Logging: regional log buckets, log sinks, log views, restricting or hiding sensitive logs in the default view (_Default) filter, IAM permissions for views (Logs View Accessor, IAM conditions), logs-based metrics, log exclusions, and sampling. Don't use for cross-project logging or multi-project setups."
+    },
+    {
+      "name": "cloud-logging-cross-project-configuration",
+      "source": "google",
+      "path": "google/cloud-logging-cross-project-configuration",
+      "description": "Configure and troubleshoot Google Cloud cross-project centralized logging and read-time aggregation. Use when: - Setting up log routing from multiple projects/folders/organizations to a central log bucket. - Creating cross-project log sinks and configuring central log buckets. - Troubleshooting cross-project routing. Don't use for single-project basic configurations."
+    },
+    {
       "name": "cloud-logging-query-generation",
       "source": "google",
       "path": "google/cloud-logging-query-generation",
-      "description": "Generates Logging Query Language (LQL) queries for Google Cloud Logging from natural language. Use this skill when you need to query log data or when you are debugging issues. You can filter log data by Google Cloud service. Don't use this skill to query other databases, such as SQL or Spanner."
+      "description": "Generates Logging Query Language (LQL) queries for Google Cloud Logging from natural language. Use this skill when you need to query log data or when you are debugging issues. You can filter log data by Google Cloud service. Don't use this skill to query other databases, such as SQL or Cloud Spanner."
+    },
+    {
+      "name": "cloud-monitoring-chart-generation",
+      "source": "google",
+      "path": "google/cloud-monitoring-chart-generation",
+      "description": "Generates Google Cloud Monitoring Server-Driven UI (SDUI) Widget and XyChart Protocol Buffer textprotos from resolved PromQL queries. Use when:\n  - Generating valid google.monitoring.dashboard.v1.Widget textprotos,\n    containing PrometheusQuery datasets, for use with the Cloud Monitoring\n    Dashboards API, gcloud CLI, or declarative dashboard definitions.\n  - Synthesizing Server-Driven UI (SDUI) widget titles, axis labels, and\n    plot types for Prometheus queries.\nDon't use for:\n  - Metric discovery or PromQL query generation. For those tasks, use the\n    cloud-monitoring-metric-selection or cloud-monitoring-promql-query skills."
     },
     {
       "name": "cloud-monitoring-metric-selection",
@@ -449,16 +473,22 @@
       "description": "Automates the end-to-end detection engineering workflow in Google SecOps using MCP tools. Use when fetching threat intelligence from blogs, generating Threat Detection Opportunities (TDOs), simulating attacker behavior with synthetic UDM events, evaluating rule coverage, generating new YARA-L 2.0 rules to close coverage gaps, and with user approval, deploy them to SecOps. Don't use when asked to perform threat hunting actions, and SOC investigative actions."
     },
     {
+      "name": "developer-device-platform-basics",
+      "source": "google",
+      "path": "google/developer-device-platform-basics",
+      "description": "Provides guidance and instructions on managing remote devices on Developer Device Platform (DDP). Use when reserving remote Android devices, establishing connection tunnels, checking session status, or extending/cancelling leases. Don't use for iOS or local device/hardware inquiries."
+    },
+    {
       "name": "firebase-basics",
       "source": "google",
       "path": "google/firebase-basics",
-      "description": "Use this skill whenever you are working on a project that uses Firebase products or services, especially for mobile or web apps."
+      "description": "Provides foundational Firebase CLI setup, CLI installation, version checks (`firebase-tools@latest --version`), CLI login (including --no-localhost), project creation, project selection (`firebase use`), and app config file downloads (`google-services.json`, `GoogleService-Info.plist`). Use ONLY for CLI login, project creation/switching, or downloading app config files. Don't use for Firebase Hosting deploy, Firestore, Auth, App Hosting, Data Connect, Crashlytics, or Remote Config."
     },
     {
       "name": "gcloud",
       "source": "google",
       "path": "google/gcloud",
-      "description": "Provides safety-critical validation, guardrails, and data reduction for gcloud CLI operations across Google Cloud Platform (GCP) services and infrastructure. Use when planning, generating, invoking, executing, or managing any gcloud CLI commands or GCP resources with gcloud. Don't use when writing Google Cloud client library code or raw REST/gRPC API requests."
+      "description": "Provides safety-critical validation, guardrails, and data reduction for gcloud CLI operations across Google Cloud Platform (GCP) services and infrastructure. Use when planning, generating, constructing, proposing, describing, or executing any gcloud CLI commands - including when answering questions about gcloud syntax, or formatting flags. Don't use when writing Google Cloud client library code or raw REST/gRPC API requests."
     },
     {
       "name": "gemini-agents-api",
@@ -485,6 +515,24 @@
       "description": "Generates a Gemini LiveAPI client service class in the user's chosen programming language. Use when the user wants to build, scaffold, or integrate a client that connects to the Gemini Enterprise LiveAPI websocket endpoint, handles session setup/resumption, bearer token refresh, and sending/receiving `ClientMessage`/`ServerMessage` protos. Don't use for general (non-live, non-bidirectional) Gemini API usage such as one-shot `generateContent`, embeddings, image/video generation, or fine-tuning — use the `gemini-api` skill for those."
     },
     {
+      "name": "gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+      "source": "google",
+      "path": "google/gke-ai-troubleshooting-handle-disruption-gpu-tpu",
+      "description": "Diagnoses, predicts, and mitigates node disruptions during Compute Engine host maintenance and hardware or software maintenance events for GPU and TPU workloads on GKE. Use when diagnosing node disruptions, predicting host maintenance events on GPU/TPU nodepools, inspecting node interruption PromQL metrics, auditing node taints, or configuring workload protection strategies (graceful termination, opportunistic maintenance, PodDisruptionBudgets). Don't use for general GKE cluster creation, network policy configuration, or non-disruption workload deployment."
+    },
+    {
+      "name": "gke-ai-troubleshooting-jobset-interruption",
+      "source": "google",
+      "path": "google/gke-ai-troubleshooting-jobset-interruption",
+      "description": "Diagnoses GKE JobSet interruptions, restarts, and preemptions for AI/ML training workloads autonomously. Use when troubleshooting JobSet restart loops, spot VM preemptions, node readiness failures, host VM issues, or coordinator worker crashes. Don't use for general GKE cluster creation, basic workload deployment, or non-JobSet application issues."
+    },
+    {
+      "name": "gke-ai-troubleshooting-tpu-vbar-oom",
+      "source": "google",
+      "path": "google/gke-ai-troubleshooting-tpu-vbar-oom",
+      "description": "Diagnoses and prevents vbar_control_agent segfaults, out-of-memory (OOM) errors, and TPU device initialization failures on TPU v6e nodes in GKE caused by race conditions during TPU device resets or high-frequency metrics polling. Use when troubleshooting vbar_control_agent crashes, memory cgroup OOMs in serial console logs, tpu-device-plugin metrics checksum corruption errors, or custom TPU metrics collection conflicts on GKE TPU v6e nodes. Don't use for general non-TPU container OOM troubleshooting or standard GKE node lifecycle operations."
+    },
+    {
       "name": "gke-app-onboarding",
       "source": "google",
       "path": "google/gke-app-onboarding",
@@ -500,7 +548,7 @@
       "name": "gke-basics",
       "source": "google",
       "path": "google/gke-basics",
-      "description": "Core GKE cluster discovery and hub. Use to route to specialized GKE skills. Do not use for specialized tasks (networking, security, etc.) directly."
+      "description": "Manages core GKE cluster provisioning, credentials, Autopilot vs Standard selection, and workload deployment. Use when creating GKE clusters, fetching kubectl credentials, configuring Workload Identity, or deciding between Autopilot and Standard modes. Don't use for specialized GKE networking (use gke-networking), advanced security hardening (use gke-platform-security or gke-workload-security), or cluster upgrades (use gke-upgrades)."
     },
     {
       "name": "gke-batch-hpc",
@@ -542,13 +590,19 @@
       "name": "gke-golden-path",
       "source": "google",
       "path": "google/gke-golden-path",
-      "description": "Provides GKE golden path configuration defaults, production readiness checklists, and cluster default patterns. Use when designing GKE clusters, verifying GKE production readiness, or checking configurations against GKE defaults. Don't use for setting up node autoscaling specifically (use gke-scaling instead)."
+      "description": "Provides GKE golden path configuration defaults, production readiness checklists, and cluster default patterns. Use when designing GKE clusters, verifying GKE production readiness, or checking configurations against GKE defaults. Don't use for setting up workload autoscaling specifically (use gke-workload-scaling instead)."
     },
     {
       "name": "gke-inference",
       "source": "google",
       "path": "google/gke-inference",
       "description": "Deploys and optimizes AI/ML inference workloads on GKE, using GPUs, TPUs, and model servers. Use when deploying GKE inference servers, configuring GKE GPU resources for inference, or deploying LLMs on GKE. Don't use for generic batch jobs or HPC task queues (use gke-batch-hpc instead)."
+    },
+    {
+      "name": "gke-manifest-generation",
+      "source": "google",
+      "path": "google/gke-manifest-generation",
+      "description": "Generates and updates secure, production-ready Kubernetes YAML manifests optimized for GKE Autopilot and GKE Standard clusters. Use when creating or modifying GKE deployment manifests, configuring container security contexts, setting CPU/memory resource limits, defining readiness/liveness/startup probes, mounting secrets and volumes, configuring GKE Gateway API routes, targeting Spot VMs, or deploying AI model inference workloads (vLLM, TGI, Gemma). Don't use for live cluster operations, pod troubleshooting (use gke-workload-troubleshooting), or cluster infrastructure provisioning (use gke-cluster-creation)."
     },
     {
       "name": "gke-multitenancy",
@@ -599,6 +653,18 @@
       "description": "Manages GKE storage, including PVCs, PersistentVolumes, Filestore, and GCS FUSE. Use when configuring GKE storage, creating PVCs, or setting up GCS FUSE on GKE. Don't use for database administration or replication strategies outside volume provisioning context."
     },
     {
+      "name": "gke-tpu-dynamic-slices-monitoring",
+      "source": "google",
+      "path": "google/gke-tpu-dynamic-slices-monitoring",
+      "description": "Monitors, troubleshoots, and manages GKE TPU Dynamic Slices custom resources. Use when checking TPU slice lifecycle states, troubleshooting slice provisioning failures, validating single-slice or multi-slice (JobSet) workload manifests, or safely patching stuck finalizers and disabling the slice controller. Don't use for generic GKE cluster node pool creation or standard non-TPU workload management (use gke-basics or gke-cluster-creation instead)."
+    },
+    {
+      "name": "gke-tpu-metrics-monitoring",
+      "source": "google",
+      "path": "google/gke-tpu-metrics-monitoring",
+      "description": "Monitors and troubleshoots GKE TPU workloads, nodes, and node pools using GKE system metrics and PromQL. Use when monitoring TensorCore duty cycle, TPU memory, node readiness, multi-host TPU node pool availability, host maintenance or preemption interruptions, and calculating MTTR or MTBI metrics for GKE TPUs. Don't use for general non-TPU GKE workload monitoring or non-metric TPU debugging."
+    },
+    {
       "name": "gke-upgrades",
       "source": "google",
       "path": "google/gke-upgrades",
@@ -617,6 +683,12 @@
       "description": "Audits, configures, and hardens workload-level security controls for Google Kubernetes Engine (GKE) applications and namespaces. Covers running cluster security audits (`audit_cluster.sh`), configuring Workload Identity Federation (impersonation, KSA/GSA binding, and pod setup), enforcing Network Policies (default-deny and Dataplane V2 logging), isolating high-risk pods inside GKE Sandbox (`gVisor`), enforcing Pod Security Standards (`restricted` labeling), and mounting Secret Manager secrets via CSI (`SecretProviderClass`). Use when auditing cluster security posture, isolating namespaces, applying pod security standards, setting up Workload Identity, or configuring network policies and secret volume mounts. Don't use for cluster-wide control plane security, RBAC hardening, Binary Authorization, Shielded Nodes, or enabling platform-level GKE add-ons (use gke-platform-security instead)."
     },
     {
+      "name": "gke-workload-troubleshooting",
+      "source": "google",
+      "path": "google/gke-workload-troubleshooting",
+      "description": "Diagnoses GKE workload failures (CrashLoopBackOff, OOMKilled, ImagePullBackOff, Pending, etc.) via logs and events. Use when pods fail to start or crash repeatedly. Don't use for GKE cluster infrastructure provisioning, node pool creation, or non-Kubernetes Google Cloud services."
+    },
+    {
       "name": "google-agents-cli-onboarding",
       "source": "google",
       "path": "google/google-agents-cli-onboarding",
@@ -626,7 +698,7 @@
       "name": "google-cloud-global-frontend-configuration",
       "source": "google",
       "path": "google/google-cloud-global-frontend-configuration",
-      "description": "Guides agents through a structured 6-step discovery process to design and deploy Google Cloud global external Application Load Balancers with Cloud CDN, Cloud Armor, and Service Extensions, mapping workload requirements to opinionated best-practice configurations.\nUse when:\n- Designing, configuring, or deploying a Google Cloud global external Application Load Balancer, Cloud CDN, Cloud Armor WAF, or Service Extensions.\n- Discovering existing Google Cloud resources (Cloud Storage buckets, Compute Engine MIGs, GKE, Cloud Run) to use as load balancer backends.\n- Generating production-grade Terraform HCL or gcloud CLI scripts for global external Application Load Balancer configurations.\n- Actuating deployments via Infrastructure Manager or bash scripts, including performing IAM pre-checks.\n- Detecting, analyzing, or reconciling configuration drift on deployed global external Application Load Balancers.\nDon't use for:\n- Non-Google Cloud load balancing or security configurations.\n- Purely regional or internal load balancing setups (unless part of a hybrid/failover global design)."
+      "description": "Guides agents through a 6-step discovery process to design and deploy Google Cloud global external Application Load Balancers with Cloud CDN, Cloud Armor, and Service Extensions, mapping workload requirements to best-practice configurations.\nUse when:\n- Designing, configuring, or deploying a Google Cloud global external Application Load Balancer, Cloud CDN, Cloud Armor WAF, or Service Extensions.\n- Discovering existing Google Cloud resources (Cloud Storage, MIGs, GKE, Cloud Run) to use as backends.\n- Generating production-grade Terraform HCL or gcloud CLI scripts for global external Application Load Balancers.\n- Actuating deployments via Infrastructure Manager or bash scripts, including IAM pre-checks.\n- Detecting, analyzing, or reconciling configuration drift on deployed global external Application Load Balancers.\nDon't use for:\n- Non-Google Cloud load balancing or security configurations.\n- Purely regional or internal load balancing setups (unless part of a hybrid/failover global design)."
     },
     {
       "name": "google-cloud-networking-observability",
@@ -651,6 +723,12 @@
       "source": "google",
       "path": "google/google-cloud-recipe-onboarding",
       "description": "Guides a developer's first steps on Google Cloud, covering account creation, billing setup, project management, and deploying a first resource. Use when a new developer wants to initialize their first Google Cloud project, configure billing, and verify deployment. Don't use for enterprise organization setup (use Google Cloud Setup guided flow for that instead). Don't use for complex multi-project architectures."
+    },
+    {
+      "name": "google-cloud-slo-alert-configuration",
+      "source": "google",
+      "path": "google/google-cloud-slo-alert-configuration",
+      "description": "Configures PromQL-based Service Level Objective (SLO) alerting policies for Google Cloud resources registered in App Hub or individually specified. Generates Terraform output. Use when the user asks to configure an SLO or Service Level Objective. Don't use for standard alerting policies."
     },
     {
       "name": "google-cloud-solution-agentic-ai-bidirectional-streaming",
@@ -680,7 +758,7 @@
       "name": "google-cloud-solution-architecture",
       "source": "google",
       "path": "google/google-cloud-solution-architecture",
-      "description": "Interactively discovers requirements for a specific cloud workload and generates design recommendations and architectural guidance to build a multi-product solution in Google Cloud. Use this skill for holistic, end-to-end design recommendations and architectural guidance for complex, multi-product workloads on Google Cloud for specific use cases. Don't use this skill when other specialized skills (e.g., product-specific or google-cloud-recipe-*) directly address the user's workload or use case."
+      "description": "Interactively discovers requirements for a specific cloud workload and generates design recommendations and architectural guidance to build a multi-product solution in Google Cloud. Use this skill to generate holistic, end-to-end design recommendations and architectural guidance for complex, multi-product workloads on Google Cloud for specific use cases. Don't use this skill when other specialized skills (e.g., product-specific or google-cloud-recipe-*) directly address the user's workload or use case."
     },
     {
       "name": "google-cloud-solution-build-deploy-agents",
@@ -698,7 +776,7 @@
       "name": "google-cloud-solution-n-tier-serverless-web-app",
       "source": "google",
       "path": "google/google-cloud-solution-n-tier-serverless-web-app",
-      "description": "Guides agents to interactively discover customer requirements for a Secure n-tier serverless web application and generate a tailored cloud multi-product solution that incorporates opinionated best practices and  architecture guidance. Use when users need agentic assistance with designing  and creating a multi-product solution in the cloud for Secure n-tier serverless web application. Don't use when designing VM or GKE-based architectures or when not using Google Cloud."
+      "description": "Guides agents to interactively discover customer requirements for a Secure n-tier serverless web application and generate a tailored cloud multi-product solution that incorporates opinionated best practices and architecture guidance. Use when users need agentic assistance with designing and creating a multi-product solution in the cloud for Secure n-tier serverless web application. Don't use when designing VM or GKE-based architectures or when not using Google Cloud."
     },
     {
       "name": "google-cloud-solution-rag-enterprise-search-gke-sqldb",
@@ -740,13 +818,25 @@
       "name": "google-cloud-waf-security",
       "source": "google",
       "path": "google/google-cloud-waf-security",
-      "description": "Generates security-focused guidance for Google Cloud workloads based on the design principles and recommendations in the Google Cloud Well-Architected Framework (WAF). Use this skill to evaluate a workload, identify security requirements, and provide actionable recommendations for IAM, network security, data protection, and operational security."
+      "description": "Generates security-focused guidance for Google Cloud workloads based on the design principles and recommendations in the Google Cloud Well-Architected Framework (WAF). Use this skill to evaluate workloads, identify security requirements, and provide actionable recommendations for IAM, network security, data protection, and operational security."
     },
     {
       "name": "google-cloud-waf-sustainability",
       "source": "google",
       "path": "google/google-cloud-waf-sustainability",
       "description": "Generates sustainability-focused guidance for Google Cloud workloads based on the design principles and recommendations in the Google Cloud Well-Architected Framework (WAF). Use this skill to evaluate a workload, identify environmental impact requirements, and provide actionable recommendations to build, deploy, and manage the workload sustainably in Google Cloud."
+    },
+    {
+      "name": "managed-airflow-migrations",
+      "source": "google",
+      "path": "google/managed-airflow-migrations",
+      "description": "Provides guidance for migrating Apache Airflow DAGs in Managed Service for Apache Airflow (MSAA; formerly Cloud Composer). Covers migration to Airflow 2.11.1 (MSAA Gen 2 and 3) and Airflow 3 (MSAA Gen 3), including environment inspection, GCS download/upload and scanning patterns for breaking changes. Use when migrating the DAG code to newer Airflow version. Don't use when checking DAG run failures unrelated to code migration."
+    },
+    {
+      "name": "spanner-basics",
+      "source": "google",
+      "path": "google/spanner-basics",
+      "description": "Assists in provisioning instances and databases, designing performant schemas, and querying data in Spanner. Use when designing primary keys, writing SQL queries or client library code, or diagnosing performance issues."
     },
     {
       "name": "workload-manager-basics",
@@ -800,13 +890,13 @@
       "name": "azure-aks-edge-essentials",
       "source": "microsoft",
       "path": "microsoft/azure-aks-edge-essentials",
-      "description": "Expert knowledge for Azure Kubernetes Service Edge Essentials development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing AKS Edge/Arc clusters, Arc onboarding, SDN VNets, TPM/IoT camera workloads, or offline deployments, and other Azure Kubernetes Service Edge Essentials related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure IoT Edge (use azure-iot-edge), Azure Stack Edge (use azure-stack-edge), Azure Container Apps (use azure-container-apps)."
+      "description": "Expert knowledge for Azure Kubernetes Service Edge Essentials development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing AKS Edge/Arc clusters with Entra/AD auth, Arc onboarding, GPUs, IoT/AI workloads, or TPM/camera access, and other Azure Kubernetes Service Edge Essentials related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure IoT Edge (use azure-iot-edge), Azure Stack Edge (use azure-stack-edge), Azure Container Apps (use azure-container-apps)."
     },
     {
       "name": "azure-analysis-services",
       "source": "microsoft",
       "path": "microsoft/azure-analysis-services",
-      "description": "Expert knowledge for Azure Analysis Services development including troubleshooting. Use when configuring firewalls/VNets, gateways, DNS, or client connections to Azure Analysis Services, and other Azure Analysis Services related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure SQL Database (use azure-sql-database), Azure SQL Managed Instance (use azure-sql-managed-instance), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines)."
+      "description": "Expert knowledge for Azure Analysis Services development including troubleshooting. Use when resolving server connectivity, firewall/VNet, DNS, client connection, or network error issues, and other Azure Analysis Services related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure SQL Database (use azure-sql-database), Azure SQL Managed Instance (use azure-sql-managed-instance), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines)."
     },
     {
       "name": "azure-anomaly-detector",
@@ -818,13 +908,13 @@
       "name": "azure-api-center",
       "source": "microsoft",
       "path": "microsoft/azure-api-center",
-      "description": "Expert knowledge for Azure Api Center development including best practices, security, configuration, integrations & coding patterns, and deployment. Use when automating API linting/registration, syncing with API gateways, customizing the portal, or managing API inventory, and other Azure Api Center related development tasks. Not for Azure API Management (use azure-api-management), Azure App Service (use azure-app-service), Azure Functions (use azure-functions)."
+      "description": "Expert knowledge for Azure Api Center development including best practices, security, configuration, integrations & coding patterns, and deployment. Use when automating API linting/registration, ARM/Bicep deployment, backup/restore, portal access control, or API platform sync, and other Azure Api Center related development tasks. Not for Azure API Management (use azure-api-management), Azure Resource Manager (use azure-resource-manager), Azure Portal (use azure-portal)."
     },
     {
       "name": "azure-api-management",
       "source": "microsoft",
       "path": "microsoft/azure-api-management",
-      "description": "Expert knowledge for Azure API Management development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building APIM policies, securing APIs (JWT/OAuth/mTLS), integrating LLM/backends, or deploying self-hosted gateways, and other Azure API Management related development tasks. Not for Azure Application Gateway (use azure-application-gateway), Azure Front Door (use azure-front-door), Azure Web Application Firewall (use azure-web-application-firewall), Azure Service Bus (use azure-service-bus)."
+      "description": "Expert knowledge for Azure API Management development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring APIM policies, OAuth/JWT auth, VNets/private gateways, self-hosted gateways, or multi-region scaling, and other Azure API Management related development tasks. Not for Azure Application Gateway (use azure-application-gateway), Azure Front Door (use azure-front-door), Azure Web Application Firewall (use azure-web-application-firewall), Azure Logic Apps (use azure-logic-apps)."
     },
     {
       "name": "azure-app-configuration",
@@ -836,7 +926,7 @@
       "name": "azure-app-service",
       "source": "microsoft",
       "path": "microsoft/azure-app-service",
-      "description": "Expert knowledge for Azure App Service development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when choosing App Service plans, auth/networking, CI/CD deployments, custom containers, or ASE/VNet setups, and other Azure App Service related development tasks. Not for Azure Functions (use azure-functions), Azure Container Apps (use azure-container-apps), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Static Web Apps (use azure-static-web-apps)."
+      "description": "Expert knowledge for Azure App Service development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring App Service plans, VNet integration, managed identity access, deployment slots, or ASE environments, and other Azure App Service related development tasks. Not for Azure Functions (use azure-functions), Azure Spring Apps (use azure-spring-apps), Azure Container Apps (use azure-container-apps), Azure Static Web Apps (use azure-static-web-apps)."
     },
     {
       "name": "azure-app-testing",
@@ -848,19 +938,19 @@
       "name": "azure-application-gateway",
       "source": "microsoft",
       "path": "microsoft/azure-application-gateway",
-      "description": "Expert knowledge for Azure Application Gateway development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring HTTP routing, WAF/TLS, autoscale/zone redundancy, AKS ingress, or App Gateway for Containers, and other Azure Application Gateway related development tasks. Not for Azure Front Door (use azure-front-door), Azure Load Balancer (use azure-load-balancer), Azure Traffic Manager (use azure-traffic-manager), Azure Web Application Firewall (use azure-web-application-firewall)."
+      "description": "Expert knowledge for Azure Application Gateway development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring HTTP routing, WAF/TLS, autoscaling v2 gateways, AKS ingress/AGIC, or App Gateway for Containers, and other Azure Application Gateway related development tasks. Not for Azure Front Door (use azure-front-door), Azure Load Balancer (use azure-load-balancer), Azure Traffic Manager (use azure-traffic-manager), Azure Web Application Firewall (use azure-web-application-firewall)."
     },
     {
       "name": "azure-arc",
       "source": "microsoft",
       "path": "microsoft/azure-arc",
-      "description": "Expert knowledge for Azure Arc development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing Arc-enabled Kubernetes, servers, SQL MI/data services, resource bridge, or Edge RAG workloads, and other Azure Arc related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Stack Edge (use azure-stack-edge), Azure Local (use azure-local), Azure VMware Solution (use azure-vmware-solution)."
+      "description": "Expert knowledge for Azure Arc development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing Arc-enabled Kubernetes, servers, SQL/data services, resource bridge, or Edge RAG workloads, and other Azure Arc related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Stack Edge (use azure-stack-edge), Azure Local (use azure-local), Azure Virtual Machines (use azure-virtual-machines)."
     },
     {
       "name": "azure-architecture",
       "source": "microsoft",
       "path": "microsoft/azure-architecture",
-      "description": "Expert guidance for designing Azure solutions using Azure Architecture. Covers reference architectures, solution ideas, design patterns, technology choices, architecture styles, best practices, anti-patterns, example workloads, and migration guides. Use when designing AKS, data/AI, SAP, or hybrid workloads, choosing Azure services, or fixing performance anti-patterns, and other Azure Architecture related development tasks."
+      "description": "Expert guidance for designing Azure solutions using Azure Architecture. Covers reference architectures, solution ideas, design patterns, technology choices, architecture styles, best practices, anti-patterns, example workloads, and migration guides. Use when designing AKS, data/AI, SAP, or hybrid workloads, choosing Azure services, or planning AWS/GCP migrations, and other Azure Architecture related development tasks."
     },
     {
       "name": "azure-artifact-signing",
@@ -872,7 +962,7 @@
       "name": "azure-artifacts",
       "source": "microsoft",
       "path": "microsoft/azure-artifacts",
-      "description": "Expert knowledge for Azure Artifacts development including best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing feeds, upstream sources, retention, npm/.npmrc scopes, or GitHub Actions package publishing, and other Azure Artifacts related development tasks. Not for Azure DevOps (use azure-devops), Azure Pipelines (use azure-pipelines), Azure Repos (use azure-repos), Azure Test Plans (use azure-test-plans)."
+      "description": "Expert knowledge for Azure Artifacts development including best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing feeds, upstream sources, storage limits, tool integrations (npm/NuGet/Maven), or CI/CD publishing, and other Azure Artifacts related development tasks. Not for Azure DevOps (use azure-devops), Azure Pipelines (use azure-pipelines), Azure Repos (use azure-repos), Azure Test Plans (use azure-test-plans)."
     },
     {
       "name": "azure-attestation",
@@ -884,13 +974,13 @@
       "name": "azure-automation",
       "source": "microsoft",
       "path": "microsoft/azure-automation",
-      "description": "Expert knowledge for Azure Automation development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Azure Automation runbooks, DSC/State Configuration, Hybrid Runbook Workers, Private Link, or AMA-based Change Tracking, and other Azure Automation related development tasks. Not for Azure Functions (use azure-functions), Azure Logic Apps (use azure-logic-apps), Azure Scheduler (use azure-scheduler), Azure Update Manager (use azure-update-manager)."
+      "description": "Expert knowledge for Azure Automation development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when securing Automation accounts, configuring runbooks/DSC, using Hybrid Workers, integrating external services, or deploying at scale, and other Azure Automation related development tasks. Not for Azure Functions (use azure-functions), Azure Logic Apps (use azure-logic-apps), Azure Scheduler (use azure-scheduler), Azure Update Manager (use azure-update-manager)."
     },
     {
       "name": "azure-backup",
       "source": "microsoft",
       "path": "microsoft/azure-backup",
-      "description": "Expert knowledge for Azure Backup development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when protecting Azure VMs, SQL/SAP HANA, Files/Disks/Blobs, AKS, or on‑prem via MARS/DPM/MABS and automation APIs, and other Azure Backup related development tasks. Not for Azure Site Recovery (use azure-site-recovery), Azure Virtual Machines (use azure-virtual-machines), Azure Blob Storage (use azure-blob-storage)."
+      "description": "Expert knowledge for Azure Backup development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when protecting Azure VMs, SQL/SAP HANA, AKS, Files/Blobs, or automating Azure Backup via CLI/PowerShell/REST, and other Azure Backup related development tasks. Not for Azure Site Recovery (use azure-site-recovery), Azure Virtual Machines (use azure-virtual-machines), Azure Virtual Network (use azure-virtual-network)."
     },
     {
       "name": "azure-bastion",
@@ -902,13 +992,13 @@
       "name": "azure-batch",
       "source": "microsoft",
       "path": "microsoft/azure-batch",
-      "description": "Expert knowledge for Azure Batch development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring Batch pools/tasks, autoscale, containers, MPI jobs, storage mounts, or CI/CD for HPC workloads, and other Azure Batch related development tasks. Not for Azure Container Instances (use azure-container-instances), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Functions (use azure-functions), Azure Virtual Machines (use azure-virtual-machines)."
+      "description": "Expert knowledge for Azure Batch development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring Batch pools/tasks, autoscale, containers/MPI, storage mounts, or CI/CD for HPC/render jobs, and other Azure Batch related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Container Instances (use azure-container-instances), Azure Functions (use azure-functions), Azure HDInsight (use azure-hdinsight)."
     },
     {
       "name": "azure-blob-storage",
       "source": "microsoft",
       "path": "microsoft/azure-blob-storage",
-      "description": "Expert knowledge for Azure Blob Storage development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning Blob tiers/costs, configuring lifecycle/immutability, securing with Entra/SAS, or using NFS/BlobFuse/SFTP, and other Azure Blob Storage related development tasks. Not for Azure Files (use azure-files), Azure Table Storage (use azure-table-storage), Azure Queue Storage (use azure-queue-storage), Azure NetApp Files (use azure-netapp-files)."
+      "description": "Expert knowledge for Azure Blob Storage development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Blob tiers, lifecycle policies, immutability, SAS/SFTP access, or NFS/BlobFuse mounts, and other Azure Blob Storage related development tasks. Not for Azure Files (use azure-files), Azure Table Storage (use azure-table-storage), Azure Queue Storage (use azure-queue-storage), Azure NetApp Files (use azure-netapp-files)."
     },
     {
       "name": "azure-blueprints",
@@ -920,13 +1010,13 @@
       "name": "azure-boards",
       "source": "microsoft",
       "path": "microsoft/azure-boards",
-      "description": "Expert knowledge for Azure Boards development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing work items, Agile/Scrum boards, WIQL queries, Excel/GitHub integrations, or permissions, and other Azure Boards related development tasks. Not for Azure DevOps (use azure-devops), Azure Test Plans (use azure-test-plans), Azure Pipelines (use azure-pipelines), Azure Repos (use azure-repos)."
+      "description": "Expert knowledge for Azure Boards development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing work items, WIQL queries, Excel/Office sync, GitHub/Teams integrations, or process templates, and other Azure Boards related development tasks. Not for Azure DevOps (use azure-devops), Azure Test Plans (use azure-test-plans), Azure Pipelines (use azure-pipelines), Azure Repos (use azure-repos)."
     },
     {
       "name": "azure-bot-service",
       "source": "microsoft",
       "path": "microsoft/azure-bot-service",
-      "description": "Expert knowledge for Azure AI Bot Service development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Azure AI bots with Direct Line/Web Chat, Teams, OAuth/SSO, human handoff, or proactive messaging, and other Azure AI Bot Service related development tasks. Not for Azure Health Bot (use azure-health-bot), Azure Functions (use azure-functions), Azure App Service (use azure-app-service), Azure Logic Apps (use azure-logic-apps)."
+      "description": "Expert knowledge for Azure AI Bot Service development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building bots with adaptive dialogs, Direct Line/Web Chat, Teams integration, OAuth/SSO, or proactive messages, and other Azure AI Bot Service related development tasks. Not for Azure Health Bot (use azure-health-bot), Azure Web PubSub (use azure-web-pubsub), Azure Functions (use azure-functions), Azure App Service (use azure-app-service)."
     },
     {
       "name": "azure-business-process-tracking",
@@ -950,13 +1040,13 @@
       "name": "azure-chaos-studio",
       "source": "microsoft",
       "path": "microsoft/azure-chaos-studio",
-      "description": "Expert knowledge for Chaos Studio development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when configuring Chaos Studio experiments, AKS targets, Private Link, CLI/REST automation, or Azure Monitor telemetry, and other Chaos Studio related development tasks. Not for Azure Monitor (use azure-monitor), Azure Resiliency (use azure-resiliency), Azure Reliability (use azure-reliability), Azure Sre Agent (use azure-sre-agent)."
+      "description": "Expert knowledge for Chaos Studio development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when designing Chaos Studio experiments, AKS resiliency tests, ARM/Bicep deployments, Private Link, or Azure Monitor telemetry, and other Chaos Studio related development tasks. Not for Azure Monitor (use azure-monitor), Azure Resiliency (use azure-resiliency), Azure Reliability (use azure-reliability), Azure Site Recovery (use azure-site-recovery)."
     },
     {
       "name": "azure-cloud-adoption-framework",
       "source": "microsoft",
       "path": "microsoft/azure-cloud-adoption-framework",
-      "description": "Expert guidance for planning and executing cloud adoption using Azure Cloud Adoption Framework. Covers strategy, planning, readiness & landing zones, adoption patterns, governance, security, operations & management, organization & teams, and adoption scenarios. Use when adopting AKS/Arc, AVS/VMware, SAP/Oracle, AVD/Citrix, or AI agent workloads on Azure, and other Azure Cloud Adoption Framework related development tasks."
+      "description": "Expert guidance for planning and executing cloud adoption using Azure Cloud Adoption Framework. Covers strategy, planning, readiness & landing zones, adoption patterns, governance, security, operations & management, organization & teams, and adoption scenarios. Use when designing landing zones, AKS, AVS, AVD, Oracle/SAP on Azure, or enforcing governance/security policies, and other Azure Cloud Adoption Framework related development tasks."
     },
     {
       "name": "azure-cloud-hsm",
@@ -968,7 +1058,7 @@
       "name": "azure-cloud-services",
       "source": "microsoft",
       "path": "microsoft/azure-cloud-services",
-      "description": "Expert knowledge for Azure Cloud Services development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when configuring Cloud Services roles, Key Vault certs, autoscale rules, guest OS upgrades, or PowerShell automation, and other Azure Cloud Services related development tasks. Not for Azure Networking (use azure-networking), Azure Virtual Machines (use azure-virtual-machines), Azure Resource Manager (use azure-resource-manager), Azure Portal (use azure-portal)."
+      "description": "Expert knowledge for Azure Cloud Services development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing Cloud Services guest OS upgrades, Key Vault certs, .csdef/.cscfg configs, autoscale, or migrations, and other Azure Cloud Services related development tasks. Not for Azure Virtual Machines (use azure-virtual-machines), Azure App Service (use azure-app-service), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Functions (use azure-functions)."
     },
     {
       "name": "azure-cloud-shell",
@@ -980,13 +1070,13 @@
       "name": "azure-cognitive-search",
       "source": "microsoft",
       "path": "microsoft/azure-cognitive-search",
-      "description": "Expert knowledge for Azure AI Search development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building indexes/indexers, AI enrichment skillsets, vector/semantic search, secure access, or multi-region setups, and other Azure AI Search related development tasks. Not for Azure Data Explorer (use azure-data-explorer), Azure Cosmos DB (use azure-cosmos-db), Azure SQL Database (use azure-sql-database), Azure Synapse Analytics (use azure-synapse-analytics)."
+      "description": "Expert knowledge for Azure AI Search development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building indexes, indexers, enrichment skillsets, semantic/vector search, or agentic answer synthesis, and other Azure AI Search related development tasks. Not for Azure Data Explorer (use azure-data-explorer), Azure Cosmos DB (use azure-cosmos-db), Azure SQL Database (use azure-sql-database), Azure Synapse Analytics (use azure-synapse-analytics)."
     },
     {
       "name": "azure-communication-services",
       "source": "microsoft",
       "path": "microsoft/azure-communication-services",
-      "description": "Expert knowledge for Azure Communication Services development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building ACS calling, chat, SMS, email, Teams interop, or PSTN/phone number solutions, and other Azure Communication Services related development tasks. Not for Azure Notification Hubs (use azure-notification-hubs), Azure SignalR Service (use azure-signalr-service), Azure Web PubSub (use azure-web-pubsub), Azure AI Bot Service (use azure-bot-service)."
+      "description": "Expert knowledge for Azure Communication Services development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building ACS calling/chat, SMS/email, Teams interop, Rooms/Job Router, or telephony/PSTN solutions, and other Azure Communication Services related development tasks. Not for Azure Notification Hubs (use azure-notification-hubs), Azure SignalR Service (use azure-signalr-service), Azure Web PubSub (use azure-web-pubsub), Azure AI Bot Service (use azure-bot-service)."
     },
     {
       "name": "azure-confidential-computing",
@@ -1004,13 +1094,13 @@
       "name": "azure-container-apps",
       "source": "microsoft",
       "path": "microsoft/azure-container-apps",
-      "description": "Expert knowledge for Azure Container Apps development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when securing ingress/auth, configuring KEDA/Dapr scaling, integrating Arc AKS, mounting storage, or tuning Java apps, and other Azure Container Apps related development tasks. Not for Azure Container Instances (use azure-container-instances), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure App Service (use azure-app-service), Azure Functions (use azure-functions)."
+      "description": "Expert knowledge for Azure Container Apps development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring ACA auth, Dapr/KEDA, workload profiles, Java microservices, or CI/CD with GitHub Actions, and other Azure Container Apps related development tasks. Not for Azure App Service (use azure-app-service), Azure Functions (use azure-functions), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Red Hat OpenShift (use azure-redhat-openshift)."
     },
     {
       "name": "azure-container-instances",
       "source": "microsoft",
       "path": "microsoft/azure-container-instances",
-      "description": "Expert knowledge for Azure Container Instances development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and deployment. Use when configuring ACI networking, standby pools, Spot containers, GitHub Actions deploys, or secure ACR access, and other Azure Container Instances related development tasks. Not for Azure Container Apps (use azure-container-apps), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Virtual Machines (use azure-virtual-machines), Azure App Service (use azure-app-service)."
+      "description": "Expert knowledge for Azure Container Instances development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and deployment. Use when configuring ACI standby pools, static IP networking, GPU containers, secure ACR pulls, or GitHub Actions deploys, and other Azure Container Instances related development tasks. Not for Azure Container Apps (use azure-container-apps), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure App Service (use azure-app-service), Azure Virtual Machines (use azure-virtual-machines)."
     },
     {
       "name": "azure-container-registry",
@@ -1028,7 +1118,7 @@
       "name": "azure-content-safety",
       "source": "microsoft",
       "path": "microsoft/azure-content-safety",
-      "description": "Expert knowledge for Azure AI Content Safety development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Content Safety APIs, Docker containers, text blocklists, groundedness detection, or custom safety categories, and other Azure AI Content Safety related development tasks. Not for Azure Information Protection (use azure-information-protection), Azure Security (use azure-security), Azure Defender For Cloud (use azure-defender-for-cloud), Azure Sentinel (use azure-sentinel)."
+      "description": "Expert knowledge for Azure AI Content Safety development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Content Safety Docker, text/image/prompt shield APIs, blocklists, provenance, or groundedness checks, and other Azure AI Content Safety related development tasks. Not for Azure Security (use azure-security), Azure Defender For Cloud (use azure-defender-for-cloud), Azure Sentinel (use azure-sentinel)."
     },
     {
       "name": "azure-copilot",
@@ -1040,13 +1130,13 @@
       "name": "azure-cosmos-db",
       "source": "microsoft",
       "path": "microsoft/azure-cosmos-db",
-      "description": "Expert knowledge for Azure Cosmos DB development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Cosmos DB NoSQL/Mongo/Cassandra/PostgreSQL APIs, change feed, multi-region, vector search, or migrations, and other Azure Cosmos DB related development tasks. Not for Azure Table Storage (use azure-table-storage), Azure SQL Database (use azure-sql-database), Azure SQL Managed Instance (use azure-sql-managed-instance), Azure Database for PostgreSQL (use azure-database-postgresql)."
+      "description": "Expert knowledge for Azure Cosmos DB development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Cosmos DB NoSQL/Mongo/Cassandra/PostgreSQL APIs, change feed, multi-region HA, vector search, or Kafka/Spark, and other Azure Cosmos DB related development tasks. Not for Azure Table Storage (use azure-table-storage), Azure SQL Database (use azure-sql-database), Azure Database for MySQL (use azure-database-mysql), Azure Database for PostgreSQL (use azure-database-postgresql)."
     },
     {
       "name": "azure-cost-management",
       "source": "microsoft",
       "path": "microsoft/azure-cost-management",
-      "description": "Expert knowledge for Azure Cost Management development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing billing accounts, reservations, savings plans, cost exports, or cost/billing automation APIs, and other Azure Cost Management related development tasks. Not for Azure Advisor (use azure-advisor), Azure Monitor (use azure-monitor), Azure Quotas (use azure-quotas), Azure Impact Reporting (use azure-impact-reporting)."
+      "description": "Expert knowledge for Azure Cost Management development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring tags/budgets/exports, cost APIs, reservations/savings plans, EA→MCA billing, or subscription moves, and other Azure Cost Management related development tasks. Not for Azure Advisor (use azure-advisor), Azure Monitor (use azure-monitor), Azure Quotas (use azure-quotas), Azure Impact Reporting (use azure-impact-reporting)."
     },
     {
       "name": "azure-custom-vision",
@@ -1058,7 +1148,7 @@
       "name": "azure-cyclecloud",
       "source": "microsoft",
       "path": "microsoft/azure-cyclecloud",
-      "description": "Expert knowledge for Azure CycleCloud development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when automating CycleCloud via API/CLI, configuring Slurm/HTCondor clusters, tuning HB/HC VMs, or securing access, and other Azure CycleCloud related development tasks. Not for Azure Batch (use azure-batch), Azure HPC Cache (use azure-hpc-cache), Azure Virtual Machines (use azure-virtual-machines), Azure Kubernetes Service (AKS) (use azure-kubernetes-service)."
+      "description": "Expert knowledge for Azure CycleCloud development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when automating CycleCloud via API/CLI/SDK, configuring Slurm clusters, using Spot VMs, securing access, or tuning HB/HC HPC workloads, and other Azure CycleCloud related development tasks. Not for Azure Batch (use azure-batch), Azure HPC Cache (use azure-hpc-cache), Azure Virtual Machines (use azure-virtual-machines), Azure Kubernetes Service (AKS) (use azure-kubernetes-service)."
     },
     {
       "name": "azure-data-api-builder",
@@ -1076,13 +1166,13 @@
       "name": "azure-data-explorer",
       "source": "microsoft",
       "path": "microsoft/azure-data-explorer",
-      "description": "Expert knowledge for Azure Data Explorer development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring ADX auth/networking, automating cluster deployment, tuning ingestion/queries, or integrating external tools, and other Azure Data Explorer related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure HDInsight (use azure-hdinsight), Azure Databricks (use azure-databricks), Azure Stream Analytics (use azure-stream-analytics)."
+      "description": "Expert knowledge for Azure Data Explorer development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when securing ADX (RBAC, managed identities), automating cluster/schema deployment, integrating via ODBC/JDBC, tuning ingestion, or designing DR/multitenant architectures, and other Azure Data Explorer related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure Stream Analytics (use azure-stream-analytics), Azure HDInsight (use azure-hdinsight), Azure Databricks (use azure-databricks)."
     },
     {
       "name": "azure-data-factory",
       "source": "microsoft",
       "path": "microsoft/azure-data-factory",
-      "description": "Expert knowledge for Azure Data Factory development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building ADF pipelines, triggers, data flows, integration runtimes, SAP CDC, or secure networked runtimes, and other Azure Data Factory related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure Databricks (use azure-databricks), Azure Stream Analytics (use azure-stream-analytics), Azure Data Explorer (use azure-data-explorer)."
+      "description": "Expert knowledge for Azure Data Factory development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building ADF pipelines, mapping data flows, SHIR/SSIS IR, Private Link/VNet security, or CI/CD deployments, and other Azure Data Factory related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure Databricks (use azure-databricks), Azure Stream Analytics (use azure-stream-analytics), Azure Data Explorer (use azure-data-explorer)."
     },
     {
       "name": "azure-data-manager-for-agri",
@@ -1118,19 +1208,19 @@
       "name": "azure-database-postgresql",
       "source": "microsoft",
       "path": "microsoft/azure-database-postgresql",
-      "description": "Expert knowledge for Azure Database for PostgreSQL development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when tuning queries, configuring replicas, securing with VNet/Private Link, using pgvector, or planning migrations, and other Azure Database for PostgreSQL related development tasks. Not for Azure Database for MySQL (use azure-database-mysql), Azure Database for MariaDB (use azure-database-mariadb), Azure SQL Database (use azure-sql-database), Azure SQL Managed Instance (use azure-sql-managed-instance)."
+      "description": "Expert knowledge for Azure Database for PostgreSQL development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when tuning flexible servers, configuring pgvector/AGE, setting replicas, securing with VNet/TLS, or planning migrations, and other Azure Database for PostgreSQL related development tasks. Not for Azure Database for MySQL (use azure-database-mysql), Azure Database for MariaDB (use azure-database-mariadb), Azure SQL Database (use azure-sql-database), Azure SQL Managed Instance (use azure-sql-managed-instance)."
     },
     {
       "name": "azure-databricks",
       "source": "microsoft",
       "path": "microsoft/azure-databricks",
-      "description": "Expert knowledge for Azure Databricks development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when working with Unity Catalog, Lakeflow pipelines, Lakebase/Postgres, AI/Model Serving, or SQL warehouses, and other Azure Databricks related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure HDInsight (use azure-hdinsight), Azure Machine Learning (use azure-machine-learning), Azure Data Factory (use azure-data-factory)."
+      "description": "Expert knowledge for Azure Databricks development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when working with Unity Catalog, Lakeflow/Lakebase pipelines, Delta Lake, ML/LLM serving, or Lakehouse Federation, and other Azure Databricks related development tasks. Not for Azure Synapse Analytics (use azure-synapse-analytics), Azure HDInsight (use azure-hdinsight), Azure Machine Learning (use azure-machine-learning), Azure Data Factory (use azure-data-factory)."
     },
     {
       "name": "azure-ddos-protection",
       "source": "microsoft",
       "path": "microsoft/azure-ddos-protection",
-      "description": "Expert knowledge for Azure DDos Protection development including troubleshooting, best practices, decision making, architecture & design patterns, security, and configuration. Use when enabling DDoS IP/Network Protection, tuning policies, analyzing logs, running simulations, or using Rapid Response, and other Azure DDos Protection related development tasks. Not for Azure Firewall (use azure-firewall), Azure Web Application Firewall (use azure-web-application-firewall), Azure Front Door (use azure-front-door), Azure Traffic Manager (use azure-traffic-manager)."
+      "description": "Expert knowledge for Azure DDos Protection development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, and integrations & coding patterns. Use when enabling DDoS IP/Network Protection, tuning policies, analyzing logs/metrics, or integrating NVAs and Azure Policy, and other Azure DDos Protection related development tasks. Not for Azure Firewall (use azure-firewall), Azure Firewall Manager (use azure-firewall-manager), Azure Web Application Firewall (use azure-web-application-firewall), Azure Virtual Network (use azure-virtual-network)."
     },
     {
       "name": "azure-dedicated-hsm",
@@ -1142,13 +1232,13 @@
       "name": "azure-defender-for-cloud",
       "source": "microsoft",
       "path": "microsoft/azure-defender-for-cloud",
-      "description": "Expert knowledge for Azure Defender For Cloud development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when securing multicloud workloads, Defender plans, alerts, DevOps integration, or API/ARG automation, and other Azure Defender For Cloud related development tasks. Not for Azure Security (use azure-security), Azure Sentinel (use azure-sentinel), Azure External Attack Surface Management (use azure-external-attack-surface-management), Azure Monitor (use azure-monitor)."
+      "description": "Expert knowledge for Azure Defender For Cloud development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when enabling multicloud connectors, CI/CD/DevOps integration, VM/SQL/container protection, or Defender APIs, and other Azure Defender For Cloud related development tasks. Not for Azure Defender For Iot (use azure-defender-for-iot), Azure External Attack Surface Management (use azure-external-attack-surface-management), Azure Security (use azure-security), Azure Sentinel (use azure-sentinel)."
     },
     {
       "name": "azure-defender-for-iot",
       "source": "microsoft",
       "path": "microsoft/azure-defender-for-iot",
-      "description": "Expert knowledge for Azure Defender For Iot development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring OT sensors/micro agents, traffic mirroring, Sentinel/SIEM integration, RBAC, or SSL/TLS certs, and other Azure Defender For Iot related development tasks. Not for Azure Defender For Cloud (use azure-defender-for-cloud), Azure Security (use azure-security), Azure Sentinel (use azure-sentinel), Azure IoT Hub (use azure-iot-hub)."
+      "description": "Expert knowledge for Azure Defender For Iot development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring OT sensors/micro agents, traffic mirroring, IoT Hub integration, Sentinel/SIEM pipelines, or OT network layouts, and other Azure Defender For Iot related development tasks. Not for Azure Defender For Cloud (use azure-defender-for-cloud), Azure IoT (use azure-iot), Azure IoT Hub (use azure-iot-hub), Azure IoT Operations (use azure-iot-operations)."
     },
     {
       "name": "azure-deployment-environments",
@@ -1166,7 +1256,7 @@
       "name": "azure-devops",
       "source": "microsoft",
       "path": "microsoft/azure-devops",
-      "description": "Expert knowledge for Azure DevOps development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing org/project topology, configuring Boards/Analytics, securing access, tuning performance, or deploying Server, and other Azure DevOps related development tasks. Not for Azure Boards (use azure-boards), Azure Pipelines (use azure-pipelines), Azure Repos (use azure-repos), Azure Test Plans (use azure-test-plans)."
+      "description": "Expert knowledge for Azure DevOps development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing org/project structure, pipelines, Boards/work items, Analytics/OData, or Azure DevOps Server deployments, and other Azure DevOps related development tasks. Not for Azure Boards (use azure-boards), Azure Pipelines (use azure-pipelines), Azure Repos (use azure-repos), Azure Test Plans (use azure-test-plans)."
     },
     {
       "name": "azure-devtest-labs",
@@ -1184,7 +1274,7 @@
       "name": "azure-dns",
       "source": "microsoft",
       "path": "microsoft/azure-dns",
-      "description": "Expert knowledge for Azure DNS development including decision making, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing DNS zones/records, DNSSEC, Private DNS/resolvers, reverse DNS, or migrating legacy Private DNS, and other Azure DNS related development tasks. Not for Azure Traffic Manager (use azure-traffic-manager), Azure Front Door (use azure-front-door), Azure Virtual Network (use azure-virtual-network), Azure Private Link (use azure-private-link)."
+      "description": "Expert knowledge for Azure DNS development including troubleshooting, decision making, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when automating DNS zones/records, using Private DNS/Resolvers, enabling DNSSEC, migrating legacy zones, or fixing name resolution, and other Azure DNS related development tasks. Not for Azure Traffic Manager (use azure-traffic-manager), Azure Front Door (use azure-front-door), Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager)."
     },
     {
       "name": "azure-document-intelligence",
@@ -1202,37 +1292,37 @@
       "name": "azure-elastic-san",
       "source": "microsoft",
       "path": "microsoft/azure-elastic-san",
-      "description": "Expert knowledge for Azure Elastic SAN development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when creating Elastic SAN volumes, AVS datastores, iSCSI clients, CMK encryption, or AKS-integrated storage, and other Azure Elastic SAN related development tasks. Not for Azure Blob Storage (use azure-blob-storage), Azure Files (use azure-files), Azure NetApp Files (use azure-netapp-files), Azure Managed Lustre (use azure-managed-lustre)."
+      "description": "Expert knowledge for Azure Elastic SAN development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when provisioning Elastic SAN volumes, AVS datastores, iSCSI clients, snapshots, or CMK-encrypted deployments, and other Azure Elastic SAN related development tasks. Not for Azure Blob Storage (use azure-blob-storage), Azure NetApp Files (use azure-netapp-files), Azure Managed Lustre (use azure-managed-lustre), Azure Container Storage (use azure-container-storage)."
     },
     {
       "name": "azure-energy-data-services",
       "source": "microsoft",
       "path": "microsoft/azure-energy-data-services",
-      "description": "Expert knowledge for Azure Energy Data Services development including troubleshooting, decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when configuring ADME partitions/zones, DDMS APIs, large file workflows, Geospatial CZ on AKS, or OSDU Admin UI, and other Azure Energy Data Services related development tasks. Not for Azure Data Explorer (use azure-data-explorer), Azure Synapse Analytics (use azure-synapse-analytics), Azure Data Factory (use azure-data-factory), Azure Databricks (use azure-databricks)."
+      "description": "Expert knowledge for Azure Energy Data Services development including troubleshooting, decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when configuring ADME metrics/partitioning, choosing tiers, securing auth/ACLs, deploying AKS geospatial, or fixing ingestion logs, and other Azure Energy Data Services related development tasks. Not for Azure Data Explorer (use azure-data-explorer), Azure Synapse Analytics (use azure-synapse-analytics), Azure Data Factory (use azure-data-factory), Azure Databricks (use azure-databricks)."
     },
     {
       "name": "azure-event-grid",
       "source": "microsoft",
       "path": "microsoft/azure-event-grid",
-      "description": "Expert knowledge for Azure Event Grid development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when configuring topics/subscriptions, MQTT broker/clients, webhooks, Event Hubs handlers, or cross-tenant delivery, and other Azure Event Grid related development tasks. Not for Azure Service Bus (use azure-service-bus), Azure Event Hubs (use azure-event-hubs), Azure Notification Hubs (use azure-notification-hubs), Azure Logic Apps (use azure-logic-apps)."
+      "description": "Expert knowledge for Azure Event Grid development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when configuring Event Grid topics/subscriptions, MQTT broker clients, Azure event schemas, webhooks, or Service Bus/Event Hubs integrations, and other Azure Event Grid related development tasks. Not for Azure Service Bus (use azure-service-bus), Azure Event Hubs (use azure-event-hubs), Azure Notification Hubs (use azure-notification-hubs), Azure Logic Apps (use azure-logic-apps)."
     },
     {
       "name": "azure-event-hubs",
       "source": "microsoft",
       "path": "microsoft/azure-event-hubs",
-      "description": "Expert knowledge for Azure Event Hubs development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Kafka-compatible clients, .NET SDKs, Flink/Spark, geo-replication/DR, or Avro Capture with Event Hubs, and other Azure Event Hubs related development tasks. Not for Azure Service Bus (use azure-service-bus), Azure Notification Hubs (use azure-notification-hubs), Azure Event Grid (use azure-event-grid), Azure Stream Analytics (use azure-stream-analytics)."
+      "description": "Expert knowledge for Azure Event Hubs development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Kafka-compatible clients, .NET SDKs, Flink/Spark, geo-replication, or Avro capture with Azure Event Hubs, and other Azure Event Hubs related development tasks. Not for Azure Service Bus (use azure-service-bus), Azure Event Grid (use azure-event-grid), Azure Notification Hubs (use azure-notification-hubs), Azure Stream Analytics (use azure-stream-analytics)."
     },
     {
       "name": "azure-expressroute",
       "source": "microsoft",
       "path": "microsoft/azure-expressroute",
-      "description": "Expert knowledge for Azure ExpressRoute development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing ExpressRoute circuits, gateways, BGP routing, Global Reach, NAT/encryption, or ARM/Terraform automation, and other Azure ExpressRoute related development tasks. Not for Azure Virtual WAN (use azure-virtual-wan), Azure VPN Gateway (use azure-vpn-gateway), Azure Virtual Network (use azure-virtual-network), Azure Internet Peering (use azure-internet-peering)."
+      "description": "Expert knowledge for Azure ExpressRoute development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring circuits/gateways, BGP/peering (incl. IPv6), Global Reach, QoS for voice, or ExpressRoute VPN, and other Azure ExpressRoute related development tasks. Not for Azure Internet Peering (use azure-internet-peering), Azure Peering Service (use azure-peering-service), Azure Virtual WAN (use azure-virtual-wan), Azure VPN Gateway (use azure-vpn-gateway)."
     },
     {
       "name": "azure-extended-zones",
       "source": "microsoft",
       "path": "microsoft/azure-extended-zones",
-      "description": "Expert knowledge for Azure Extended Zones development including decision making, limits & quotas, security, and configuration. Use when setting up Extended Zones access, Azure Policy, Firewall, CMK disk encryption, or quota increase workflows, and other Azure Extended Zones related development tasks. Not for Azure Reliability (use azure-reliability), Azure Resiliency (use azure-resiliency), Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan)."
+      "description": "Expert knowledge for Azure Extended Zones development including limits & quotas, security, and configuration. Use when registering subs, authoring Azure Policy, deploying Azure Firewall, CMK disk encryption, or quota requests, and other Azure Extended Zones related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan), Azure Traffic Manager (use azure-traffic-manager)."
     },
     {
       "name": "azure-external-attack-surface-management",
@@ -1244,19 +1334,19 @@
       "name": "azure-files",
       "source": "microsoft",
       "path": "microsoft/azure-files",
-      "description": "Expert knowledge for Azure Files development including best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring Azure File shares/File Sync, SMB/NFS auth, DR/failover, performance tiers, or RAG app integrations, and other Azure Files related development tasks. Not for Azure Blob Storage (use azure-blob-storage), Azure NetApp Files (use azure-netapp-files), Azure Table Storage (use azure-table-storage), Azure Queue Storage (use azure-queue-storage)."
+      "description": "Expert knowledge for Azure Files development including best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing SMB/NFS shares, Azure File Sync, cloud tiering, DR/VDI profiles, or RAG apps over Azure Files, and other Azure Files related development tasks. Not for Azure Blob Storage (use azure-blob-storage), Azure NetApp Files (use azure-netapp-files), Azure Managed Lustre (use azure-managed-lustre), Azure Table Storage (use azure-table-storage)."
     },
     {
       "name": "azure-firewall",
       "source": "microsoft",
       "path": "microsoft/azure-firewall",
-      "description": "Expert knowledge for Azure Firewall development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring TLS inspection, DNAT/SNAT, DNS proxy, hub-and-spoke routing, or Azure Firewall Premium deployments, and other Azure Firewall related development tasks. Not for Azure Web Application Firewall (use azure-web-application-firewall), Azure DDos Protection (use azure-ddos-protection), Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan)."
+      "description": "Expert knowledge for Azure Firewall development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring TLS inspection, DNAT/SNAT rules, DNS proxy, hub-and-spoke routing, or Premium firewall deployments, and other Azure Firewall related development tasks. Not for Azure Firewall Manager (use azure-firewall-manager), Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan), Azure Web Application Firewall (use azure-web-application-firewall)."
     },
     {
       "name": "azure-firewall-manager",
       "source": "microsoft",
       "path": "microsoft/azure-firewall-manager",
-      "description": "Expert knowledge for Azure Firewall Manager development including best practices, decision making, security, and configuration. Use when managing DDoS plans, WAF policies, DNS proxy/FQDN rules, IP Groups, or secured virtual hub vs VNet, and other Azure Firewall Manager related development tasks. Not for Azure Firewall (use azure-firewall), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Network Function Manager (use azure-network-function-manager), Azure Networking (use azure-networking)."
+      "description": "Expert knowledge for Azure Firewall Manager development including best practices, decision making, security, and configuration. Use when configuring DDoS plans, DNS proxy, FQDN/IP groups, WAF policies, or secured virtual hubs, and other Azure Firewall Manager related development tasks. Not for Azure Firewall (use azure-firewall), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Network Function Manager (use azure-network-function-manager), Azure Web Application Firewall (use azure-web-application-firewall)."
     },
     {
       "name": "azure-firmware-analysis",
@@ -1274,13 +1364,13 @@
       "name": "azure-front-door",
       "source": "microsoft",
       "path": "microsoft/azure-front-door",
-      "description": "Expert knowledge for Azure Front Door development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring apex domains, rules engine, caching/CDN, Private Link origins, or TLS/cert management in Front Door, and other Azure Front Door related development tasks. Not for Azure Application Gateway (use azure-application-gateway), Azure Traffic Manager (use azure-traffic-manager), Azure Load Balancer (use azure-load-balancer), Azure Web Application Firewall (use azure-web-application-firewall)."
+      "description": "Expert knowledge for Azure Front Door development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring apex domains, rules engine, caching/streaming, WAF/TLS, or migrating Classic to Standard/Premium, and other Azure Front Door related development tasks. Not for Azure Application Gateway (use azure-application-gateway), Azure Load Balancer (use azure-load-balancer), Azure Traffic Manager (use azure-traffic-manager), Azure Web Application Firewall (use azure-web-application-firewall)."
     },
     {
       "name": "azure-functions",
       "source": "microsoft",
       "path": "microsoft/azure-functions",
-      "description": "Expert knowledge for Azure Functions development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Functions with HTTP/storage/queues, Event Hubs/Service Bus, Durable workflows, containers, or Flex plans, and other Azure Functions related development tasks. Not for Azure App Service (use azure-app-service), Azure Logic Apps (use azure-logic-apps), Azure Container Apps (use azure-container-apps), Azure Kubernetes Service (AKS) (use azure-kubernetes-service)."
+      "description": "Expert knowledge for Azure Functions development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building trigger/binding workflows, Durable Functions, Linux/container apps, CI/CD pipelines, or Flex/Consumption plans, and other Azure Functions related development tasks. Not for Azure App Service (use azure-app-service), Azure Logic Apps (use azure-logic-apps), Azure Container Apps (use azure-container-apps), Azure Kubernetes Service (AKS) (use azure-kubernetes-service)."
     },
     {
       "name": "azure-hdinsight",
@@ -1292,13 +1382,13 @@
       "name": "azure-health-bot",
       "source": "microsoft",
       "path": "microsoft/azure-health-bot",
-      "description": "Expert knowledge for Azure Health Bot development including best practices, decision making, security, configuration, and integrations & coding patterns. Use when wiring Health Bot to channels/APIs, configuring scenarios, securing data/consent, or estimating usage costs, and other Azure Health Bot related development tasks. Not for Azure AI Bot Service (use azure-bot-service), Azure Communication Services (use azure-communication-services), Azure Health Data Services (use azure-health-data-services)."
+      "description": "Expert knowledge for Azure Health Bot development including best practices, security, configuration, and integrations & coding patterns. Use when wiring Teams/SMS/WhatsApp channels, embedding web chat, calling external APIs, configuring handoff, or enforcing consent, and other Azure Health Bot related development tasks. Not for Azure AI Bot Service (use azure-bot-service), Azure Communication Services (use azure-communication-services), Azure Functions (use azure-functions)."
     },
     {
       "name": "azure-health-data-services",
       "source": "microsoft",
       "path": "microsoft/azure-health-data-services",
-      "description": "Expert knowledge for Azure Health Data Services development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using FHIR/DICOM APIs, de-identification, bulk import/export, eventing, or Synapse/Fabric integrations, and other Azure Health Data Services related development tasks. Not for Azure Health Bot (use azure-health-bot), Azure Data Factory (use azure-data-factory), Azure Synapse Analytics (use azure-synapse-analytics), Azure Machine Learning (use azure-machine-learning)."
+      "description": "Expert knowledge for Azure Health Data Services development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using FHIR/DICOM APIs, bulk import/export, de-identification, Synapse/ADF pipelines, or SMART on FHIR, and other Azure Health Data Services related development tasks. Not for Azure Health Bot (use azure-health-bot), Azure Data Factory (use azure-data-factory), Azure Synapse Analytics (use azure-synapse-analytics), Azure Machine Learning (use azure-machine-learning)."
     },
     {
       "name": "azure-hpc-cache",
@@ -1340,7 +1430,7 @@
       "name": "azure-iot",
       "source": "microsoft",
       "path": "microsoft/azure-iot",
-      "description": "Expert knowledge for Azure IoT development including decision making. Use when designing Azure IoT device registries, namespaces, schema registries, data models, or device metadata structures, and other Azure IoT related development tasks. Not for Azure IoT Central (use azure-iot-central), Azure IoT Edge (use azure-iot-edge), Azure IoT Hub (use azure-iot-hub), Azure Defender For Iot (use azure-defender-for-iot)."
+      "description": "Expert knowledge for Azure IoT development including decision making, architecture & design patterns, and configuration. Use when managing Azure Device Registry X.509 PKI, ADR policies, IoT Hub cert revocation, or device schema namespaces, and other Azure IoT related development tasks. Not for Azure IoT Central (use azure-iot-central), Azure IoT Edge (use azure-iot-edge), Azure IoT Hub (use azure-iot-hub), Azure Defender For Iot (use azure-defender-for-iot)."
     },
     {
       "name": "azure-iot-central",
@@ -1358,25 +1448,25 @@
       "name": "azure-iot-hub",
       "source": "microsoft",
       "path": "microsoft/azure-iot-hub",
-      "description": "Expert knowledge for Azure IoT Hub development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using IoT Hub/DPS device provisioning, twins/methods/jobs, routing/endpoints, Device Update, or Cosmos DB sinks, and other Azure IoT Hub related development tasks. Not for Azure IoT (use azure-iot), Azure IoT Central (use azure-iot-central), Azure IoT Edge (use azure-iot-edge), Azure Defender For Iot (use azure-defender-for-iot)."
+      "description": "Expert knowledge for Azure IoT Hub development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using IoT Hub/DPS enrollment, device twins/methods, message routing, Device Update, or Cosmos DB event storage, and other Azure IoT Hub related development tasks. Not for Azure IoT (use azure-iot), Azure IoT Central (use azure-iot-central), Azure IoT Edge (use azure-iot-edge), Azure IoT Operations (use azure-iot-operations)."
     },
     {
       "name": "azure-iot-operations",
       "source": "microsoft",
       "path": "microsoft/azure-iot-operations",
-      "description": "Expert knowledge for Azure IoT Operations development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building MQTT data flows, WASM transforms, Dapr/OPC UA integrations, ONNX edge inference, or camera-to-Blob pipelines, and other Azure IoT Operations related development tasks. Not for Azure IoT (use azure-iot), Azure IoT Hub (use azure-iot-hub), Azure IoT Edge (use azure-iot-edge), Azure IoT Central (use azure-iot-central)."
+      "description": "Expert knowledge for Azure IoT Operations development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building MQTT data flows, OPC UA integrations, WASM transforms, ONNX edge inference, or ISA‑95 namespaces, and other Azure IoT Operations related development tasks. Not for Azure IoT (use azure-iot), Azure IoT Hub (use azure-iot-hub), Azure IoT Edge (use azure-iot-edge), Azure IoT Central (use azure-iot-central)."
     },
     {
       "name": "azure-key-vault",
       "source": "microsoft",
       "path": "microsoft/azure-key-vault",
-      "description": "Expert knowledge for Azure Key Vault development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing Key Vault secrets/keys, Managed HSM, Private Link, Event Grid, or key rotation/BYOK workflows, and other Azure Key Vault related development tasks. Not for Azure Dedicated HSM (use azure-dedicated-hsm), Azure Cloud Hsm (use azure-cloud-hsm), Azure Payment Hsm (use azure-payment-hsm), Azure Information Protection (use azure-information-protection)."
+      "description": "Expert knowledge for Azure Key Vault development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing secrets/keys, Managed HSM, Private Link, RBAC access, or Event Grid/Logic Apps integrations, and other Azure Key Vault related development tasks. Not for Azure Dedicated HSM (use azure-dedicated-hsm), Azure Cloud Hsm (use azure-cloud-hsm), Azure Payment Hsm (use azure-payment-hsm), Azure Information Protection (use azure-information-protection)."
     },
     {
       "name": "azure-kubernetes-service",
       "source": "microsoft",
       "path": "microsoft/azure-kubernetes-service",
-      "description": "Expert knowledge for Azure Kubernetes Service (AKS) development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when working with AKS Fleet, Entra/RBAC, KEDA/Dapr, AI/LLM or Wasm workloads, or multi-region HA clusters, and other Azure Kubernetes Service (AKS) related development tasks. Not for Azure Container Apps (use azure-container-apps), Azure Container Instances (use azure-container-instances), Azure Red Hat OpenShift (use azure-redhat-openshift), Azure Virtual Machine Scale Sets (use azure-vm-scalesets)."
+      "description": "Expert knowledge for Azure Kubernetes Service (AKS) development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing AKS networking/storage, Fleet multi-cluster, KEDA autoscaling, Istio meshes, or AI/GPU workloads, and other Azure Kubernetes Service (AKS) related development tasks. Not for Azure Container Apps (use azure-container-apps), Azure Container Instances (use azure-container-instances), Azure Red Hat OpenShift (use azure-redhat-openshift), Azure Service Fabric (use azure-service-fabric)."
     },
     {
       "name": "azure-lab-services",
@@ -1388,7 +1478,7 @@
       "name": "azure-language-service",
       "source": "microsoft",
       "path": "microsoft/azure-language-service",
-      "description": "Expert knowledge for Azure AI Language development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building CLU apps, custom NER, sentiment/key phrase analysis, CQA bots, or health/FHIR text pipelines, and other Azure AI Language related development tasks. Not for Azure AI Search (use azure-cognitive-search), Azure AI Document Intelligence (use azure-document-intelligence), Azure AI Speech (use azure-speech), Azure Translator (use azure-translator)."
+      "description": "Expert knowledge for Azure AI Language development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building CLU, custom NER, sentiment, PII redaction, or conversational question answering solutions, and other Azure AI Language related development tasks. Not for Azure AI Search (use azure-cognitive-search), Azure AI Speech (use azure-speech), Azure Translator (use azure-translator), Azure AI Immersive Reader (use azure-immersive-reader)."
     },
     {
       "name": "azure-large-instances",
@@ -1406,25 +1496,25 @@
       "name": "azure-load-balancer",
       "source": "microsoft",
       "path": "microsoft/azure-load-balancer",
-      "description": "Expert knowledge for Azure Load Balancer development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring health probes/rules, SNAT/outbound flows, IMDS/Monitor APIs, NAT v1→v2, or DDoS/NSG protection, and other Azure Load Balancer related development tasks. Not for Azure Application Gateway (use azure-application-gateway), Azure Front Door (use azure-front-door), Azure Traffic Manager (use azure-traffic-manager), Azure Virtual Network (use azure-virtual-network)."
+      "description": "Expert knowledge for Azure Load Balancer development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring LB rules/probes, SNAT/outbound, VMSS backends, IMDS/metrics APIs, or DDoS/NSG protection, and other Azure Load Balancer related development tasks. Not for Azure Application Gateway (use azure-application-gateway), Azure Front Door (use azure-front-door), Azure Traffic Manager (use azure-traffic-manager), Azure Virtual Network (use azure-virtual-network)."
     },
     {
       "name": "azure-local",
       "source": "microsoft",
       "path": "microsoft/azure-local",
-      "description": "Expert knowledge for Azure Local development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning Azure Local/Stack HCI racks, SDN topologies, Arc VMs, disconnected ops, or VM/AKS migrations, and other Azure Local related development tasks. Not for Azure Stack Edge (use azure-stack-edge), Azure Virtual Machines (use azure-virtual-machines), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Arc (use azure-arc)."
+      "description": "Expert knowledge for Azure Local development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning Azure Local SDN/rack designs, Arc VM deployments, disconnected ops, GPU configs, or multi-rack clusters, and other Azure Local related development tasks. Not for Microsoft Foundry Local (use microsoft-foundry-local), Azure Stack Edge (use azure-stack-edge), Azure Virtual Machines (use azure-virtual-machines), Azure Kubernetes Service (AKS) (use azure-kubernetes-service)."
     },
     {
       "name": "azure-logic-apps",
       "source": "microsoft",
       "path": "microsoft/azure-logic-apps",
-      "description": "Expert knowledge for Azure Logic Apps development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Logic Apps with SAP/B2B/HL7, private endpoints, DevOps CI/CD, hybrid/on-prem, or DR patterns, and other Azure Logic Apps related development tasks. Not for Azure Functions (use azure-functions), Azure Service Bus (use azure-service-bus), Azure Event Grid (use azure-event-grid), Azure API Management (use azure-api-management)."
+      "description": "Expert knowledge for Azure Logic Apps development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Logic Apps with SAP/B2B connectors, custom connectors, code-first workflows, DR patterns, or CI/CD deployments, and other Azure Logic Apps related development tasks. Not for Azure Functions (use azure-functions), Azure App Service (use azure-app-service), Azure Service Bus (use azure-service-bus), Azure Event Grid (use azure-event-grid)."
     },
     {
       "name": "azure-machine-learning",
       "source": "microsoft",
       "path": "microsoft/azure-machine-learning",
-      "description": "Expert knowledge for Azure Machine Learning development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using Azure ML jobs/endpoints, AutoML, registries, feature stores, or prompt flow/LLM tools, and other Azure Machine Learning related development tasks. Not for Azure Databricks (use azure-databricks), Azure Synapse Analytics (use azure-synapse-analytics), Azure Data Science Virtual Machines (use azure-data-science-vm), Azure HDInsight (use azure-hdinsight)."
+      "description": "Expert knowledge for Azure Machine Learning development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using AutoML, managed online endpoints, Prompt Flow/RAG, feature store, or MLflow integrations, and other Azure Machine Learning related development tasks. Not for Azure Databricks (use azure-databricks), Azure Synapse Analytics (use azure-synapse-analytics), Azure Data Science Virtual Machines (use azure-data-science-vm), Azure HDInsight (use azure-hdinsight)."
     },
     {
       "name": "azure-managed-applications",
@@ -1436,19 +1526,19 @@
       "name": "azure-managed-grafana",
       "source": "microsoft",
       "path": "microsoft/azure-managed-grafana",
-      "description": "Expert knowledge for Azure Managed Grafana development including troubleshooting, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when integrating Azure Managed Grafana with Prometheus/AKS, Azure Data Explorer, Entra auth, private endpoints, or HA deployments, and other Azure Managed Grafana related development tasks. Not for Azure Monitor (use azure-monitor), Azure App Service (use azure-app-service), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Virtual Machines (use azure-virtual-machines)."
+      "description": "Expert knowledge for Azure Managed Grafana development including troubleshooting, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when integrating AI/Prometheus/ADX data, configuring workspaces, securing access, deploying HA, or fixing connectivity, and other Azure Managed Grafana related development tasks. Not for Azure Monitor (use azure-monitor), Azure App Service (use azure-app-service), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Virtual Machines (use azure-virtual-machines)."
     },
     {
       "name": "azure-managed-lustre",
       "source": "microsoft",
       "path": "microsoft/azure-managed-lustre",
-      "description": "Expert knowledge for Azure Managed Lustre development including troubleshooting, best practices, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when deploying AML with Blob sync, AKS CSI, Terraform, quotas, or Azure Monitor metrics/alerts, and other Azure Managed Lustre related development tasks. Not for Azure HPC Cache (use azure-hpc-cache), Azure NetApp Files (use azure-netapp-files), Azure Virtual Machines (use azure-virtual-machines)."
+      "description": "Expert knowledge for Azure Managed Lustre development including troubleshooting, best practices, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when deploying AML with AKS/Linux, Blob import/export, AzCopy POSIX migration, quotas, or Azure Monitor alerts, and other Azure Managed Lustre related development tasks. Not for Azure HPC Cache (use azure-hpc-cache), Azure NetApp Files (use azure-netapp-files), Azure Virtual Machines (use azure-virtual-machines)."
     },
     {
       "name": "azure-managed-redis",
       "source": "microsoft",
       "path": "microsoft/azure-managed-redis",
-      "description": "Expert knowledge for Azure Managed Redis development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when using Entra-secured clients, clustering/sharding, persistence, geo-replication, or Private Link with Azure Managed Redis, and other Azure Managed Redis related development tasks. Not for Azure Cache for Redis (use azure-cache-redis)."
+      "description": "Expert knowledge for Azure Managed Redis development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when using Azure Managed Redis clusters, sharding, persistence, geo-replication, Entra auth, or Private Link, and other Azure Managed Redis related development tasks. Not for Azure Cache for Redis (use azure-cache-redis)."
     },
     {
       "name": "azure-maps",
@@ -1466,7 +1556,7 @@
       "name": "azure-microsoft-discovery",
       "source": "microsoft",
       "path": "microsoft/azure-microsoft-discovery",
-      "description": "Expert knowledge for Azure Microsoft Discovery development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Discovery workspaces, shared sessions, supercomputer jobs, ACR tool images, or Log Analytics queries, and other Azure Microsoft Discovery related development tasks. Not for Azure Resource Graph (use azure-resource-graph), Azure Portal (use azure-portal), Azure Monitor (use azure-monitor), Azure Policy (use azure-policy)."
+      "description": "Expert knowledge for Azure Microsoft Discovery development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring Discovery workspaces, supercomputers, ACR-based tools, REST job APIs, or shared sessions, and other Azure Microsoft Discovery related development tasks. Not for Azure Portal (use azure-portal), Azure Resource Graph (use azure-resource-graph), Azure Monitor (use azure-monitor), Azure Cost Management (use azure-cost-management)."
     },
     {
       "name": "azure-migrate",
@@ -1478,19 +1568,19 @@
       "name": "azure-monitor",
       "source": "microsoft",
       "path": "microsoft/azure-monitor",
-      "description": "Expert knowledge for Azure Monitor development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring agents/DCRs, alerts/autoscale, Application Insights, KQL APIs, or Prometheus/OTel pipelines, and other Azure Monitor related development tasks. Not for Azure Network Watcher (use azure-network-watcher), Azure Service Health (use azure-service-health), Azure Defender For Cloud (use azure-defender-for-cloud), Azure Cost Management (use azure-cost-management)."
+      "description": "Expert knowledge for Azure Monitor development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when working with Log Analytics, AMA/DCR pipelines, alerts/ITSM, Application Insights, or Prometheus/OpenTelemetry, and other Azure Monitor related development tasks. Not for Azure Network Watcher (use azure-network-watcher), Azure Service Health (use azure-service-health), Azure Defender For Cloud (use azure-defender-for-cloud), Azure Cost Management (use azure-cost-management)."
     },
     {
       "name": "azure-nat-gateway",
       "source": "microsoft",
       "path": "microsoft/azure-nat-gateway",
-      "description": "Expert knowledge for Azure NAT Gateway development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and deployment. Use when managing SNAT ports, flow logs, outbound IPs, NAT Gateway V2 deployments, or Azure Firewall egress patterns, and other Azure NAT Gateway related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Load Balancer (use azure-load-balancer), Azure Firewall (use azure-firewall), Azure Virtual WAN (use azure-virtual-wan)."
+      "description": "Expert knowledge for Azure NAT Gateway development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and deployment. Use when managing SNAT ports, outbound IPs, flow logs/metrics, Standard vs StandardV2, or Azure Firewall egress, and other Azure NAT Gateway related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Load Balancer (use azure-load-balancer), Azure Virtual WAN (use azure-virtual-wan), Azure VPN Gateway (use azure-vpn-gateway)."
     },
     {
       "name": "azure-netapp-files",
       "source": "microsoft",
       "path": "microsoft/azure-netapp-files",
-      "description": "Expert knowledge for Azure NetApp Files development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when deploying SAP HANA/Oracle on ANF, AVS datastores, cross-region replication, AzAcSnap, or ANF REST/PowerShell APIs, and other Azure NetApp Files related development tasks. Not for Azure Files (use azure-files), Azure Blob Storage (use azure-blob-storage), Azure Managed Lustre (use azure-managed-lustre), Azure HPC Cache (use azure-hpc-cache)."
+      "description": "Expert knowledge for Azure NetApp Files development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when deploying ANF for SAP HANA/Oracle, AVS datastores, CRR, AzAcSnap, or NFS/SMB dual‑protocol volumes, and other Azure NetApp Files related development tasks. Not for Azure Files (use azure-files), Azure Blob Storage (use azure-blob-storage), Azure Elastic SAN (use azure-elastic-san), Azure Managed Lustre (use azure-managed-lustre)."
     },
     {
       "name": "azure-network-function-manager",
@@ -1502,13 +1592,13 @@
       "name": "azure-network-watcher",
       "source": "microsoft",
       "path": "microsoft/azure-network-watcher",
-      "description": "Expert knowledge for Azure Network Watcher development including troubleshooting, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when configuring Connection Monitor, NSG/VNet flow logs, packet capture, Traffic Analytics, or Sentinel integrations, and other Azure Network Watcher related development tasks. Not for Azure Monitor (use azure-monitor), Azure Networking (use azure-networking), Azure Virtual Network (use azure-virtual-network), Azure Firewall (use azure-firewall)."
+      "description": "Expert knowledge for Azure Network Watcher development including troubleshooting, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing NSG/VNet flow logs, Traffic Analytics, Connection Monitor migration, packet capture, or Sentinel integration, and other Azure Network Watcher related development tasks. Not for Azure Monitor (use azure-monitor), Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Networking (use azure-networking)."
     },
     {
       "name": "azure-networking",
       "source": "microsoft",
       "path": "microsoft/azure-networking",
-      "description": "Expert knowledge for Azure Networking development including troubleshooting, decision making, architecture & design patterns, limits & quotas, security, and configuration. Use when designing hub-spoke/VWAN VNets, planning IP ranges, securing with firewalls/NSGs, or using VNet Manager, and other Azure Networking related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Virtual WAN (use azure-virtual-wan), Azure Network Watcher (use azure-network-watcher)."
+      "description": "Expert knowledge for Azure Networking development including troubleshooting, decision making, architecture & design patterns, security, and configuration. Use when designing VNets, hub-spoke/Virtual WAN, Azure Firewall/DDoS, NSG/ASG rules, or private DNS, and other Azure Networking related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Virtual WAN (use azure-virtual-wan), Azure Network Watcher (use azure-network-watcher)."
     },
     {
       "name": "azure-notification-hubs",
@@ -1526,7 +1616,7 @@
       "name": "azure-operator-nexus",
       "source": "microsoft",
       "path": "microsoft/azure-operator-nexus",
-      "description": "Expert knowledge for Azure Operator Nexus development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing Nexus clusters, fabric ACL/BGP, secure VM connectivity, NPB TAP rules, or near‑edge storage, and other Azure Operator Nexus related development tasks. Not for Azure Network Function Manager (use azure-network-function-manager), Azure Networking (use azure-networking), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Operator Insights (use azure-operator-insights)."
+      "description": "Expert knowledge for Azure Operator Nexus development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing Nexus clusters, fabric routing/QoS, isolation domains, BGP/VRF, or Network Packet Broker TAP rules, and other Azure Operator Nexus related development tasks. Not for Azure Network Function Manager (use azure-network-function-manager), Azure Operator Insights (use azure-operator-insights), Azure Operator Service Manager (use azure-operator-service-manager), Azure Networking (use azure-networking)."
     },
     {
       "name": "azure-operator-service-manager",
@@ -1574,7 +1664,7 @@
       "name": "azure-pipelines",
       "source": "microsoft",
       "path": "microsoft/azure-pipelines",
-      "description": "Expert knowledge for Azure Pipelines development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring YAML pipelines, agents, service connections, Key Vault secrets, or Azure Web App/Kubernetes deployments, and other Azure Pipelines related development tasks. Not for Azure DevOps (use azure-devops), Azure Boards (use azure-boards), Azure Repos (use azure-repos), Azure Test Plans (use azure-test-plans)."
+      "description": "Expert knowledge for Azure Pipelines development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring YAML pipelines, agents, service connections, Key Vault secrets, or deploying to Azure Web Apps/Kubernetes, and other Azure Pipelines related development tasks. Not for Azure DevOps (use azure-devops), Azure Boards (use azure-boards), Azure Repos (use azure-repos), Azure Test Plans (use azure-test-plans)."
     },
     {
       "name": "azure-planetary-computer-pro",
@@ -1592,7 +1682,7 @@
       "name": "azure-policy",
       "source": "microsoft",
       "path": "microsoft/azure-policy",
-      "description": "Expert knowledge for Azure Policy development including troubleshooting, best practices, decision making, security, configuration, integrations & coding patterns, and deployment. Use when authoring Machine Configuration packages, deploying via ARM/Bicep/Terraform, mapping to CIS/NIST/ISO, querying compliance with Resource Graph, or migrating from DSC/Automanage, and other Azure Policy related development tasks. Not for Azure Blueprints (use azure-blueprints), Azure Resource Manager (use azure-resource-manager), Azure Role-based access control (use azure-rbac), Azure Security (use azure-security)."
+      "description": "Expert knowledge for Azure Policy development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when authoring policy JSON, deploying via ARM/Bicep/Terraform, enforcing baselines, automating with DevOps, or using Machine Configuration, and other Azure Policy related development tasks. Not for Azure Blueprints (use azure-blueprints), Azure Resource Manager (use azure-resource-manager), Azure Role-based access control (use azure-rbac), Azure Security (use azure-security)."
     },
     {
       "name": "azure-portal",
@@ -1604,7 +1694,7 @@
       "name": "azure-private-link",
       "source": "microsoft",
       "path": "microsoft/azure-private-link",
-      "description": "Expert knowledge for Azure Private Link development including best practices, decision making, architecture & design patterns, limits & quotas, security, and configuration. Use when designing Private Endpoints, NSP cross-perimeter links, DNS/SNAT routing, Azure Firewall traffic control, or Azure Private Resolver setups, and other Azure Private Link related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure VPN Gateway (use azure-vpn-gateway), Azure ExpressRoute (use azure-expressroute)."
+      "description": "Expert knowledge for Azure Private Link development including best practices, decision making, architecture & design patterns, limits & quotas, security, and configuration. Use when configuring Private Endpoints, DNS/Private Resolver, NSP perimeters, Azure Firewall traffic, or IPv6/SNAT, and other Azure Private Link related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure VPN Gateway (use azure-vpn-gateway), Azure ExpressRoute (use azure-expressroute)."
     },
     {
       "name": "azure-quantum",
@@ -1634,7 +1724,7 @@
       "name": "azure-redhat-openshift",
       "source": "microsoft",
       "path": "microsoft/azure-redhat-openshift",
-      "description": "Expert knowledge for Azure Red Hat OpenShift development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when sizing ARO clusters, configuring networking/storage, securing with Entra/Front Door, or integrating GPUs/NetApp, and other Azure Red Hat OpenShift related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Container Apps (use azure-container-apps), Azure Virtual Machines (use azure-virtual-machines), Azure Arc (use azure-arc)."
+      "description": "Expert knowledge for Azure Red Hat OpenShift development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing ARO clusters, configuring networking/storage, securing with Entra/Front Door, or integrating GPUs/Key Vault, and other Azure Red Hat OpenShift related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Container Apps (use azure-container-apps), Azure Virtual Machines (use azure-virtual-machines)."
     },
     {
       "name": "azure-relay",
@@ -1652,7 +1742,7 @@
       "name": "azure-repos",
       "source": "microsoft",
       "path": "microsoft/azure-repos",
-      "description": "Expert knowledge for Azure Repos development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing Git/TFVC repos, branch policies/PR checks, Copilot/security scans, CodeQL/GHAS, or TFVC branching, and other Azure Repos related development tasks. Not for Azure DevOps (use azure-devops), Azure Pipelines (use azure-pipelines), Azure Artifacts (use azure-artifacts), Azure Boards (use azure-boards)."
+      "description": "Expert knowledge for Azure Repos development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing Git/TFVC repos, branch policies, PR checks, CodeQL/GHAS scans, or auth/permissions in Azure Repos, and other Azure Repos related development tasks. Not for Azure DevOps (use azure-devops), Azure Pipelines (use azure-pipelines), Azure Artifacts (use azure-artifacts), Azure Boards (use azure-boards)."
     },
     {
       "name": "azure-resiliency",
@@ -1670,49 +1760,49 @@
       "name": "azure-resource-manager",
       "source": "microsoft",
       "path": "microsoft/azure-resource-manager",
-      "description": "Expert knowledge for Azure Resource Manager development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when authoring Bicep/ARM templates, using CLI/PowerShell/REST, Key Vault, AKS, stacks/registries, or multi-scope deployments, and other Azure Resource Manager related development tasks. Not for Azure Blueprints (use azure-blueprints), Azure Policy (use azure-policy), Azure Resource Graph (use azure-resource-graph), Azure Portal (use azure-portal)."
+      "description": "Expert knowledge for Azure Resource Manager development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when authoring Bicep/ARM templates, using CLI/PowerShell/SDKs, Key Vault, stacks/registries, or multi-scope deployments, and other Azure Resource Manager related development tasks. Not for Azure Blueprints (use azure-blueprints), Azure Policy (use azure-policy), Azure Resource Graph (use azure-resource-graph), Azure Portal (use azure-portal)."
     },
     {
       "name": "azure-route-server",
       "source": "microsoft",
       "path": "microsoft/azure-route-server",
-      "description": "Expert knowledge for Azure Route Server development including troubleshooting, best practices, architecture & design patterns, limits & quotas, security, and configuration. Use when designing hub-spoke or dual-homed topologies, configuring BGP peers/policies, tuning routing preferences, planning Route Server scale, or troubleshooting BGP/route propagation, and other Azure Route Server related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Virtual WAN (use azure-virtual-wan), Azure VPN Gateway (use azure-vpn-gateway)."
+      "description": "Expert knowledge for Azure Route Server development including troubleshooting, best practices, architecture & design patterns, limits & quotas, security, and configuration. Use when designing hub-spoke or NVA topologies, configuring BGP peers/route maps, tuning routing prefs, or fixing BGP issues, and other Azure Route Server related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Virtual WAN (use azure-virtual-wan), Azure VPN Gateway (use azure-vpn-gateway)."
     },
     {
       "name": "azure-sap",
       "source": "microsoft",
       "path": "microsoft/azure-sap",
-      "description": "Expert knowledge for SAP HANA on Azure Large Instances development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when deploying HANA LIs, S/4HANA/NetWeaver, Azure Monitor/ACSS, HA/DR clusters, or multi-region SAP RISE connectivity, and other SAP HANA on Azure Large Instances related development tasks. Not for Azure Large Instances (use azure-large-instances), Azure Virtual Machines (use azure-virtual-machines), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines)."
+      "description": "Expert knowledge for SAP HANA on Azure Large Instances development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when deploying HANA LIs, configuring HA clusters, integrating Azure Monitor, automating CI/CD, or designing multi-region DR, and other SAP HANA on Azure Large Instances related development tasks. Not for Azure Large Instances (use azure-large-instances), Azure Virtual Machines (use azure-virtual-machines), Azure VMware Solution (use azure-vmware-solution)."
     },
     {
       "name": "azure-security",
       "source": "microsoft",
       "path": "microsoft/azure-security",
-      "description": "Expert knowledge for Azure Security development including best practices, decision making, security, configuration, integrations & coding patterns, and deployment. Use when securing Azure containers, Key Vault/HSM keys, firewalls, TLS/certs, or Gov vs commercial deployments, and other Azure Security related development tasks. Not for Azure Defender For Cloud (use azure-defender-for-cloud), Azure Sentinel (use azure-sentinel), Azure Firewall (use azure-firewall), Azure Web Application Firewall (use azure-web-application-firewall)."
+      "description": "Expert knowledge for Azure Security development including best practices, decision making, security, configuration, integrations & coding patterns, and deployment. Use when securing AKS images, CMK encryption, Azure Antimalware, container SBOM signing, or Notation pipelines, and other Azure Security related development tasks. Not for Azure Defender For Cloud (use azure-defender-for-cloud), Azure Sentinel (use azure-sentinel), Azure DDos Protection (use azure-ddos-protection), Azure Web Application Firewall (use azure-web-application-firewall)."
     },
     {
       "name": "azure-sentinel",
       "source": "microsoft",
       "path": "microsoft/azure-sentinel",
-      "description": "Expert knowledge for Azure Sentinel development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring data connectors, ASIM schemas, analytics rules, playbooks/Logic Apps, or KQL/data lake jobs, and other Azure Sentinel related development tasks. Not for Azure Defender For Cloud (use azure-defender-for-cloud), Azure Security (use azure-security), Azure Monitor (use azure-monitor), Azure Network Watcher (use azure-network-watcher)."
+      "description": "Expert knowledge for Azure Sentinel development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring data connectors, KQL analytics, playbooks/Logic Apps, UEBA/Fusion, or multi-tenant Sentinel setups, and other Azure Sentinel related development tasks. Not for Azure Defender For Cloud (use azure-defender-for-cloud), Azure Security (use azure-security), Azure Monitor (use azure-monitor), Azure Network Watcher (use azure-network-watcher)."
     },
     {
       "name": "azure-service-bus",
       "source": "microsoft",
       "path": "microsoft/azure-service-bus",
-      "description": "Expert knowledge for Azure Service Bus development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using queues/topics, sessions/FIFO, JMS/RabbitMQ integration, geo-replication, or Premium high-scale workloads, and other Azure Service Bus related development tasks. Not for Azure Event Hubs (use azure-event-hubs), Azure Relay (use azure-relay), Azure Notification Hubs (use azure-notification-hubs), Azure Web PubSub (use azure-web-pubsub)."
+      "description": "Expert knowledge for Azure Service Bus development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using queues/topics, sessions/FIFO, geo-replication, JMS/RabbitMQ clients, or Premium large messages, and other Azure Service Bus related development tasks. Not for Azure Event Hubs (use azure-event-hubs), Azure Event Grid (use azure-event-grid), Azure Queue Storage (use azure-queue-storage), Azure Relay (use azure-relay)."
     },
     {
       "name": "azure-service-connector",
       "source": "microsoft",
       "path": "microsoft/azure-service-connector",
-      "description": "Expert knowledge for Azure Service Connector development including troubleshooting, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when wiring Azure compute to databases, messaging, storage, AI, or third‑party services via Service Connector, and other Azure Service Connector related development tasks. Not for Azure API Management (use azure-api-management), Azure App Service (use azure-app-service), Azure Functions (use azure-functions), Azure Logic Apps (use azure-logic-apps)."
+      "description": "Expert knowledge for Azure Service Connector development including troubleshooting, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when wiring Azure compute to databases, messaging, storage, AI services, or Azure Cache for Redis via Service Connector, and other Azure Service Connector related development tasks. Not for Azure API Management (use azure-api-management), Azure Functions (use azure-functions), Azure Logic Apps (use azure-logic-apps), Azure App Service (use azure-app-service)."
     },
     {
       "name": "azure-service-fabric",
       "source": "microsoft",
       "path": "microsoft/azure-service-fabric",
-      "description": "Expert knowledge for Azure Service Fabric development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing Service Fabric clusters, Reliable Services/Actors, backup/restore, reverse proxy, or sfctl/PowerShell automation, and other Azure Service Fabric related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Container Apps (use azure-container-apps), Azure Cloud Services (use azure-cloud-services), Azure Virtual Machines (use azure-virtual-machines)."
+      "description": "Expert knowledge for Azure Service Fabric development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing Service Fabric clusters, Reliable Services/Actors, reverse proxy/API gateways, backup/restore, or CI/CD, and other Azure Service Fabric related development tasks. Not for Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Container Apps (use azure-container-apps), Azure App Service (use azure-app-service), Azure Cloud Services (use azure-cloud-services)."
     },
     {
       "name": "azure-service-health",
@@ -1730,19 +1820,19 @@
       "name": "azure-site-recovery",
       "source": "microsoft",
       "path": "microsoft/azure-site-recovery",
-      "description": "Expert knowledge for Azure Site Recovery development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning or automating ASR for Azure VMs, VMware/Hyper-V, physical servers, ExpressRoute, or SQL workloads, and other Azure Site Recovery related development tasks. Not for Azure Backup (use azure-backup), Azure Migrate (use azure-migrate), Azure Virtual Machines (use azure-virtual-machines), Azure Virtual Machine Scale Sets (use azure-vm-scalesets)."
+      "description": "Expert knowledge for Azure Site Recovery development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning ASR for VMware/Hyper-V, Azure VMs, physical servers, ExpressRoute, or multi-tier app DR, and other Azure Site Recovery related development tasks. Not for Azure Backup (use azure-backup), Azure Migrate (use azure-migrate), Azure Virtual Machines (use azure-virtual-machines), Azure Virtual Network (use azure-virtual-network)."
     },
     {
       "name": "azure-sovereign-us",
       "source": "microsoft",
       "path": "microsoft/azure-sovereign-us",
-      "description": "Expert knowledge for Azure US Government development including decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when designing IL5/FedRAMP Gov envs, SACA-based architectures, ASE/DISA CAP deploys, Gov Marketplace, or Entra auth, and other Azure US Government related development tasks. Not for Azure Security (use azure-security), Azure Defender For Cloud (use azure-defender-for-cloud), Azure Policy (use azure-policy), Azure Monitor (use azure-monitor)."
+      "description": "Expert knowledge for Azure US Government development including decision making, architecture & design patterns, security, configuration, integrations & coding patterns, and deployment. Use when using Azure Gov IL5/FedRAMP, SACA patterns, Gov App Service/ASE, Gov Marketplace, or sovereign storage/SQL APIs, and other Azure US Government related development tasks. Not for Azure Networking (use azure-networking), Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan), Azure ExpressRoute (use azure-expressroute)."
     },
     {
       "name": "azure-speech",
       "source": "microsoft",
       "path": "microsoft/azure-speech",
-      "description": "Expert knowledge for Azure AI Speech development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building STT/TTS containers, custom voices, Voice Live apps, SSML workflows, or telephony integrations, and other Azure AI Speech related development tasks. Not for Azure AI Bot Service (use azure-bot-service), Azure Communication Services (use azure-communication-services), Azure AI Immersive Reader (use azure-immersive-reader), Azure Translator (use azure-translator)."
+      "description": "Expert knowledge for Azure AI Speech development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building STT/TTS, custom voices, Voice Live, avatars, or on-prem/containerized speech workloads, and other Azure AI Speech related development tasks. Not for Azure Communication Services (use azure-communication-services), Azure AI Bot Service (use azure-bot-service), Azure Notification Hubs (use azure-notification-hubs)."
     },
     {
       "name": "azure-spring-apps",
@@ -1754,31 +1844,31 @@
       "name": "azure-sql-database",
       "source": "microsoft",
       "path": "microsoft/azure-sql-database",
-      "description": "Expert knowledge for Azure SQL Database development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when choosing Azure SQL tiers, configuring geo-replication, securing with Entra/MI, using Hyperscale, or automating with ARM/Terraform, and other Azure SQL Database related development tasks. Not for Azure Database for MariaDB (use azure-database-mariadb), Azure Database for MySQL (use azure-database-mysql), Azure Database for PostgreSQL (use azure-database-postgresql), Azure SQL Managed Instance (use azure-sql-managed-instance)."
+      "description": "Expert knowledge for Azure SQL Database development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when choosing tiers/HA, tuning performance, configuring geo-replication, serverless/elastic pools, or Hyperscale, and other Azure SQL Database related development tasks. Not for Azure Database for MariaDB (use azure-database-mariadb), Azure Database for MySQL (use azure-database-mysql), Azure Database for PostgreSQL (use azure-database-postgresql), Azure SQL Managed Instance (use azure-sql-managed-instance)."
     },
     {
       "name": "azure-sql-managed-instance",
       "source": "microsoft",
       "path": "microsoft/azure-sql-managed-instance",
-      "description": "Expert knowledge for Azure SQL Managed Instance development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning MI vs SQL options, configuring networking, Entra/TDE security, geo-replication, or app connectivity, and other Azure SQL Managed Instance related development tasks. Not for Azure SQL Database (use azure-sql-database), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines), Azure Database for MySQL (use azure-database-mysql), Azure Database for PostgreSQL (use azure-database-postgresql)."
+      "description": "Expert knowledge for Azure SQL Managed Instance development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when sizing MI tiers/subnets, configuring networking/VNet access, setting up backups/geo-replication, or Entra/KV-based security, and other Azure SQL Managed Instance related development tasks. Not for Azure SQL Database (use azure-sql-database), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines), Azure Database for MySQL (use azure-database-mysql), Azure Database for PostgreSQL (use azure-database-postgresql)."
     },
     {
       "name": "azure-sql-virtual-machines",
       "source": "microsoft",
       "path": "microsoft/azure-sql-virtual-machines",
-      "description": "Expert knowledge for SQL Server on Azure Virtual Machines development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning SQL VM vs Managed Instance, Always On AG/FCI on Azure VMs, HA/DR, storage/tempdb, or Blob backups, and other SQL Server on Azure Virtual Machines related development tasks. Not for Azure SQL Database (use azure-sql-database), Azure SQL Managed Instance (use azure-sql-managed-instance), Azure Virtual Machines (use azure-virtual-machines), Azure Virtual Machine Scale Sets (use azure-vm-scalesets)."
+      "description": "Expert knowledge for SQL Server on Azure Virtual Machines development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when planning SQL VM vs Managed Instance, Always On/FCI HADR, DTU/capacity, AHB licensing, or Blob backups, and other SQL Server on Azure Virtual Machines related development tasks. Not for Azure SQL Database (use azure-sql-database), Azure SQL Managed Instance (use azure-sql-managed-instance), Azure Virtual Machines (use azure-virtual-machines), SAP HANA on Azure Large Instances (use azure-sap)."
     },
     {
       "name": "azure-sre-agent",
       "source": "microsoft",
       "path": "microsoft/azure-sre-agent",
-      "description": "Expert knowledge for Azure Sre Agent development including troubleshooting, best practices, decision making, security, configuration, integrations & coding patterns, and deployment. Use when wiring SRE Agent to Azure DevOps/GitHub, Log Analytics/App Insights, AKS Java workloads, Key Vault, or VNets, and other Azure Sre Agent related development tasks. Not for Azure Monitor (use azure-monitor), Azure Reliability (use azure-reliability), Azure Resiliency (use azure-resiliency), Azure Service Health (use azure-service-health)."
+      "description": "Expert knowledge for Azure Sre Agent development including troubleshooting, best practices, decision making, security, configuration, integrations & coding patterns, and deployment. Use when wiring SRE Agent to Azure DevOps/GitHub, KQL telemetry, AKS Java workloads, IaC deployments, or Azure Monitor, and other Azure Sre Agent related development tasks. Not for Azure Monitor (use azure-monitor), Azure Reliability (use azure-reliability), Azure Resiliency (use azure-resiliency), Azure Service Health (use azure-service-health)."
     },
     {
       "name": "azure-stack-edge",
       "source": "microsoft",
       "path": "microsoft/azure-stack-edge",
-      "description": "Expert knowledge for Azure Stack Edge development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when deploying IoT Edge modules, Kubernetes/GPU apps, DeepStream pipelines, Arc GitOps, or local ARM workloads, and other Azure Stack Edge related development tasks. Not for Azure Data Box (use azure-data-box-family), Azure IoT Edge (use azure-iot-edge), Azure Local (use azure-local), Azure Virtual Machines (use azure-virtual-machines)."
+      "description": "Expert knowledge for Azure Stack Edge development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when deploying IoT Edge modules, GPU/Kubernetes apps, DeepStream pipelines, Arc GitOps, or local ARM workloads, and other Azure Stack Edge related development tasks. Not for Azure Data Box (use azure-data-box-family), Azure IoT Edge (use azure-iot-edge), Azure Local (use azure-local), Azure Kubernetes Service Edge Essentials (use azure-aks-edge-essentials)."
     },
     {
       "name": "azure-static-web-apps",
@@ -1808,19 +1898,19 @@
       "name": "azure-test-plans",
       "source": "microsoft",
       "path": "microsoft/azure-test-plans",
-      "description": "Expert knowledge for Azure Test Plans development including limits & quotas, security, and integrations & coding patterns. Use when configuring test run custom fields, data retention, permissions, access levels, or tcm.exe automation, and other Azure Test Plans related development tasks. Not for Azure DevOps (use azure-devops), Azure Pipelines (use azure-pipelines), Azure App Testing (use azure-app-testing), Azure Boards (use azure-boards)."
+      "description": "Expert knowledge for Azure Test Plans development including limits & quotas, security, and integrations & coding patterns. Use when tuning test retention, configuring access for manual testers, or automating suites via tcm.exe CLI, and other Azure Test Plans related development tasks. Not for Azure DevOps (use azure-devops), Azure Boards (use azure-boards), Azure Pipelines (use azure-pipelines), Azure App Testing (use azure-app-testing)."
     },
     {
       "name": "azure-traffic-manager",
       "source": "microsoft",
       "path": "microsoft/azure-traffic-manager",
-      "description": "Expert knowledge for Azure Traffic Manager development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, and integrations & coding patterns. Use when configuring profiles/endpoints, routing methods, RUM scripts, nested profiles, or Traffic View analytics, and other Azure Traffic Manager related development tasks. Not for Azure Front Door (use azure-front-door), Azure Load Balancer (use azure-load-balancer), Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan)."
+      "description": "Expert knowledge for Azure Traffic Manager development including troubleshooting, best practices, decision making, architecture & design patterns, security, configuration, and integrations & coding patterns. Use when configuring profiles, routing methods, endpoints, RUM, Traffic View, or nested Traffic Manager designs, and other Azure Traffic Manager related development tasks. Not for Azure Front Door (use azure-front-door), Azure Load Balancer (use azure-load-balancer), Azure Application Gateway (use azure-application-gateway), Azure Virtual WAN (use azure-virtual-wan)."
     },
     {
       "name": "azure-translator",
       "source": "microsoft",
       "path": "microsoft/azure-translator",
-      "description": "Expert knowledge for Azure Translator development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when using text/document translation APIs, Custom Translator, glossaries, transliteration, or containers, and other Azure Translator related development tasks. Not for Azure AI Language (use azure-language-service), Azure AI Speech (use azure-speech), Azure AI Immersive Reader (use azure-immersive-reader), Azure AI Search (use azure-cognitive-search)."
+      "description": "Expert knowledge for Azure Translator development including troubleshooting, best practices, decision making, limits & quotas, security, configuration, and integrations & coding patterns. Use when using Translator text/document APIs, containers, Custom Translator models, glossaries, or secure auth/networking, and other Azure Translator related development tasks. Not for Azure AI Language (use azure-language-service), Azure AI Speech (use azure-speech), Azure AI Immersive Reader (use azure-immersive-reader), Azure AI Document Intelligence (use azure-document-intelligence)."
     },
     {
       "name": "azure-update-manager",
@@ -1832,31 +1922,31 @@
       "name": "azure-video-indexer",
       "source": "microsoft",
       "path": "microsoft/azure-video-indexer",
-      "description": "Expert knowledge for Azure AI Video Indexer development including best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when indexing videos, using Video Indexer APIs/widgets, integrating OpenAI, customizing models, or securing access, and other Azure AI Video Indexer related development tasks. Not for Azure AI Vision (use azure-ai-vision), Azure AI Custom Vision (use azure-custom-vision), Azure AI Speech (use azure-speech), Azure AI Search (use azure-cognitive-search)."
+      "description": "Expert knowledge for Azure AI Video Indexer development including best practices, decision making, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when indexing videos, using OpenAI integration, calling Video Indexer APIs, redacting faces, or securing access, and other Azure AI Video Indexer related development tasks. Not for Azure AI Vision (use azure-ai-vision), Azure AI Search (use azure-cognitive-search), Azure Machine Learning (use azure-machine-learning)."
     },
     {
       "name": "azure-virtual-desktop",
       "source": "microsoft",
       "path": "microsoft/azure-virtual-desktop",
-      "description": "Expert knowledge for Azure Virtual Desktop development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing AVD host pools, FSLogix profiles, autoscale, WebRTC/Teams optimization, or secure SSO/MFA, and other Azure Virtual Desktop related development tasks. Not for Azure Virtual Machines (use azure-virtual-machines), Azure Dev Box (use azure-dev-box), Azure Lab Services (use azure-lab-services), Azure VMware Solution (use azure-vmware-solution)."
+      "description": "Expert knowledge for Azure Virtual Desktop development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when managing AVD host pools, autoscale, FSLogix profiles, MSIX App Attach, or Teams multimedia redirection, and other Azure Virtual Desktop related development tasks. Not for Azure Virtual Machines (use azure-virtual-machines), Azure Dev Box (use azure-dev-box), Azure VMware Solution (use azure-vmware-solution)."
     },
     {
       "name": "azure-virtual-machines",
       "source": "microsoft",
       "path": "microsoft/azure-virtual-machines",
-      "description": "Expert knowledge for Azure Virtual Machines development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when working with Azure VM scale sets, HPC/GPU workloads, Oracle on Azure/OCI, Trusted Launch, or VM encryption, and other Azure Virtual Machines related development tasks. Not for Azure Virtual Machine Scale Sets (use azure-vm-scalesets), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines), Azure Data Science Virtual Machines (use azure-data-science-vm), Azure Cloud Services (use azure-cloud-services)."
+      "description": "Expert knowledge for Azure Virtual Machines development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing VM fleets, scale sets, HPC/GPU or Oracle workloads, disk encryption, or cross-region migrations, and other Azure Virtual Machines related development tasks. Not for Azure Cloud Services (use azure-cloud-services), Azure Virtual Machine Scale Sets (use azure-vm-scalesets), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines), Azure Data Science Virtual Machines (use azure-data-science-vm)."
     },
     {
       "name": "azure-virtual-network",
       "source": "microsoft",
       "path": "microsoft/azure-virtual-network",
-      "description": "Expert knowledge for Azure Virtual Network development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and deployment. Use when configuring VNet peering, service endpoints, NSGs, VPN/ExpressRoute gateways, or upgrading Basic to Standard IPs, and other Azure Virtual Network related development tasks. Not for Azure Networking (use azure-networking), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Virtual WAN (use azure-virtual-wan), Azure Firewall (use azure-firewall)."
+      "description": "Expert knowledge for Azure Virtual Network development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, and deployment. Use when configuring VNet peering, NSGs, service endpoints, VPN/ExpressRoute gateways, or Azure Firewall/NAT, and other Azure Virtual Network related development tasks. Not for Azure Networking (use azure-networking), Azure Virtual Network Manager (use azure-virtual-network-manager), Azure Virtual WAN (use azure-virtual-wan), Azure Firewall (use azure-firewall)."
     },
     {
       "name": "azure-virtual-network-manager",
       "source": "microsoft",
       "path": "microsoft/azure-virtual-network-manager",
-      "description": "Expert knowledge for Azure Virtual Network Manager development including troubleshooting, limits & quotas, security, configuration, and integrations & coding patterns. Use when managing IPAM pools, network groups, cross-tenant connectivity, hub-spoke routing, or security admin rules, and other Azure Virtual Network Manager related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan), Azure Firewall Manager (use azure-firewall-manager), Azure Network Watcher (use azure-network-watcher)."
+      "description": "Expert knowledge for Azure Virtual Network Manager development including troubleshooting, best practices, architecture & design patterns, limits & quotas, security, and configuration. Use when managing AVNM network groups/topologies, IPAM pools, connectivity hubs, UDR automation, or security admin rules, and other Azure Virtual Network Manager related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan), Azure Network Watcher (use azure-network-watcher), Azure Networking (use azure-networking)."
     },
     {
       "name": "azure-virtual-wan",
@@ -1868,19 +1958,19 @@
       "name": "azure-vm-scalesets",
       "source": "microsoft",
       "path": "microsoft/azure-vm-scalesets",
-      "description": "Expert knowledge for Azure Virtual Machine Scale Sets development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring VMSS autoscale/standby pools, disk encryption with Key Vault, PPGs, Log Analytics, or rolling upgrades, and other Azure Virtual Machine Scale Sets related development tasks. Not for Azure Virtual Machines (use azure-virtual-machines), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Container Instances (use azure-container-instances), Azure App Service (use azure-app-service)."
+      "description": "Expert knowledge for Azure Virtual Machine Scale Sets development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring autoscale, standby pools, Spot mixes, disk encryption with Key Vault, or PPG-based VMSS deployments, and other Azure Virtual Machine Scale Sets related development tasks. Not for Azure Virtual Machines (use azure-virtual-machines), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines), Azure Kubernetes Service (AKS) (use azure-kubernetes-service), Azure Container Instances (use azure-container-instances)."
     },
     {
       "name": "azure-vmware-solution",
       "source": "microsoft",
       "path": "microsoft/azure-vmware-solution",
-      "description": "Expert knowledge for Azure VMware Solution development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing AVS private clouds, NSX/HCX networking, vSAN clusters, Horizon/VDI, or SQL workloads on AVS, and other Azure VMware Solution related development tasks. Not for Azure Virtual Machines (use azure-virtual-machines), Azure Large Instances (use azure-large-instances), SAP HANA on Azure Large Instances (use azure-sap), Azure Baremetal Infrastructure (use azure-baremetal-infrastructure)."
+      "description": "Expert knowledge for Azure VMware Solution development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring AVS networking/HCX, vSAN/stretched clusters, Horizon/VDI, Cloud Director, or SQL workloads, and other Azure VMware Solution related development tasks. Not for Azure Virtual Machines (use azure-virtual-machines), SQL Server on Azure Virtual Machines (use azure-sql-virtual-machines), Azure Stack Edge (use azure-stack-edge), Azure Baremetal Infrastructure (use azure-baremetal-infrastructure)."
     },
     {
       "name": "azure-vpn-gateway",
       "source": "microsoft",
       "path": "microsoft/azure-vpn-gateway",
-      "description": "Expert knowledge for Azure VPN Gateway development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring S2S/P2S tunnels, BGP routing, IPsec/IKE policies, RADIUS/Entra auth, or VPN over ExpressRoute, and other Azure VPN Gateway related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan), Azure ExpressRoute (use azure-expressroute), Azure Firewall (use azure-firewall)."
+      "description": "Expert knowledge for Azure VPN Gateway development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when designing S2S/P2S VPNs, IPsec/IKE/BGP/NAT configs, zone-redundant gateways, or VPN over ExpressRoute, and other Azure VPN Gateway related development tasks. Not for Azure Virtual Network (use azure-virtual-network), Azure Virtual WAN (use azure-virtual-wan), Azure ExpressRoute (use azure-expressroute), Azure Application Gateway (use azure-application-gateway)."
     },
     {
       "name": "azure-web-application-firewall",
@@ -1892,31 +1982,31 @@
       "name": "azure-web-pubsub",
       "source": "microsoft",
       "path": "microsoft/azure-web-pubsub",
-      "description": "Expert knowledge for Azure Web PubSub development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when using WebSockets/MQTT, Socket.IO, Functions bindings, geo-replication, or Premium autoscale in Web PubSub, and other Azure Web PubSub related development tasks. Not for Azure SignalR Service (use azure-signalr-service), Azure Event Hubs (use azure-event-hubs), Azure Service Bus (use azure-service-bus), Azure Relay (use azure-relay)."
+      "description": "Expert knowledge for Azure Web PubSub development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building WebSocket/MQTT apps, Socket.IO backends, storage-backed chat, geo-replication, or autoscale, and other Azure Web PubSub related development tasks. Not for Azure SignalR Service (use azure-signalr-service), Azure Event Hubs (use azure-event-hubs), Azure Service Bus (use azure-service-bus), Azure Relay (use azure-relay)."
     },
     {
       "name": "azure-well-architected",
       "source": "microsoft",
       "path": "microsoft/azure-well-architected",
-      "description": "Expert guidance for designing, assessing, and optimizing Azure workloads using Azure Well Architected. Covers design review checklists, recommendations, design principles, tradeoffs, service guides, workload patterns, and assessment questions. Use when designing AI, HPC, SaaS, AVD, or mission-critical Azure workloads with WAF-aligned guidance, and other Azure Well Architected related development tasks."
+      "description": "Expert guidance for designing, assessing, and optimizing Azure workloads using Azure Well Architected. Covers design review checklists, recommendations, design principles, tradeoffs, service guides, workload patterns, and assessment questions. Use when designing AI, HPC, SaaS, AVD, AVS, or mission‑critical workloads on Azure, and other Azure Well Architected related development tasks."
     },
     {
       "name": "microsoft-foundry",
       "source": "microsoft",
       "path": "microsoft/microsoft-foundry",
-      "description": "Expert knowledge for Microsoft Foundry (aka Azure AI Foundry) development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Foundry agents with IQ retrieval, Entra RBAC, Azure OpenAI, M365/Teams publishing, or MCP tools, and other Microsoft Foundry related development tasks. Not for Microsoft Foundry Classic (use microsoft-foundry-classic), Microsoft Foundry Local (use microsoft-foundry-local), Microsoft Foundry Tools (use microsoft-foundry-tools)."
+      "description": "Expert knowledge for Microsoft Foundry (aka Azure AI Foundry) development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Foundry agents with IQ retrieval, Azure OpenAI models, MCP tools, VNet/private access, or Teams apps, and other Microsoft Foundry related development tasks. Not for Microsoft Foundry Classic (use microsoft-foundry-classic), Microsoft Foundry Local (use microsoft-foundry-local), Microsoft Foundry Tools (use microsoft-foundry-tools)."
     },
     {
       "name": "microsoft-foundry-classic",
       "source": "microsoft",
       "path": "microsoft/microsoft-foundry-classic",
-      "description": "Expert knowledge for Microsoft Foundry Classic (aka Azure AI Foundry classic) development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when configuring Foundry agents, routing Azure OpenAI models, integrating tools/RAG, securing endpoints, or deploying hubs, and other Microsoft Foundry Classic related development tasks. Not for Microsoft Foundry (use microsoft-foundry), Microsoft Foundry Local (use microsoft-foundry-local), Microsoft Foundry Tools (use microsoft-foundry-tools)."
+      "description": "Expert knowledge for Microsoft Foundry Classic (aka Azure AI Foundry classic) development including troubleshooting, best practices, decision making, architecture & design patterns, limits & quotas, security, configuration, integrations & coding patterns, and deployment. Use when building Foundry agents, RAG pipelines, OpenAI integrations, secure VNets/Private Link, or CI/CD deployments, and other Microsoft Foundry Classic related development tasks. Not for Microsoft Foundry (use microsoft-foundry), Microsoft Foundry Local (use microsoft-foundry-local), Microsoft Foundry Tools (use microsoft-foundry-tools)."
     },
     {
       "name": "microsoft-foundry-local",
       "source": "microsoft",
       "path": "microsoft/microsoft-foundry-local",
-      "description": "Expert knowledge for Microsoft Foundry Local (aka Azure AI Foundry Local) development including best practices, configuration, and integrations & coding patterns. Use when compiling HF models with Olive, managing local models via CLI, or building chat, embeddings, or transcription apps, and other Microsoft Foundry Local related development tasks. Not for Microsoft Foundry (use microsoft-foundry), Microsoft Foundry Classic (use microsoft-foundry-classic), Microsoft Foundry Tools (use microsoft-foundry-tools), Azure Local (use azure-local)."
+      "description": "Expert knowledge for Microsoft Foundry Local (aka Azure AI Foundry Local) development including best practices, configuration, and integrations & coding patterns. Use when compiling HF models with Olive, using Foundry Local CLI, chat/embeddings APIs, transcription, or tool calling, and other Microsoft Foundry Local related development tasks. Not for Microsoft Foundry (use microsoft-foundry), Microsoft Foundry Classic (use microsoft-foundry-classic), Microsoft Foundry Tools (use microsoft-foundry-tools), Azure Local (use azure-local)."
     },
     {
       "name": "microsoft-foundry-tools",
@@ -2517,6 +2607,12 @@
       "source": "thedotmack",
       "path": "thedotmack/mem-search",
       "description": "Search claude-mem's persistent cross-session memory database. Use when user asks \"did we already solve this?\", \"how did we do X last time?\", or needs work from previous sessions."
+    },
+    {
+      "name": "mode-creator",
+      "source": "thedotmack",
+      "path": "thedotmack/mode-creator",
+      "description": "Interactively create, install, activate, and verify custom claude-mem modes, including domain-specific observation types, concept tags, optional Telegram alerts, bot setup, worker restart, and startup-context verification. Use this whenever someone asks to customize what claude-mem remembers, create or change a mode, track domain-specific notes, add observation types or tags, or send Telegram notifications for particular memories—even if they do not use the word \"mode.\""
     },
     {
       "name": "oh-my-issues",

@@ -1,5 +1,7 @@
 ---
 name: gke-service-networking
+metadata:
+  category: Networking
 description: >-
   Configures GKE edge networking, traffic routing, load balancing, and private
   service endpoints. Use when configuring Gateway API manifests, standard
