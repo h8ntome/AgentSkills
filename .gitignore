@@ -1,0 +1,3 @@
+
+# local-only MCP client config (never push to public repo)
+config/
